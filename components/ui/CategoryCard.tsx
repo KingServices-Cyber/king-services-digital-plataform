@@ -1,0 +1,1 @@
+export default function CategoryCard({title}:{title:string}){return <div className='border rounded-2xl p-6 hover:shadow-lg'><h3 className='font-bold'>{title}</h3></div>}

@@ -1,0 +1,3 @@
+# SEO
+
+Estratégia inicial.
