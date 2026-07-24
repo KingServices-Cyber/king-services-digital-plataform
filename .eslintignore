@@ -1,0 +1,2 @@
+# Edge Functions rodam no Deno (imports por URL, global Deno) — fora do lint do Next.
+supabase/functions/

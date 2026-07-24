@@ -10,10 +10,12 @@ Backend de dados e autenticação da plataforma.
 As migrações em `supabase/migrations/` refletem o schema aplicado ao projeto,
 em ordem cronológica:
 
-| Migração                                | Descrição                                                                         |
-| --------------------------------------- | --------------------------------------------------------------------------------- |
-| `20260724090800_create_leads_table.sql` | Cria a tabela `leads` (formulário de contato) com RLS                             |
-| `20260724091000_harden_leads_rls.sql`   | Endurece a política de INSERT anônimo e remove a de INSERT autenticado redundante |
+| Migração                                       | Descrição                                                                         |
+| ---------------------------------------------- | --------------------------------------------------------------------------------- |
+| `20260724090800_create_leads_table.sql`        | Cria a tabela `leads` (formulário de contato) com RLS                             |
+| `20260724091000_harden_leads_rls.sql`          | Endurece a política de INSERT anônimo e remove a de INSERT autenticado redundante |
+| `20260724093000_enable_pg_net.sql`             | Habilita a extensão `pg_net` (HTTP assíncrono no banco)                           |
+| `20260724093100_lead_notification_trigger.sql` | Trigger que notifica novos leads via Edge Function                                |
 
 ## Tabela `leads`
 
@@ -79,3 +81,48 @@ Supabase:
 1. **Authentication → Users → Add user**
 2. Informe e-mail e senha e marque **Auto Confirm User** (cria já confirmado).
 3. Acesse `/login`, entre com essas credenciais e você será levado ao `/admin`.
+
+## Notificação de novos leads por e-mail
+
+A cada novo lead, a equipe recebe um e-mail automaticamente. O fluxo é:
+
+```
+INSERT em public.leads
+  → trigger on_lead_created (SECURITY DEFINER)
+  → pg_net faz POST para a Edge Function
+  → Edge Function notify-new-lead envia o e-mail via Resend
+```
+
+- **Edge Function:** `supabase/functions/notify-new-lead/index.ts`
+  (deployada com `verify_jwt = false` — usa autenticação por segredo próprio).
+- **Trigger:** `on_lead_created` (migração `20260724093100_lead_notification_trigger.sql`).
+- **Segurança:** o trigger lê um segredo do Vault (`notify_new_lead_secret`) e o
+  envia no header `x-notify-secret`; a função só aceita a chamada se o segredo
+  bater com a variável `NOTIFY_SECRET`. Assim, apenas o banco aciona a função.
+
+### Configuração necessária (uma vez)
+
+Em **Edge Functions → notify-new-lead → Secrets**, defina:
+
+| Secret           | Descrição                                                              |
+| ---------------- | ---------------------------------------------------------------------- |
+| `NOTIFY_SECRET`  | Mesmo valor do segredo `notify_new_lead_secret` guardado no Vault      |
+| `RESEND_API_KEY` | Chave da API do [Resend](https://resend.com)                           |
+| `NOTIFY_FROM`    | Remetente verificado, ex.: `King Services <leads@kingservices.com.br>` |
+| `NOTIFY_TO`      | Destinatário, ex.: `atendimento@kingservices.com.br`                   |
+
+> O domínio do `NOTIFY_FROM` precisa estar verificado no Resend. Sem
+> `RESEND_API_KEY`, a função apenas registra o lead e não envia e-mail (o
+> pipeline continua sem erro).
+
+### Recriar o segredo do Vault (se necessário)
+
+```sql
+select vault.create_secret(
+  encode(extensions.gen_random_bytes(24), 'hex'),
+  'notify_new_lead_secret',
+  'Segredo compartilhado entre o trigger de leads e a Edge Function'
+);
+-- copie o valor e configure como NOTIFY_SECRET na Edge Function:
+select decrypted_secret from vault.decrypted_secrets where name = 'notify_new_lead_secret';
+```
