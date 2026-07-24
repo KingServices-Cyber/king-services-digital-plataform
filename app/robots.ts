@@ -6,8 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      // Área autenticada não deve ser indexada.
-      disallow: ["/login"],
+      // Áreas autenticadas/internas não devem ser indexadas.
+      disallow: ["/login", "/admin"],
     },
     sitemap: absoluteUrl("/sitemap.xml"),
     host: SITE_URL,

@@ -1,12 +1,14 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { EMAIL_REGEX, SENHA_CADASTRO_REGEX } from "@/lib/masks";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type View = "login" | "cadastro" | "esqueci";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [view, setView] = useState<View>("login");
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
@@ -35,7 +37,8 @@ export default function LoginPage() {
         setError("E-mail ou senha inválidos.");
         return;
       }
-      setSuccessMsg("✓ Login realizado com sucesso! Bem-vindo(a) à Área do Cliente.");
+      // Autenticado: segue para o painel interno.
+      router.replace("/admin");
     } catch (err) {
       console.error("Erro no login:", err);
       setError("Não foi possível entrar agora. Tente novamente em instantes.");

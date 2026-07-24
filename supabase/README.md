@@ -56,3 +56,26 @@ A página `/login` usa o Supabase Auth (e-mail + senha):
 Para produção, configure em **Authentication → URL Configuration** do painel
 Supabase o _Site URL_ e as _Redirect URLs_ do domínio real, e ajuste os
 templates de e-mail.
+
+## Painel interno de leads (`/admin`)
+
+A rota `/admin` é o painel da equipe interna para visualizar e gerenciar os
+leads capturados. Ela:
+
+- Exige sessão autenticada (sem login, redireciona para `/login`).
+- Lista os leads (ordenados do mais recente), permite filtrar por status e
+  alterar o status de cada lead (Novo → Contatado → Qualificado → Ganho/Perdido).
+- É `noindex` e está bloqueada no `robots.txt`.
+
+A proteção real dos dados é feita pelo RLS: o papel anônimo não consegue ler os
+leads, apenas usuários autenticados.
+
+### Criar o primeiro usuário interno
+
+Como o autocadastro (`/login` → Cadastre-se) envia e-mail de confirmação, o
+caminho mais rápido para criar o primeiro acesso da equipe é pelo painel do
+Supabase:
+
+1. **Authentication → Users → Add user**
+2. Informe e-mail e senha e marque **Auto Confirm User** (cria já confirmado).
+3. Acesse `/login`, entre com essas credenciais e você será levado ao `/admin`.
