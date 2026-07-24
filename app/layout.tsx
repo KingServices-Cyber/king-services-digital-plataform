@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import {
   DEFAULT_DESCRIPTION,
-  DEFAULT_OG_IMAGE,
   DEFAULT_TITLE,
   SITE_NAME,
   SITE_URL,
@@ -42,13 +41,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: DEFAULT_OG_IMAGE, alt: SITE_NAME }],
+    // A imagem (og:image) é fornecida por app/opengraph-image.tsx.
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [DEFAULT_OG_IMAGE],
+    // A imagem do card é herdada de app/opengraph-image.tsx.
   },
   robots: {
     index: true,

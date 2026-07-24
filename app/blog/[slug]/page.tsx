@@ -5,7 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import { CtaFinal } from "@/components/PageParts";
 import { getAllPosts, getPostBySlug, getPostSlugs } from "@/lib/blog";
-import { absoluteUrl } from "@/lib/seo";
+import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return getPostSlugs().map((slug) => ({ slug }));
@@ -47,18 +47,25 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     .filter((p) => p.category === post.category && p.slug !== post.slug)
     .slice(0, 2);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date || undefined,
-    author: { "@type": "Organization", name: post.author },
-    publisher: { "@type": "Organization", name: "King Services" },
-    mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
-    articleSection: post.category,
-    inLanguage: "pt-BR",
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date || undefined,
+      author: { "@type": "Organization", name: post.author },
+      publisher: { "@type": "Organization", name: "King Services" },
+      mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
+      articleSection: post.category,
+      inLanguage: "pt-BR",
+    },
+    breadcrumbJsonLd([
+      { name: "Início", path: "/" },
+      { name: "Blog", path: "/blog" },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ]),
+  ];
 
   return (
     <>

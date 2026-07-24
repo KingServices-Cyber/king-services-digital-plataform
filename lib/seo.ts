@@ -70,3 +70,46 @@ export function webSiteJsonLd() {
     publisher: { "@id": absoluteUrl("/#business") },
   };
 }
+
+/**
+ * Dados estruturados (JSON-LD) do tipo BreadcrumbList.
+ * Recebe os itens já na ordem (do topo até a página atual).
+ */
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+/** Dados estruturados (JSON-LD) do tipo Service, para páginas de solução. */
+export function serviceJsonLd(params: { name: string; description: string; slug: string; specs?: string[] }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: params.name,
+    description: params.description,
+    serviceType: params.name,
+    url: absoluteUrl(`/solucoes/${params.slug}`),
+    provider: { "@type": "LocalBusiness", "@id": absoluteUrl("/#business"), name: SITE_NAME },
+    areaServed: { "@type": "Country", name: "Brasil" },
+    ...(params.specs && params.specs.length > 0
+      ? {
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: params.name,
+            itemListElement: params.specs.map((spec) => ({
+              "@type": "Offer",
+              itemOffered: { "@type": "Service", name: spec },
+            })),
+          },
+        }
+      : {}),
+  };
+}

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Card } from "@/components/Card";
 import { Content, CtaFinal, ListCheck, PageHero, SectionTitle } from "@/components/PageParts";
 import { SEGMENTS, SOLUTIONS } from "@/lib/data";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return Object.keys(SEGMENTS).map((slug) => ({ slug }));
@@ -27,8 +28,15 @@ export default function SegmentoDetalhePage({ params }: { params: { slug: string
   const segment = SEGMENTS[params.slug];
   if (!segment) notFound();
 
+  const jsonLd = breadcrumbJsonLd([
+    { name: "Início", path: "/" },
+    { name: "Segmentos", path: "/segmentos" },
+    { name: segment.title, path: `/segmentos/${segment.slug}` },
+  ]);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PageHero eyebrow="Segmentos" title={segment.title} description={segment.desc} />
       <Content>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
