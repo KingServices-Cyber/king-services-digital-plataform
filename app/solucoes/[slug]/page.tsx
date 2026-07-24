@@ -11,8 +11,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const solution = SOLUTIONS[params.slug];
   if (!solution) return {};
   return {
-    title: `${solution.title} — King Services`,
+    title: solution.title,
     description: solution.desc,
+    alternates: { canonical: `/solucoes/${solution.slug}` },
+    openGraph: {
+      title: `${solution.title} — King Services`,
+      description: solution.desc,
+      url: `/solucoes/${solution.slug}`,
+    },
   };
 }
 

@@ -4,7 +4,8 @@ import { Content, PageHero } from "@/components/PageParts";
 import { SEGMENTS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Segmentos — King Services",
+  title: "Segmentos",
+  alternates: { canonical: "/segmentos" },
   description: "Soluções especializadas para os desafios de cada setor atendido pela King Services.",
 };
 

@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { Content, EyebrowSmall, SectionTitle } from "@/components/PageParts";
 import { SOLUTIONS, SEGMENTS } from "@/lib/data";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const STATS = [
   { value: "+15", label: "anos de experiência" },

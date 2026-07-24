@@ -12,8 +12,14 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   const segment = SEGMENTS[params.slug];
   if (!segment) return {};
   return {
-    title: `${segment.title} — King Services`,
+    title: segment.title,
     description: segment.desc,
+    alternates: { canonical: `/segmentos/${segment.slug}` },
+    openGraph: {
+      title: `${segment.title} — King Services`,
+      description: segment.desc,
+      url: `/segmentos/${segment.slug}`,
+    },
   };
 }
 

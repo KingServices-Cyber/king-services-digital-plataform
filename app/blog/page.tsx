@@ -5,8 +5,9 @@ import { Content, PageHero } from "@/components/PageParts";
 import { CATEGORIES, POSTS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Blog — King Services",
+  title: "Blog",
   description: "Artigos sobre telecom, segurança, cloud e conectividade, direto ao ponto.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage({ searchParams }: { searchParams: { categoria?: string } }) {

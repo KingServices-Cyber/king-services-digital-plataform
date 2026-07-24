@@ -3,7 +3,8 @@ import { Card } from "@/components/Card";
 import { Content, CtaFinal, PageHero } from "@/components/PageParts";
 
 export const metadata: Metadata = {
-  title: "Diferenciais — King Services",
+  title: "Diferenciais",
+  alternates: { canonical: "/diferenciais" },
   description: "Por que empresas escolhem a King Services como parceira de tecnologia e conectividade.",
 };
 

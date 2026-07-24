@@ -3,7 +3,8 @@ import { Card } from "@/components/Card";
 import { Content, CtaFinal, PageHero } from "@/components/PageParts";
 
 export const metadata: Metadata = {
-  title: "Cases — King Services",
+  title: "Cases",
+  alternates: { canonical: "/cases" },
   description: "Resultados reais de empresas que transformaram sua conectividade com a King Services.",
 };
 

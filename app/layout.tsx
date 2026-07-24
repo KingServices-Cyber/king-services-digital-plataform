@@ -2,6 +2,15 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_TITLE,
+  SITE_NAME,
+  SITE_URL,
+  localBusinessJsonLd,
+  webSiteJsonLd,
+} from "@/lib/seo";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -19,9 +28,43 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "King Services — Parceira Autorizada Vivo Empresas",
-  description:
-    "King Services — Parceira Autorizada Vivo Empresas. Conectividade e tecnologia para empresas que não podem parar: telefonia móvel, internet empresarial, PABX, cloud e segurança digital.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: DEFAULT_TITLE,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [{ url: DEFAULT_OG_IMAGE, alt: SITE_NAME }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -29,9 +72,12 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const jsonLd = [localBusinessJsonLd(), webSiteJsonLd()];
+
   return (
     <html lang="pt-BR" className={`${poppins.variable} ${inter.variable}`}>
       <body className="font-body text-graphite bg-white antialiased">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />

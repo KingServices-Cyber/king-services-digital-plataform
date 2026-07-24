@@ -3,7 +3,8 @@ import { Card } from "@/components/Card";
 import { Content, PageHero } from "@/components/PageParts";
 
 export const metadata: Metadata = {
-  title: "Central de Conteúdo — King Services",
+  title: "Central de Conteúdo",
+  alternates: { canonical: "/central-de-conteudo" },
   description: "E-books, guias, white papers e webinars da King Services.",
 };
 

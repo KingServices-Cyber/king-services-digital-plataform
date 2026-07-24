@@ -4,7 +4,8 @@ import { Content, PageHero } from "@/components/PageParts";
 import { SOLUTIONS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Soluções — King Services",
+  title: "Soluções",
+  alternates: { canonical: "/solucoes" },
   description:
     "Conheça o portfólio completo de soluções da King Services, parceira autorizada Vivo Empresas.",
 };

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Content, CtaFinal, EyebrowSmall, PageHero, StepsList, ListCheck } from "@/components/PageParts";
 
 export const metadata: Metadata = {
-  title: "Parceiro Vivo Empresas — King Services",
+  title: "Parceiro Vivo Empresas",
+  alternates: { canonical: "/vivo-empresas" },
   description:
     "Consultoria especializada na comercialização, implantação e gestão de soluções corporativas Vivo Empresas.",
 };

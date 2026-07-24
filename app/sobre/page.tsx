@@ -3,7 +3,8 @@ import { Card } from "@/components/Card";
 import { Content, EyebrowSmall, PageHero, StepsList } from "@/components/PageParts";
 
 export const metadata: Metadata = {
-  title: "Sobre — King Services",
+  title: "Sobre",
+  alternates: { canonical: "/sobre" },
   description:
     "Consultoria especializada em telecomunicações e tecnologia, conectando empresas à solução certa.",
 };
