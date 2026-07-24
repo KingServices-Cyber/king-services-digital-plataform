@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 // Tokens extraídos do Design System aprovado na Fase 1
 // (preview-multipagina-fase1-revisao.html) — não alterar sem aprovação.
@@ -35,7 +36,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;

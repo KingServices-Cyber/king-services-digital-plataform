@@ -230,36 +230,7 @@ export const SEGMENTS: Record<string, Segment> = {
   },
 };
 
-export type Post = {
-  title: string;
-  category: string;
-  excerpt: string;
-};
-
-export const POSTS: Post[] = [
-  {
-    title: "Como escolher o link dedicado ideal para sua empresa",
-    category: "Internet Empresarial",
-    excerpt: "Diferenças entre link dedicado e internet compartilhada.",
-  },
-  {
-    title: "LGPD e segurança de dados: o que sua empresa precisa saber",
-    category: "Segurança Digital",
-    excerpt: "Panorama prático sobre LGPD na infraestrutura de TI.",
-  },
-  {
-    title: "SD-WAN vs. link dedicado: qual a diferença",
-    category: "Redes Corporativas",
-    excerpt: "Quando cada solução faz mais sentido.",
-  },
-  {
-    title: "5 sinais de que sua empresa precisa migrar para o Cloud",
-    category: "Cloud",
-    excerpt: "Servidores sobrecarregados são só o começo.",
-  },
-];
-
-export const CATEGORIES = ["Internet Empresarial", "Segurança Digital", "Redes Corporativas", "Cloud"];
+// Os artigos do blog agora vivem em content/blog/*.mdx (ver lib/blog.ts).
 
 export const CONTACT_INFO = {
   phone: "(17) 99727-6024",

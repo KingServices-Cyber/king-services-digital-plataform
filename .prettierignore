@@ -17,3 +17,6 @@ package-lock.json
 # Ativos e previews estáticos
 public/
 preview-html/
+
+# Configuração local de ferramentas
+.claude/

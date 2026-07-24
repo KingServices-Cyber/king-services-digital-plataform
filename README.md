@@ -45,6 +45,24 @@ Scripts disponíveis: `dev`, `build`, `start`, `lint`, `typecheck`, `format`.
 O backend (tabela de leads, políticas de segurança e autenticação) está
 documentado em [`supabase/README.md`](./supabase/README.md).
 
+### Conteúdo do Blog (MDX)
+
+Os artigos ficam em `content/blog/*.mdx`. Para publicar um novo artigo, crie um
+arquivo `.mdx` com o frontmatter abaixo — ele aparece automaticamente na
+listagem, no sitemap e ganha sua própria página em `/blog/<slug>`:
+
+```mdx
+---
+title: "Título do artigo"
+description: "Resumo curto para listagem e SEO."
+category: "Internet Empresarial"
+date: "2026-07-24"
+author: "King Services"
+---
+
+Conteúdo em Markdown/MDX (títulos, listas, tabelas...).
+```
+
 ---
 
 ## Status

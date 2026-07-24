@@ -1,16 +1,15 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 import { SEGMENTS, SOLUTIONS } from "@/lib/data";
 import { absoluteUrl } from "@/lib/seo";
+
+type Freq = MetadataRoute.Sitemap[number]["changeFrequency"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   // Rotas estáticas com prioridade relativa (a home é a mais importante).
-  const staticRoutes: {
-    path: string;
-    priority: number;
-    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
-  }[] = [
+  const staticRoutes: { path: string; priority: number; changeFrequency: Freq }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
     { path: "/solucoes", priority: 0.9, changeFrequency: "monthly" },
     { path: "/segmentos", priority: 0.9, changeFrequency: "monthly" },
@@ -35,10 +34,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
-  return [...staticRoutes, ...solutionRoutes, ...segmentRoutes].map((route) => ({
-    url: absoluteUrl(route.path),
-    lastModified: now,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
+  const staticEntries: MetadataRoute.Sitemap = [...staticRoutes, ...solutionRoutes, ...segmentRoutes].map(
+    (route) => ({
+      url: absoluteUrl(route.path),
+      lastModified: now,
+      changeFrequency: route.changeFrequency,
+      priority: route.priority,
+    }),
+  );
+
+  // Artigos do blog (content/blog/*.mdx), com data de publicação real.
+  const blogEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: post.date ? new Date(`${post.date}T00:00:00`) : now,
+    changeFrequency: "monthly",
+    priority: 0.6,
   }));
+
+  return [...staticEntries, ...blogEntries];
 }
