@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
-import { SEGMENTS, SOLUTIONS } from "@/lib/data";
+import { getAllPosts } from "@/lib/content/blog";
+import { SEGMENTS, SOLUTIONS } from "@/lib/content";
 import { absoluteUrl } from "@/lib/seo";
 
 type Freq = MetadataRoute.Sitemap[number]["changeFrequency"];

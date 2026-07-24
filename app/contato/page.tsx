@@ -1,9 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { PageHero } from "@/components/PageParts";
-import { WhatsAppLink } from "@/components/WhatsAppIcon";
-import { CONTACT_INFO } from "@/lib/data";
+import { PageHero, WhatsAppLink } from "@/components/ui";
+import { CONTACT_INFO } from "@/lib/content";
 import { mascararCPF, mascararCNPJ, mascararTelefone } from "@/lib/masks";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 

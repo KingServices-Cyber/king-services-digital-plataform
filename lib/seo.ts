@@ -1,4 +1,4 @@
-import { CONTACT_INFO } from "@/lib/data";
+import { CONTACT_INFO } from "@/lib/content";
 
 /**
  * URL canônica do site em produção. Pode ser sobrescrita por ambiente

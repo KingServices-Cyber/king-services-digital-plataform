@@ -230,7 +230,7 @@ export const SEGMENTS: Record<string, Segment> = {
   },
 };
 
-// Os artigos do blog agora vivem em content/blog/*.mdx (ver lib/blog.ts).
+// Os artigos do blog vivem em content/blog/*.mdx (ver lib/content/blog.ts).
 
 export const CONTACT_INFO = {
   phone: "(17) 99727-6024",

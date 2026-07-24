@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Card } from "@/components/Card";
-import { Content, EyebrowSmall, PageHero, StepsList } from "@/components/PageParts";
+import { Card, Content, EyebrowSmall, PageHero, StepsList } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Sobre",

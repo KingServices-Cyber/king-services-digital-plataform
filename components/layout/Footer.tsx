@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT_INFO } from "@/lib/data";
+import { CONTACT_INFO } from "@/lib/content/data";
 
 const SOLUCOES_LINKS = [
   { label: "Telefonia Móvel Empresarial", href: "/solucoes/telefonia-movel" },

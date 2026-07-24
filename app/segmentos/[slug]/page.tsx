@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Card } from "@/components/Card";
-import { Content, CtaFinal, ListCheck, PageHero, SectionTitle } from "@/components/PageParts";
-import { SEGMENTS, SOLUTIONS } from "@/lib/data";
+import { Card, Content, CtaFinal, ListCheck, PageHero, SectionTitle } from "@/components/ui";
+import { SEGMENTS, SOLUTIONS } from "@/lib/content";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Card } from "@/components/Card";
-import { Content, PageHero } from "@/components/PageParts";
+import { Card, Content, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Central de Conteúdo",

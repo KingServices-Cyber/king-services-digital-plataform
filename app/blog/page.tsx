@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Card } from "@/components/Card";
-import { Content, PageHero } from "@/components/PageParts";
-import { getAllCategories, getAllPosts } from "@/lib/blog";
+import { Card, Content, PageHero } from "@/components/ui";
+import { getAllCategories, getAllPosts } from "@/lib/content/blog";
 
 export const metadata: Metadata = {
   title: "Blog",

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { NAV_ITEMS } from "@/lib/nav";
+import { NAV_ITEMS } from "@/lib/content/nav";
 import logo from "@/public/logo.png";
 
 export function Header() {

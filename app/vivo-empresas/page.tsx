@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Content, CtaFinal, EyebrowSmall, PageHero, StepsList, ListCheck } from "@/components/PageParts";
+import { Content, CtaFinal, EyebrowSmall, PageHero, StepsList, ListCheck } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Parceiro Vivo Empresas",

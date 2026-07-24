@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { CtaFinal } from "@/components/PageParts";
-import { getAllPosts, getPostBySlug, getPostSlugs } from "@/lib/blog";
+import { CtaFinal } from "@/components/ui";
+import { getAllPosts, getPostBySlug, getPostSlugs } from "@/lib/content/blog";
 import { absoluteUrl, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {

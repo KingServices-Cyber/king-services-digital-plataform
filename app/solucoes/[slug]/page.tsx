@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CtaFinal, PageHero } from "@/components/PageParts";
-import { SOLUTIONS } from "@/lib/data";
+import { CtaFinal, PageHero } from "@/components/ui";
+import { SOLUTIONS } from "@/lib/content";
 import { breadcrumbJsonLd, serviceJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {

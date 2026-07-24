@@ -1,4 +1,4 @@
-import { CONTACT_INFO } from "@/lib/data";
+import { CONTACT_INFO } from "@/lib/content/data";
 
 export function WhatsAppLink({
   children,

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Card } from "@/components/Card";
-import { Content, PageHero } from "@/components/PageParts";
-import { SOLUTIONS } from "@/lib/data";
+import { Card, Content, PageHero } from "@/components/ui";
+import { SOLUTIONS } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Soluções",
