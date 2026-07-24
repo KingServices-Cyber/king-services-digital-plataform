@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { EMAIL_REGEX, SENHA_CADASTRO_REGEX } from "@/lib/masks";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 type View = "login" | "cadastro" | "esqueci";
 
@@ -9,13 +10,41 @@ export default function LoginPage() {
   const [view, setView] = useState<View>("login");
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  function handleLogin(e: FormEvent) {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginSenha, setLoginSenha] = useState("");
+
+  async function handleLogin(e: FormEvent) {
     e.preventDefault();
-    alert("Login simulado — no site real, isso levaria ao Dashboard.");
+    setError("");
+
+    if (!EMAIL_REGEX.test(loginEmail.trim())) {
+      setError("Informe um e-mail válido.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: loginEmail.trim(),
+        password: loginSenha,
+      });
+      if (signInError) {
+        setError("E-mail ou senha inválidos.");
+        return;
+      }
+      setSuccessMsg("✓ Login realizado com sucesso! Bem-vindo(a) à Área do Cliente.");
+    } catch (err) {
+      console.error("Erro no login:", err);
+      setError("Não foi possível entrar agora. Tente novamente em instantes.");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function handleCadastro(e: FormEvent) {
+  async function handleCadastro(e: FormEvent) {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
     const email = (form.elements.namedItem("cad-email") as HTMLInputElement).value.trim();
@@ -34,13 +63,32 @@ export default function LoginPage() {
       setError("As senhas não coincidem.");
       return;
     }
+
     setError("");
-    setSuccessMsg(
-      `✓ Conta criada! Enviamos um e-mail de confirmação para ${email}. Clique no link recebido para ativar sua conta.`,
-    );
+    setLoading(true);
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { error: signUpError } = await supabase.auth.signUp({ email, password: senha });
+      if (signUpError) {
+        setError(
+          signUpError.message.toLowerCase().includes("already")
+            ? "Este e-mail já possui cadastro. Faça login."
+            : "Não foi possível criar a conta. Tente novamente.",
+        );
+        return;
+      }
+      setSuccessMsg(
+        `✓ Conta criada! Enviamos um e-mail de confirmação para ${email}. Clique no link recebido para ativar sua conta.`,
+      );
+    } catch (err) {
+      console.error("Erro no cadastro:", err);
+      setError("Não foi possível criar a conta agora. Tente novamente em instantes.");
+    } finally {
+      setLoading(false);
+    }
   }
 
-  function handleRecuperar(e: FormEvent) {
+  async function handleRecuperar(e: FormEvent) {
     e.preventDefault();
     const form = e.currentTarget as HTMLFormElement;
     const email = (form.elements.namedItem("rec-email") as HTMLInputElement).value.trim();
@@ -48,8 +96,20 @@ export default function LoginPage() {
       setError("Informe um e-mail válido.");
       return;
     }
+
     setError("");
-    setSuccessMsg(`✓ Enviamos um link de recuperação de senha para ${email}.`);
+    setLoading(true);
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { error: resetError } = await supabase.auth.resetPasswordForEmail(email);
+      if (resetError) throw resetError;
+      setSuccessMsg(`✓ Enviamos um link de recuperação de senha para ${email}.`);
+    } catch (err) {
+      console.error("Erro na recuperação de senha:", err);
+      setError("Não foi possível enviar o link agora. Tente novamente em instantes.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   function goTo(v: View) {
@@ -72,20 +132,34 @@ export default function LoginPage() {
               Área do Cliente
             </p>
             <label className={labelClass}>E-mail</label>
-            <input type="email" className={inputClass} />
+            <input
+              type="email"
+              required
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+              className={inputClass}
+            />
             <label className={labelClass}>Senha</label>
-            <input type="password" className={inputClass} />
+            <input
+              type="password"
+              required
+              value={loginSenha}
+              onChange={(e) => setLoginSenha(e.target.value)}
+              className={inputClass}
+            />
             <a
               onClick={() => goTo("esqueci")}
               className="block text-right text-[13px] text-purple-600 no-underline hover:underline -mt-2 mb-4 cursor-pointer"
             >
               Esqueci minha senha
             </a>
+            {error && <p className="text-[13px] text-[#C0392B] -mt-2 mb-4">{error}</p>}
             <button
               type="submit"
-              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white"
+              disabled={loading}
+              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white disabled:opacity-60"
             >
-              Entrar
+              {loading ? "Entrando..." : "Entrar"}
             </button>
             <div className="flex items-center gap-2.5 my-4.5 text-xs text-[#9A9890]">
               <span className="flex-1 h-px bg-fog" />
@@ -130,9 +204,10 @@ export default function LoginPage() {
             {error && <p className="text-[13px] text-[#C0392B] -mt-3 mb-4">{error}</p>}
             <button
               type="submit"
-              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white"
+              disabled={loading}
+              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white disabled:opacity-60"
             >
-              Criar conta
+              {loading ? "Criando conta..." : "Criar conta"}
             </button>
             <a
               onClick={() => goTo("login")}
@@ -154,9 +229,10 @@ export default function LoginPage() {
             {error && <p className="text-[13px] text-[#C0392B] -mt-3 mb-4">{error}</p>}
             <button
               type="submit"
-              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white"
+              disabled={loading}
+              className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white disabled:opacity-60"
             >
-              Enviar link de recuperação
+              {loading ? "Enviando..." : "Enviar link de recuperação"}
             </button>
             <a
               onClick={() => goTo("login")}

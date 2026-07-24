@@ -22,6 +22,28 @@ Este projeto reúne:
 - React
 - TypeScript
 - Tailwind CSS
+- Supabase (banco de dados e autenticação)
+
+---
+
+## Configuração local
+
+```bash
+# 1. Instale as dependências
+npm install
+
+# 2. Configure as variáveis de ambiente
+cp .env.example .env.local
+# edite .env.local com a URL e a chave do Supabase (veja supabase/README.md)
+
+# 3. Rode em desenvolvimento
+npm run dev
+```
+
+Scripts disponíveis: `dev`, `build`, `start`, `lint`, `typecheck`, `format`.
+
+O backend (tabela de leads, políticas de segurança e autenticação) está
+documentado em [`supabase/README.md`](./supabase/README.md).
 
 ---
 

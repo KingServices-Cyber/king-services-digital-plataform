@@ -5,20 +5,50 @@ import { PageHero } from "@/components/PageParts";
 import { WhatsAppLink } from "@/components/WhatsAppIcon";
 import { CONTACT_INFO } from "@/lib/data";
 import { mascararCPF, mascararCNPJ, mascararTelefone } from "@/lib/masks";
+import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 export default function ContatoPage() {
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [mensagem, setMensagem] = useState("");
   const [docTipo, setDocTipo] = useState<"cpf" | "cnpj">("cpf");
   const [docValue, setDocValue] = useState("");
   const [telefone, setTelefone] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   function handleDocChange(e: React.ChangeEvent<HTMLInputElement>) {
     setDocValue(docTipo === "cpf" ? mascararCPF(e.target.value) : mascararCNPJ(e.target.value));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setSubmitted(true);
+    setError("");
+    setLoading(true);
+
+    try {
+      const supabase = getSupabaseBrowserClient();
+      const { error: insertError } = await supabase.from("leads").insert({
+        name: nome.trim(),
+        email: email.trim(),
+        phone: telefone,
+        doc_type: docTipo,
+        doc: docValue,
+        message: mensagem.trim(),
+        source: "site-contato",
+        status: "new",
+      });
+
+      if (insertError) throw insertError;
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Erro ao enviar lead:", err);
+      setError("Não foi possível enviar sua mensagem agora. Tente novamente ou fale conosco pelo WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -74,6 +104,8 @@ export default function ContatoPage() {
               <input
                 type="text"
                 required
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
                 className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
               />
 
@@ -81,6 +113,8 @@ export default function ContatoPage() {
               <input
                 type="email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
               />
 
@@ -126,14 +160,19 @@ export default function ContatoPage() {
               <textarea
                 required
                 rows={3}
+                value={mensagem}
+                onChange={(e) => setMensagem(e.target.value)}
                 className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
               />
 
+              {error && <p className="text-[13px] text-[#C0392B] -mt-2 mb-4">{error}</p>}
+
               <button
                 type="submit"
-                className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white transition-transform hover:-translate-y-0.5"
+                disabled={loading}
+                className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
               >
-                Enviar mensagem
+                {loading ? "Enviando..." : "Enviar mensagem"}
               </button>
             </form>
           )}
