@@ -25,7 +25,9 @@ export default function BlogPage({ searchParams }: { searchParams: { categoria?:
           <Link
             href="/blog"
             className={`text-xs font-semibold px-3.5 py-2 rounded-pill border ${
-              !active ? "bg-purple-600 text-white border-purple-600" : "border-fog text-graphite hover:border-purple-600"
+              !active
+                ? "bg-purple-600 text-white border-purple-600"
+                : "border-fog text-graphite hover:border-purple-600"
             }`}
           >
             Todos
@@ -35,7 +37,9 @@ export default function BlogPage({ searchParams }: { searchParams: { categoria?:
               key={cat}
               href={`/blog?categoria=${encodeURIComponent(cat)}`}
               className={`text-xs font-semibold px-3.5 py-2 rounded-pill border ${
-                active === cat ? "bg-purple-600 text-white border-purple-600" : "border-fog text-graphite hover:border-purple-600"
+                active === cat
+                  ? "bg-purple-600 text-white border-purple-600"
+                  : "border-fog text-graphite hover:border-purple-600"
               }`}
             >
               {cat}

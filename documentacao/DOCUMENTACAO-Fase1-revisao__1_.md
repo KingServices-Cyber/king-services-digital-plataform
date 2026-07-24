@@ -7,18 +7,18 @@
 
 ## Roadmap de fases
 
-| Fase | Entregável | Status |
-|---|---|---|
-| 1 | Fundação: setup Next.js + Design System | 🟢 Aprovada |
-| 2 | Home page completa | 🟢 Aprovada |
-| 3 | Sobre a Empresa + Parceiro Vivo Empresas | 🟢 Aprovada |
-| 4 | Soluções (template + páginas principais) | 🟢 Aprovada |
-| 5 | Segmentos (template + páginas principais) | 🟢 Aprovada |
-| 6 | Diferenciais, Cases, FAQ, Contato | 🟢 Aprovada |
-| 7 | Blog/CMS + Central de Conteúdo | 🟢 Aprovada |
-| 8 | Área do Cliente (login/dashboard) | 🟢 Aprovada |
-| 9 | King Assistant (assistente virtual) | 🟢 Aprovada |
-| 10 | Backend, integrações, SEO técnico, segurança, documentação final | 🟢 Aprovada |
+| Fase | Entregável                                                       | Status      |
+| ---- | ---------------------------------------------------------------- | ----------- |
+| 1    | Fundação: setup Next.js + Design System                          | 🟢 Aprovada |
+| 2    | Home page completa                                               | 🟢 Aprovada |
+| 3    | Sobre a Empresa + Parceiro Vivo Empresas                         | 🟢 Aprovada |
+| 4    | Soluções (template + páginas principais)                         | 🟢 Aprovada |
+| 5    | Segmentos (template + páginas principais)                        | 🟢 Aprovada |
+| 6    | Diferenciais, Cases, FAQ, Contato                                | 🟢 Aprovada |
+| 7    | Blog/CMS + Central de Conteúdo                                   | 🟢 Aprovada |
+| 8    | Área do Cliente (login/dashboard)                                | 🟢 Aprovada |
+| 9    | King Assistant (assistente virtual)                              | 🟢 Aprovada |
+| 10   | Backend, integrações, SEO técnico, segurança, documentação final | 🟢 Aprovada |
 
 Legenda: ⬜ não iniciada · 🟡 em aprovação · 🟢 aprovada e concluída
 
@@ -44,24 +44,24 @@ extensão funcional e coerente da identidade visual.
 
 ### Paleta de cores
 
-| Token | Hex | Uso |
-|---|---|---|
-| `king-purple-600` | `#5B2A8C` | Cor primária (referência "King") |
-| `king-purple-900` | `#2A1240` | Textos escuros, fundo footer, dark surfaces |
-| `king-lilac-500` | `#A873E0` | Cor secundária (referência "Services") |
-| `king-graphite` | `#2A2438` | Texto padrão sobre fundo claro |
-| `king-mist` | `#F7F6FA` | Fundo neutro claro |
-| Gradiente principal | `#5B2A8C → #A873E0` | CTAs primários, destaques |
+| Token               | Hex                 | Uso                                         |
+| ------------------- | ------------------- | ------------------------------------------- |
+| `king-purple-600`   | `#5B2A8C`           | Cor primária (referência "King")            |
+| `king-purple-900`   | `#2A1240`           | Textos escuros, fundo footer, dark surfaces |
+| `king-lilac-500`    | `#A873E0`           | Cor secundária (referência "Services")      |
+| `king-graphite`     | `#2A2438`           | Texto padrão sobre fundo claro              |
+| `king-mist`         | `#F7F6FA`           | Fundo neutro claro                          |
+| Gradiente principal | `#5B2A8C → #A873E0` | CTAs primários, destaques                   |
 
 ### Tipografia
 
-| Papel | Fonte | Peso |
-|---|---|---|
-| Headings | Poppins | 500–700 |
-| Subtítulos | Inter | 600 (SemiBold) |
-| Textos | Inter | 400 |
-| Botões | Inter | 700 (Bold) |
-| Dados/specs (adicional) | JetBrains Mono | 400 |
+| Papel                   | Fonte          | Peso           |
+| ----------------------- | -------------- | -------------- |
+| Headings                | Poppins        | 500–700        |
+| Subtítulos              | Inter          | 600 (SemiBold) |
+| Textos                  | Inter          | 400            |
+| Botões                  | Inter          | 700 (Bold)     |
+| Dados/specs (adicional) | JetBrains Mono | 400            |
 
 ### Componentes entregues nesta fase
 
@@ -157,6 +157,7 @@ comerciais internos, sem menção a PF, sem o fluxo duplicado de
 ### Páginas entregues
 
 **`/sobre`** — Sobre a Empresa
+
 1. `PageHero` — eyebrow, título e descrição de abertura
 2. `AboutIntro` — "Quem somos" + lista de atuação (10 itens)
 3. `MissionVisionValues` — Missão, Visão e os 5 Valores (Ética, Excelência, Inovação, Comprometimento, Resultado)
@@ -164,6 +165,7 @@ comerciais internos, sem menção a PF, sem o fluxo duplicado de
 5. `FinalCta` — chamada final (componente reaproveitado da Home)
 
 **`/vivo-empresas`** — Parceiro Autorizado Vivo Empresas
+
 1. `PageHero`
 2. `PartnershipBenefits` — 4 benefícios da parceria
 3. `ProcessSteps` — mesma metodologia (reaproveitada, sem duplicar copy)
@@ -205,6 +207,7 @@ comerciais internos, sem menção a PF, sem o fluxo duplicado de
 ### Ajuste técnico em fases já aprovadas (pequeno, não visual)
 
 Para os links não ficarem "mortos", atualizei:
+
 - **Header (Fase 1/2):** mega menu de "Soluções" agora linka para cada `/solucoes/[slug]` real, em vez de um link genérico
 - **Home / `SolutionsHighlight` (Fase 2):** os 6 cards de solução agora puxam os dados de `src/data/solutions.ts` (mesma fonte única), e cada card linka para a página real da respectiva solução
 
@@ -303,6 +306,7 @@ Nenhum conteúdo visual ou copy da Home foi alterado — apenas os links passara
 ### Ajuste técnico em fases já aprovadas (pequeno, não visual)
 
 Para conectar as novas páginas ao restante do site:
+
 - **Header:** botão "Fale com um especialista" agora linka para `/contato`
 - **`FinalCta`** (usado em várias páginas): botão agora linka para `/contato`
 - **Footer:** todas as colunas de links atualizadas com URLs reais (antes eram `href="#"`), incluindo Diferenciais, FAQ e Contato; telefone e e-mail reais adicionados ao rodapé
@@ -333,12 +337,14 @@ Nenhum conteúdo visual, copy ou estrutura de seção foi alterado nessas fases 
 ### Estrutura entregue
 
 **Blog**
+
 - `src/data/blog.ts` — fonte única de dados dos 4 artigos (título, categoria, resumo, conteúdo, data, tempo de leitura)
 - `/blog` — página-índice com busca em tempo real + filtro por categoria
 - `/blog/[slug]` — página de artigo individual (`generateStaticParams` + `generateMetadata`)
 - `NewsletterSignup` — captura de e-mail (front-end, validação local; integração real prevista para a Fase 10)
 
 **Central de Conteúdo**
+
 - `/central-de-conteudo` — grid de 4 materiais (E-book, Guia, White Paper, Webinar), todos com **placeholder explícito** no código, botão "Em breve" desabilitado até o material real chegar
 
 ### Componentes novos criados
@@ -491,6 +497,7 @@ Cloudflare, banco de dados de produção).
 revisado manualmente**, não um servidor testado em produção. Neste
 sandbox não há PostgreSQL persistente nem acesso a
 `binaries.prisma.sh` (necessário para `prisma generate`), então:
+
 - A checagem de tipos do backend roda isolada do front-end (corrigido
   o `tsconfig.json` do front-end, que sem querer tentava compilar os
   arquivos do backend também)
@@ -540,6 +547,7 @@ sair do estado de demonstração).
 
 Próximos passos possíveis, a critério do cliente, não fazem mais
 parte do roadmap original e exigiriam um novo planejamento de fase:
+
 - Conectar o backend a um banco de dados real e fazer deploy
 - Fornecer credenciais reais das integrações (GA4, HubSpot, WhatsApp
   Business API etc.)
@@ -637,16 +645,17 @@ Empresas, Cases, Blog e Sobre já herdavam automaticamente o
 alinhamento e a transição suave. O trabalho real desta etapa foi
 **auditar se cada link individual leva ao destino correto**:
 
-| Menu | Resultado da auditoria |
-|---|---|
-| Soluções | ✅ OK — já corrigido anteriormente |
-| Segmentos | ✅ OK — 10 slugs conferem com `segments.ts` |
-| Parceiro Vivo Empresas | ✅ OK — âncoras `#beneficios` e `#metodologia` existem na página |
-| Cases | ✅ OK — sem sub-seções por categoria ainda, links apontam para `/cases` (não há link morto, apenas não há filtro específico, pois a página de Cases não tem esse recurso) |
-| Sobre | ✅ OK — âncoras `#quem-somos`, `#missao-visao-valores`, `#metodologia` existem na página |
-| **Blog** | ⚠️ **Encontrado e corrigido**: os links de categoria levavam para `/blog` sem aplicar o filtro de fato |
+| Menu                   | Resultado da auditoria                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Soluções               | ✅ OK — já corrigido anteriormente                                                                                                                                        |
+| Segmentos              | ✅ OK — 10 slugs conferem com `segments.ts`                                                                                                                               |
+| Parceiro Vivo Empresas | ✅ OK — âncoras `#beneficios` e `#metodologia` existem na página                                                                                                          |
+| Cases                  | ✅ OK — sem sub-seções por categoria ainda, links apontam para `/cases` (não há link morto, apenas não há filtro específico, pois a página de Cases não tem esse recurso) |
+| Sobre                  | ✅ OK — âncoras `#quem-somos`, `#missao-visao-valores`, `#metodologia` existem na página                                                                                  |
+| **Blog**               | ⚠️ **Encontrado e corrigido**: os links de categoria levavam para `/blog` sem aplicar o filtro de fato                                                                    |
 
 **Correção aplicada ao Blog:**
+
 - Links do mega menu agora usam `?categoria=<nome>` na URL (ex: `/blog?categoria=Cloud`)
 - `BlogGrid.tsx` passou a ler esse parâmetro via `useSearchParams` e pré-seleciona o filtro de categoria automaticamente ao carregar a página
 - `/blog/page.tsx` envolvido em `<Suspense>` (exigência do Next.js para uso de `useSearchParams` em componente client)
@@ -683,6 +692,7 @@ conteúdo anterior saindo de tela por completo (mais parecido com a
 navegação real por rotas do Next.js). Criado
 `preview-multipagina-fase1-revisao.html`: uma simulação client-side
 de roteamento (SPA), onde:
+
 - Cada clique no mega menu troca completamente o conteúdo visível — a
   página anterior desaparece, a nova aparece com uma transição de
   entrada
@@ -717,7 +727,7 @@ arquivo único continue funcionando de forma independente.
 
 ### Aprovação desta revisão
 
-- [ ] Aprovado pelo cliente em: ____/____/______
+- [ ] Aprovado pelo cliente em: ****/****/______
 
 ---
 

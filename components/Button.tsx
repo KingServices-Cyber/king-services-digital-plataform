@@ -6,8 +6,7 @@ type Variant = "primary" | "outline" | "ghost";
 const variantClasses: Record<Variant, string> = {
   primary:
     "bg-gradient-to-br from-purple-600 to-lilac-500 text-white hover:shadow-[0_10px_24px_-8px_rgba(91,42,140,0.55)]",
-  outline:
-    "bg-transparent text-purple-700 border-[1.5px] border-purple-600 hover:bg-mist",
+  outline: "bg-transparent text-purple-700 border-[1.5px] border-purple-600 hover:bg-mist",
   ghost: "bg-transparent text-purple-600 hover:bg-mist",
 };
 

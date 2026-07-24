@@ -23,8 +23,8 @@ export default function HomePage() {
             Conectividade e tecnologia para empresas que não podem parar.
           </h1>
           <p className="mt-3 max-w-[560px] text-white/85 text-sm">
-            Consultoria especializada em telecomunicações que une a força da Vivo Empresas à proximidade de quem
-            entende o seu negócio.
+            Consultoria especializada em telecomunicações que une a força da Vivo Empresas à proximidade de
+            quem entende o seu negócio.
           </p>
           <div className="flex flex-wrap gap-2.5 mt-4">
             <ButtonLink href="/contato" className="!bg-white !text-purple-900">

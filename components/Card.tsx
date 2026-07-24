@@ -35,14 +35,16 @@ export function Card({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
   const innerClasses = `border border-fog rounded-card p-4 bg-white transition-all duration-200 h-full ${
-    clickable ? "cursor-pointer hover:border-lilac-500 hover:shadow-card hover:-translate-y-1 block" : "cursor-default"
+    clickable
+      ? "cursor-pointer hover:border-lilac-500 hover:shadow-card hover:-translate-y-1 block"
+      : "cursor-default"
   } ${center ? "text-center" : ""}`;
 
   return (

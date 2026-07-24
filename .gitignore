@@ -4,10 +4,12 @@ node_modules/
 # Next.js
 .next/
 out/
+next-env.d.ts
 
 # Build
 dist/
 build/
+*.tsbuildinfo
 
 # Variáveis de ambiente
 .env

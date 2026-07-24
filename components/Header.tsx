@@ -59,10 +59,7 @@ export function Header() {
         scrolled ? "shadow-header" : ""
       }`}
     >
-      <a
-        href="#main-content"
-        className="skip-link"
-      >
+      <a href="#main-content" className="skip-link">
         Pular para o conteúdo
       </a>
 
@@ -84,7 +81,9 @@ export function Header() {
               mobileOpen ? "translate-y-[7px] rotate-45" : ""
             }`}
           />
-          <span className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
+          <span
+            className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-opacity ${mobileOpen ? "opacity-0" : ""}`}
+          />
           <span
             className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-transform ${
               mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
@@ -143,7 +142,9 @@ export function Header() {
                   {item.columns.map((col, i) => (
                     <div key={i} className="min-w-0 md:min-w-[180px]">
                       {col.title && (
-                        <p className="text-xs font-bold uppercase tracking-wide text-purple-600 mb-2">{col.title}</p>
+                        <p className="text-xs font-bold uppercase tracking-wide text-purple-600 mb-2">
+                          {col.title}
+                        </p>
                       )}
                       <ul className="space-y-0.5">
                         {col.links.map((link) => (

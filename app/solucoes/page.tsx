@@ -5,7 +5,8 @@ import { SOLUTIONS } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Soluções — King Services",
-  description: "Conheça o portfólio completo de soluções da King Services, parceira autorizada Vivo Empresas.",
+  description:
+    "Conheça o portfólio completo de soluções da King Services, parceira autorizada Vivo Empresas.",
 };
 
 export default function SolucoesIndexPage() {

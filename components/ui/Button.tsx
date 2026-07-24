@@ -1,1 +1,0 @@
-export default function Button({children}:{children:React.ReactNode}){return <button className="rounded-xl bg-violet-700 hover:bg-violet-800 text-white px-5 py-3 font-semibold">{children}</button>}

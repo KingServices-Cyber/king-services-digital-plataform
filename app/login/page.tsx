@@ -36,7 +36,7 @@ export default function LoginPage() {
     }
     setError("");
     setSuccessMsg(
-      `✓ Conta criada! Enviamos um e-mail de confirmação para ${email}. Clique no link recebido para ativar sua conta.`
+      `✓ Conta criada! Enviamos um e-mail de confirmação para ${email}. Clique no link recebido para ativar sua conta.`,
     );
   }
 
@@ -68,7 +68,9 @@ export default function LoginPage() {
           <p className="text-[15px] text-purple-700 font-semibold">{successMsg}</p>
         ) : view === "login" ? (
           <form onSubmit={handleLogin}>
-            <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">Área do Cliente</p>
+            <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">
+              Área do Cliente
+            </p>
             <label className={labelClass}>E-mail</label>
             <input type="email" className={inputClass} />
             <label className={labelClass}>Senha</label>
@@ -105,7 +107,14 @@ export default function LoginPage() {
             <label className={labelClass}>E-mail *</label>
             <input name="cad-email" type="email" required className={inputClass} />
             <label className={labelClass}>Senha *</label>
-            <input name="cad-senha" type="password" placeholder="Mín. 8 caracteres" maxLength={8} required className={inputClass} />
+            <input
+              name="cad-senha"
+              type="password"
+              placeholder="Mín. 8 caracteres"
+              maxLength={8}
+              required
+              className={inputClass}
+            />
             <p className="text-xs text-[#7A7871] -mt-3 mb-4">
               Deve conter letras, números e um caractere especial (máx. 8 caracteres)
             </p>
@@ -134,7 +143,9 @@ export default function LoginPage() {
           </form>
         ) : (
           <form onSubmit={handleRecuperar}>
-            <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">Recuperar senha</p>
+            <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">
+              Recuperar senha
+            </p>
             <p className="text-xs text-[#7A7871] mb-4">
               Informe seu e-mail cadastrado e enviaremos um link para redefinir sua senha.
             </p>

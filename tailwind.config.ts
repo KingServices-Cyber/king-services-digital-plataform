@@ -3,10 +3,7 @@ import type { Config } from "tailwindcss";
 // Tokens extraídos do Design System aprovado na Fase 1
 // (preview-multipagina-fase1-revisao.html) — não alterar sem aprovação.
 const config: Config = {
-  content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-  ],
+  content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {

@@ -23,21 +23,25 @@ export default function ContatoPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Contato"
-        title="Vamos conversar sobre a conectividade da sua empresa?"
-      />
+      <PageHero eyebrow="Contato" title="Vamos conversar sobre a conectividade da sua empresa?" />
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Informações de contato */}
         <div>
-          <span className="block text-[13px] font-bold uppercase text-[#8F58C9] mb-2">Fale com a King Services</span>
+          <span className="block text-[13px] font-bold uppercase text-[#8F58C9] mb-2">
+            Fale com a King Services
+          </span>
 
           <div className="mt-[18px] text-[19px] leading-[1.6] text-[#3A3937]">
             <p className="font-bold text-graphite mb-1.5">Central de Atendimento:</p>
             <p className="mb-2">📞 {CONTACT_INFO.phone}</p>
             <p className="mb-6 flex items-center gap-2">
               <WhatsAppLink iconOnly />
-              <a href={`https://wa.me/${CONTACT_INFO.whatsapp}`} target="_blank" rel="noopener" className="text-[#3A3937] no-underline">
+              <a
+                href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
+                target="_blank"
+                rel="noopener"
+                className="text-[#3A3937] no-underline"
+              >
                 {CONTACT_INFO.phone}
               </a>
             </p>
@@ -62,13 +66,23 @@ export default function ContatoPage() {
             </p>
           ) : (
             <form onSubmit={handleSubmit}>
-              <p className="text-[13px] text-[#8F58C9] -mt-1 mb-4">* Preenchimento obrigatório em todos os campos</p>
+              <p className="text-[13px] text-[#8F58C9] -mt-1 mb-4">
+                * Preenchimento obrigatório em todos os campos
+              </p>
 
               <label className="block text-[15px] font-medium mb-1.5">Nome *</label>
-              <input type="text" required className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4" />
+              <input
+                type="text"
+                required
+                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
+              />
 
               <label className="block text-[15px] font-medium mb-1.5">E-mail *</label>
-              <input type="email" required className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4" />
+              <input
+                type="email"
+                required
+                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
+              />
 
               <label className="block text-[15px] font-medium mb-1.5">Tipo de documento *</label>
               <select
@@ -109,7 +123,11 @@ export default function ContatoPage() {
               />
 
               <label className="block text-[15px] font-medium mb-1.5">Mensagem *</label>
-              <textarea required rows={3} className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4" />
+              <textarea
+                required
+                rows={3}
+                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
+              />
 
               <button
                 type="submit"

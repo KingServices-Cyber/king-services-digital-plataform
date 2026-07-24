@@ -13,12 +13,17 @@ export function PageHero({
   id?: string;
 }) {
   return (
-    <div id={id} className="bg-gradient-to-br from-purple-900 to-purple-600 text-white px-4 md:px-6 py-8 md:py-11">
+    <div
+      id={id}
+      className="bg-gradient-to-br from-purple-900 to-purple-600 text-white px-4 md:px-6 py-8 md:py-11"
+    >
       <div className="max-w-[1280px] mx-auto">
         <span className="text-[11px] font-semibold border border-white/25 rounded-pill px-2.5 py-1 text-lilac-300">
           {eyebrow}
         </span>
-        <h1 className="font-display font-semibold mt-3.5 max-w-[640px] text-[clamp(22px,5vw,30px)]">{title}</h1>
+        <h1 className="font-display font-semibold mt-3.5 max-w-[640px] text-[clamp(22px,5vw,30px)]">
+          {title}
+        </h1>
         {description && <p className="mt-3 max-w-[560px] text-white/85 text-sm">{description}</p>}
       </div>
     </div>
@@ -26,7 +31,11 @@ export function PageHero({
 }
 
 export function SectionTitle({ children }: { children: ReactNode }) {
-  return <h2 className="font-display font-semibold text-[clamp(17px,3vw,20px)] text-purple-900 mb-4">{children}</h2>;
+  return (
+    <h2 className="font-display font-semibold text-[clamp(17px,3vw,20px)] text-purple-900 mb-4">
+      {children}
+    </h2>
+  );
 }
 
 export function EyebrowSmall({ children, id }: { children: ReactNode; id?: string }) {
@@ -78,7 +87,11 @@ export function CtaFinal() {
       <h3 className="font-display font-semibold text-base mb-2">
         Vamos conversar sobre a conectividade da sua empresa?
       </h3>
-      <ButtonLink href="/contato" variant="outline" className="!text-white !border-white/50 mt-2 hover:!bg-white/10">
+      <ButtonLink
+        href="/contato"
+        variant="outline"
+        className="!text-white !border-white/50 mt-2 hover:!bg-white/10"
+      >
         Fale com um especialista
       </ButtonLink>
     </div>

@@ -1,2 +1,0 @@
-import SectionTitle from '@/components/ui/SectionTitle';
-export default function Page(){return <main className='p-8'><SectionTitle title='Centro de Conhecimento' subtitle='Conteúdo técnico da King Services.'/></main>}

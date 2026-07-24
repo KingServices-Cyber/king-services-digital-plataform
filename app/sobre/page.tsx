@@ -4,7 +4,8 @@ import { Content, EyebrowSmall, PageHero, StepsList } from "@/components/PagePar
 
 export const metadata: Metadata = {
   title: "Sobre — King Services",
-  description: "Consultoria especializada em telecomunicações e tecnologia, conectando empresas à solução certa.",
+  description:
+    "Consultoria especializada em telecomunicações e tecnologia, conectando empresas à solução certa.",
 };
 
 const VALORES = ["Ética", "Excelência", "Inovação", "Comprometimento", "Resultado"];

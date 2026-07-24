@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  color: #2A2438;
+  color: #2a2438;
 }
 
 /* Acessibilidade: foco visível em toda a aplicação */
@@ -16,7 +16,7 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible,
 select:focus-visible {
-  outline: 2px solid #5B2A8C;
+  outline: 2px solid #5b2a8c;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -37,7 +37,7 @@ select:focus-visible {
   position: absolute;
   left: 8px;
   top: -60px;
-  background: #2A1240;
+  background: #2a1240;
   color: #fff;
   padding: 10px 16px;
   border-radius: 8px;
@@ -55,7 +55,9 @@ select:focus-visible {
 .reveal {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
 }
 .reveal.in-view {
   opacity: 1;

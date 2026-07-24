@@ -1,0 +1,19 @@
+# Dependências
+node_modules/
+
+# Build
+.next/
+out/
+dist/
+build/
+
+# Cobertura
+coverage/
+
+# Arquivos gerados
+next-env.d.ts
+package-lock.json
+
+# Ativos e previews estáticos
+public/
+preview-html/

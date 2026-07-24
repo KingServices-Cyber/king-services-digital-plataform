@@ -56,7 +56,9 @@ export function Footer() {
           <ul className="list-none m-0 p-0">
             <li className="text-xs py-1">📞 {CONTACT_INFO.phone}</li>
             <li className="text-xs py-1">✉ {CONTACT_INFO.email}</li>
-            <li className="text-xs py-1">📍 {CONTACT_INFO.addressLine1} — {CONTACT_INFO.addressLine2}</li>
+            <li className="text-xs py-1">
+              📍 {CONTACT_INFO.addressLine1} — {CONTACT_INFO.addressLine2}
+            </li>
           </ul>
         </div>
 
