@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CONTACT_INFO } from "@/lib/content/data";
 import { WhatsAppLink } from "@/components/ui";
+import { cn } from "@/design-system";
 
 const SOLUCOES_LINKS = [
   { label: "Telefonia Móvel Empresarial", href: "/solucoes/telefonia-movel" },
@@ -26,9 +27,17 @@ const RECURSOS_LINKS = [
   { label: "Área do Cliente", href: "/login" },
 ];
 
-function FooterColumn({ title, links }: { title: string; links: { label: string; href: string }[] }) {
+function FooterColumn({
+  title,
+  links,
+  className,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+  className?: string;
+}) {
   return (
-    <div>
+    <div className={cn(className)}>
       <p className="text-xs font-bold uppercase tracking-wide text-white mb-3.5">{title}</p>
       <ul className="space-y-0 m-0 p-0 list-none">
         {links.map((l) => (
@@ -43,9 +52,9 @@ function FooterColumn({ title, links }: { title: string; links: { label: string;
   );
 }
 
-export function Footer() {
+export function Footer({ className }: { className?: string } = {}) {
   return (
-    <footer className="bg-purple-900 text-white/75">
+    <footer className={cn("bg-purple-900 text-white/75", className)}>
       <div className="max-w-[1280px] mx-auto px-6 pt-12 pb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] gap-8">
         <div>
           <p className="font-display font-bold text-xl text-white mb-3">
