@@ -134,6 +134,47 @@ function Badge({ active, className }: { active?: boolean; className?: string }) 
 cn("p-2 bg-primary-500", "p-4"); // => "bg-primary-500 p-4" (p-4 vence)
 ```
 
+## Convenção de `className` nos componentes (`components/ui/`)
+
+Todo componente reutilizável em `components/ui/` (e o `Header` de
+`components/layout/`) aceita uma prop opcional `className`, mesclada com
+as classes base via `cn()` — nunca concatenada manualmente. Isso garante
+que quem consome o componente sempre pode ajustar um utilitário Tailwind
+pontual (espaçamento, cor, etc.) sem precisar de uma variante nova.
+
+Padrão a seguir em qualquer componente novo:
+
+```tsx
+function MeuComponente({
+  className,
+  ...props
+}: { className?: string }) {
+  return <div className={cn("classes-base-do-componente", className)}>...</div>;
+}
+```
+
+Regras:
+
+- **`className` é sempre o último argumento** passado a `cn()` — assim
+  quem chama o componente sempre vence em caso de conflito (ex.:
+  `bg-primary-600` da base vs. `bg-danger-600` passado pelo caller).
+- **Só o elemento raiz recebe `className`** — elementos internos (os
+  `<li>` de `ListCheck`, o `<h1>` de `PageHero`) não são expostos
+  individualmente, para manter a API simples e previsível.
+- **Props condicionais** (`tinted`, `active`, `variant`...) entram como
+  argumentos extras do `cn()`, nunca em template string:
+
+  ```tsx
+  cn(base, condicao && "classe-condicional", className)
+  ```
+
+- A prop é **sempre opcional e aditiva** — nenhum call site existente
+  precisa mudar quando ela é adicionada a um componente.
+
+Componentes que já seguem essa convenção: `Button`, `ButtonLink`, `Card`,
+`Content`, `CtaFinal`, `EyebrowSmall`, `ListCheck`, `PageHero`,
+`SectionTitle`, `StepsList`, `WhatsAppLink` e `Header`.
+
 ## Boas práticas
 
 1. **Nunca hardcode valores** (`"#5B2A8C"`, `"16px"`) em componentes —
@@ -148,6 +189,9 @@ cn("p-2 bg-primary-500", "p-4"); // => "bg-primary-500 p-4" (p-4 vence)
 5. **Um arquivo por domínio** — ao adicionar um novo tipo de token,
    crie um novo arquivo em `tokens/` em vez de expandir um existente
    com um domínio diferente.
+6. **Todo componente novo em `components/ui/` recebe `className`** via
+   `cn()`, seguindo a convenção descrita acima — mesmo que hoje ele não
+   tenha nenhuma variação condicional.
 
 ## Exemplo completo
 
@@ -177,5 +221,9 @@ export function Alert({ intent = "info" }: { intent?: "info" | "success" | "dang
 
 - Next.js App Router, TypeScript, Tailwind CSS (baseline atual do projeto).
 - Nenhuma dependência nova foi instalada; `package.json` não foi alterado.
-- Todos os arquivos são novos — nenhum arquivo existente do projeto foi
-  modificado por esta release.
+- A pasta `design-system/` em si é inteiramente nova. Componentes
+  existentes em `components/ui/` e `components/layout/Header.tsx` foram
+  adaptados, em commits posteriores à criação desta pasta, para consumir
+  `cn()` e seguir a convenção de `className` descrita acima — sem mudar
+  comportamento visual (ver histórico do Git para o antes/depois de cada
+  componente).
