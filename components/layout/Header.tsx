@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { NAV_ITEMS } from "@/lib/content/nav";
 import logo from "@/public/logo.png";
+import { cn } from "@/design-system";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -55,9 +56,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-white/92 backdrop-blur-sm border-b border-fog transition-shadow duration-300 ${
-        scrolled ? "shadow-header" : ""
-      }`}
+      className={cn(
+        "sticky top-0 z-50 bg-white/92 backdrop-blur-sm border-b border-fog transition-shadow duration-300",
+        scrolled && "shadow-header",
+      )}
     >
       <a href="#main-content" className="skip-link">
         Pular para o conteúdo
@@ -77,35 +79,43 @@ export function Header() {
           onClick={() => setMobileOpen((v) => !v)}
         >
           <span
-            className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-transform ${
-              mobileOpen ? "translate-y-[7px] rotate-45" : ""
-            }`}
+            className={cn(
+              "block h-0.5 w-5 mx-auto bg-purple-900 transition-transform",
+              mobileOpen && "translate-y-[7px] rotate-45",
+            )}
           />
           <span
-            className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-opacity ${mobileOpen ? "opacity-0" : ""}`}
+            className={cn(
+              "block h-0.5 w-5 mx-auto bg-purple-900 transition-opacity",
+              mobileOpen && "opacity-0",
+            )}
           />
           <span
-            className={`block h-0.5 w-5 mx-auto bg-purple-900 transition-transform ${
-              mobileOpen ? "-translate-y-[7px] -rotate-45" : ""
-            }`}
+            className={cn(
+              "block h-0.5 w-5 mx-auto bg-purple-900 transition-transform",
+              mobileOpen && "-translate-y-[7px] -rotate-45",
+            )}
           />
         </button>
 
         <nav
           id="main-nav"
           aria-label="Navegação principal"
-          className={`
-            flex flex-col gap-0 p-4 pb-24 overflow-y-auto z-40
-            fixed top-[72px] left-0 right-0 bottom-0 bg-white
-            transition-transform duration-300 ease-out
-            ${mobileOpen ? "translate-x-0" : "translate-x-full"}
-            md:static md:flex-row md:items-center md:gap-8 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto
-          `}
+          className={cn(
+            "flex flex-col gap-0 p-4 pb-24 overflow-y-auto z-40",
+            "fixed top-[72px] left-0 right-0 bottom-0 bg-white",
+            "transition-transform duration-300 ease-out",
+            mobileOpen ? "translate-x-0" : "translate-x-full",
+            "md:static md:flex-row md:items-center md:gap-8 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
+          )}
         >
           {NAV_ITEMS.map((item) => (
             <div
               key={item.label}
-              className={`relative w-full md:w-auto border-b md:border-0 border-fog ${item.alignRight ? "md:ml-auto" : ""}`}
+              className={cn(
+                "relative w-full md:w-auto border-b md:border-0 border-fog",
+                item.alignRight && "md:ml-auto",
+              )}
               onMouseEnter={() => handleMouseEnter(item.label)}
               onMouseLeave={handleMouseLeave}
             >
@@ -131,13 +141,15 @@ export function Header() {
 
               {item.columns && (
                 <div
-                  className={`
-                    md:absolute md:top-full md:mt-2 md:bg-white md:border md:border-fog md:rounded-2xl md:shadow-mega md:p-6
-                    md:flex md:gap-10 md:min-w-[420px] md:opacity-0 md:invisible md:pointer-events-none md:-translate-y-1
-                    ${item.alignRight ? "md:right-0" : "md:left-0"}
-                    transition-all duration-300
-                    ${openItem === item.label ? "md:opacity-100 md:visible md:pointer-events-auto md:translate-y-0 flex flex-col gap-4 pb-3" : "hidden md:flex"}
-                  `}
+                  className={cn(
+                    "md:absolute md:top-full md:mt-2 md:bg-white md:border md:border-fog md:rounded-2xl md:shadow-mega md:p-6",
+                    "md:flex md:gap-10 md:min-w-[420px] md:opacity-0 md:invisible md:pointer-events-none md:-translate-y-1",
+                    item.alignRight ? "md:right-0" : "md:left-0",
+                    "transition-all duration-300",
+                    openItem === item.label
+                      ? "md:opacity-100 md:visible md:pointer-events-auto md:translate-y-0 flex flex-col gap-4 pb-3"
+                      : "hidden md:flex",
+                  )}
                 >
                   {item.columns.map((col, i) => (
                     <div key={i} className="min-w-0 md:min-w-[180px]">

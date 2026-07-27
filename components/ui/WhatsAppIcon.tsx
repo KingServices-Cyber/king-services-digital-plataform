@@ -1,4 +1,5 @@
 import { CONTACT_INFO } from "@/lib/content/data";
+import { cn } from "@/design-system";
 
 export function WhatsAppLink({
   children,
@@ -15,7 +16,7 @@ export function WhatsAppLink({
       target="_blank"
       rel="noopener"
       aria-label="Abrir conversa no WhatsApp"
-      className={`inline-flex items-center gap-2 no-underline ${className}`}
+      className={cn("inline-flex items-center gap-2 no-underline", className)}
     >
       <svg
         width="22"

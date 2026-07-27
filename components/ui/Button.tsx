@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import { cn } from "@/design-system";
 
 type Variant = "primary" | "outline" | "ghost";
 
@@ -24,7 +25,7 @@ export function ButtonLink({
   variant?: Variant;
 } & AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <Link href={href} className={`${base} ${variantClasses[variant]} ${className}`} {...props}>
+    <Link href={href} className={cn(base, variantClasses[variant], className)} {...props}>
       {children}
     </Link>
   );
@@ -39,7 +40,7 @@ export function Button({
   variant?: Variant;
 } & ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button className={`${base} ${variantClasses[variant]} ${className}`} {...props}>
+    <button className={cn(base, variantClasses[variant], className)} {...props}>
       {children}
     </button>
   );

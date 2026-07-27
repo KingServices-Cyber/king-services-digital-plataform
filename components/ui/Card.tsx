@@ -2,6 +2,7 @@
 
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { cn } from "@/design-system";
 
 /**
  * Card com animação leve de entrada (fade + rise) ao rolar a tela até ele.
@@ -41,14 +42,16 @@ export function Card({
     return () => observer.disconnect();
   }, []);
 
-  const innerClasses = `border border-fog rounded-card p-4 bg-white transition-all duration-200 h-full ${
+  const innerClasses = cn(
+    "border border-fog rounded-card p-4 bg-white transition-all duration-200 h-full",
     clickable
       ? "cursor-pointer hover:border-lilac-500 hover:shadow-card hover:-translate-y-1 block"
-      : "cursor-default"
-  } ${center ? "text-center" : ""}`;
+      : "cursor-default",
+    center && "text-center",
+  );
 
   return (
-    <div ref={ref} className={`reveal ${inView ? "in-view" : ""}`}>
+    <div ref={ref} className={cn("reveal", inView && "in-view")}>
       {href ? (
         <Link href={href} className={innerClasses}>
           {children}

@@ -12,9 +12,6 @@
  */
 
 const CONFLICT_PREFIXES = [
-  "bg-",
-  "text-",
-  "border-",
   "rounded-",
   "shadow-",
   "font-",
@@ -24,6 +21,15 @@ const CONFLICT_PREFIXES = [
   "opacity-",
   "duration-",
   "ease-",
+  "pointer-events-",
+  "translate-x-",
+  "translate-y-",
+  "scale-x-",
+  "scale-y-",
+  "scale-",
+  "rotate-",
+  "skew-x-",
+  "skew-y-",
   "w-",
   "h-",
   "min-w-",
@@ -80,6 +86,37 @@ const POSITION_VALUES = new Set([
   "sticky",
 ]);
 
+const VISIBILITY_VALUES = new Set(["visible", "invisible", "collapse"]);
+
+/**
+ * Prefixos sobrecarregados no Tailwind: a mesma raiz (`border-`, `text-`,
+ * `bg-`) tanto ajusta cor quanto uma propriedade diferente (largura, tamanho
+ * de fonte, imagem de fundo). Agrupá-los apenas pelo prefixo apagaria, por
+ * exemplo, `border-[1.5px]` ao lado de `border-purple-600` — só o valor
+ * "tipo cor" desses prefixos entra no grupo compartilhado; o resto vira
+ * chave própria (equivalente a não mesclar, o comportamento seguro).
+ */
+const AMBIGUOUS_COLOR_PREFIXES = ["bg-", "text-", "border-"];
+
+const COLOR_KEYWORDS = new Set([
+  "white",
+  "black",
+  "transparent",
+  "current",
+  "inherit",
+]);
+
+function isColorValue(value: string): boolean {
+  if (COLOR_KEYWORDS.has(value)) return true;
+  // ex.: purple-600, primary-500, neutral-50
+  if (/^[a-z]+-(50|100|200|300|400|500|600|700|800|900|950)$/.test(value)) {
+    return true;
+  }
+  // ex.: [#5B2A8C], [rgb(...)], [hsl(...)]
+  if (/^\[(#|rgb|hsl)/.test(value)) return true;
+  return false;
+}
+
 function splitVariant(className: string): { variant: string; rest: string } {
   const lastColon = className.lastIndexOf(":");
   if (lastColon === -1) {
@@ -94,8 +131,19 @@ function splitVariant(className: string): { variant: string; rest: string } {
 function groupKey(rest: string): string {
   if (DISPLAY_VALUES.has(rest)) return "display";
   if (POSITION_VALUES.has(rest)) return "position";
+  if (VISIBILITY_VALUES.has(rest)) return "visibility";
 
-  const prefix = CONFLICT_PREFIXES.find((p) => rest.startsWith(p));
+  const ambiguousPrefix = AMBIGUOUS_COLOR_PREFIXES.find((p) => rest.startsWith(p));
+  if (ambiguousPrefix) {
+    const value = rest.slice(ambiguousPrefix.length);
+    return isColorValue(value) ? `${ambiguousPrefix}color` : rest;
+  }
+
+  // Normaliza o sinal de negativo (ex.: `-translate-y-1`) para o mesmo grupo
+  // da versão positiva (`translate-y-0`) — ambos disputam o mesmo eixo do
+  // transform / a mesma propriedade, só com valores diferentes.
+  const unsigned = rest.startsWith("-") ? rest.slice(1) : rest;
+  const prefix = CONFLICT_PREFIXES.find((p) => unsigned.startsWith(p));
   return prefix ?? rest;
 }
 
