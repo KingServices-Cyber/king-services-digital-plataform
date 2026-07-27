@@ -236,6 +236,7 @@ export const CONTACT_INFO = {
   phone: "(17) 99727-6024",
   whatsapp: "5517997276024",
   email: "atendimento@kingservices.com.br",
-  addressLine1: "Rua Souza Barros, nº75 - Vila Aurora",
-  addressLine2: "CEP: 15.014-380 — São José do Rio Preto/SP",
+  addressStreet: "Rua Souza Barros, nº75 - Vila Aurora",
+  addressCity: "São José do Rio Preto/SP",
+  addressCep: "CEP: 15.014-380",
 };

@@ -80,9 +80,11 @@ export default function ContatoPage() {
 
             <p className="font-bold text-graphite mb-1.5">📍 Escritório:</p>
             <p>
-              {CONTACT_INFO.addressLine1}
+              {CONTACT_INFO.addressStreet}
               <br />
-              {CONTACT_INFO.addressLine2}
+              {CONTACT_INFO.addressCity}
+              <br />
+              {CONTACT_INFO.addressCep}
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CONTACT_INFO } from "@/lib/content/data";
+import { WhatsAppLink } from "@/components/ui";
 
 const SOLUCOES_LINKS = [
   { label: "Telefonia Móvel Empresarial", href: "/solucoes/telefonia-movel" },
@@ -53,13 +54,33 @@ export function Footer() {
           <p className="text-xs leading-relaxed max-w-[320px] mb-4">
             Conectividade e tecnologia para empresas que não podem parar. Parceira Autorizada Vivo Empresas.
           </p>
-          <ul className="list-none m-0 p-0">
-            <li className="text-xs py-1">📞 {CONTACT_INFO.phone}</li>
-            <li className="text-xs py-1">✉ {CONTACT_INFO.email}</li>
-            <li className="text-xs py-1">
-              📍 {CONTACT_INFO.addressLine1} — {CONTACT_INFO.addressLine2}
-            </li>
-          </ul>
+          <div className="text-xs leading-relaxed">
+            <p className="font-bold text-white mb-1">Central de Atendimento:</p>
+            <p className="mb-1">📞 Telefone: {CONTACT_INFO.phone}</p>
+            <p className="mb-3 flex items-center gap-2">
+              <WhatsAppLink iconOnly />
+              <a
+                href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
+                target="_blank"
+                rel="noopener"
+                className="text-white/75 hover:text-white no-underline"
+              >
+                WhatsApp: {CONTACT_INFO.phone}
+              </a>
+            </p>
+
+            <p className="font-bold text-white mb-1">✉ E-mail:</p>
+            <p className="mb-3">{CONTACT_INFO.email}</p>
+
+            <p className="font-bold text-white mb-1">📍 Escritório:</p>
+            <p>
+              {CONTACT_INFO.addressStreet}
+              <br />
+              {CONTACT_INFO.addressCity}
+              <br />
+              {CONTACT_INFO.addressCep}
+            </p>
+          </div>
         </div>
 
         <FooterColumn title="Soluções" links={SOLUCOES_LINKS} />
