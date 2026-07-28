@@ -7,6 +7,7 @@ export * from "./CtaFinal";
 export * from "./EyebrowSmall";
 export * from "./ListCheck";
 export * from "./PageHero";
+export * from "./PasswordInput";
 export * from "./SectionTitle";
 export * from "./StepsList";
 export * from "./WhatsAppIcon";
