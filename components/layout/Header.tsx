@@ -147,7 +147,7 @@ export function Header() {
                     item.alignRight ? "md:right-0" : "md:left-0",
                     "transition-all duration-300",
                     openItem === item.label
-                      ? "md:opacity-100 md:visible md:pointer-events-auto md:translate-y-0 flex flex-col gap-4 pb-3"
+                      ? "md:opacity-100 md:visible md:pointer-events-auto md:translate-y-0 flex flex-col md:flex-row gap-4 pb-3"
                       : "hidden md:flex",
                   )}
                 >

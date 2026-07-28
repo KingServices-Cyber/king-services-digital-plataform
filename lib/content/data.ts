@@ -1,7 +1,39 @@
+export type SolutionCategory = {
+  slug: string;
+  name: string;
+  description: string;
+};
+
+// As 4 categorias que agrupam as soluções — usadas no mega-menu "Soluções"
+// do Header e para o rótulo de categoria nos cards da home.
+export const SOLUTION_CATEGORIES: SolutionCategory[] = [
+  {
+    slug: "conectividade",
+    name: "Conectividade",
+    description: "Internet e conexão empresarial de alta disponibilidade.",
+  },
+  {
+    slug: "telefonia",
+    name: "Telefonia",
+    description: "Voz e telefonia corporativa para o dia a dia da empresa.",
+  },
+  {
+    slug: "mobilidade",
+    name: "Mobilidade",
+    description: "Planos móveis e gestão de linhas para equipes.",
+  },
+  {
+    slug: "digitais",
+    name: "Digitais",
+    description: "Nuvem, segurança e soluções para transformar a operação.",
+  },
+];
+
 export type Solution = {
   slug: string;
   title: string;
   desc: string;
+  category: string;
   specs: string[];
 };
 
@@ -10,6 +42,7 @@ export const SOLUTIONS: Record<string, Solution> = {
     slug: "telefonia-movel",
     title: "Telefonia Móvel Empresarial",
     desc: "Planos corporativos com gestão centralizada de linhas, portabilidade e controle de custos.",
+    category: "mobilidade",
     specs: [
       "Planos Corporativos",
       "Gestão de Linhas",
@@ -23,6 +56,7 @@ export const SOLUTIONS: Record<string, Solution> = {
     slug: "internet-empresarial",
     title: "Internet Empresarial",
     desc: "Conectividade de alta performance com SLA corporativo e suporte especializado.",
+    category: "conectividade",
     specs: [
       "Fibra Óptica Empresarial",
       "Internet Dedicada",
@@ -35,6 +69,7 @@ export const SOLUTIONS: Record<string, Solution> = {
     slug: "telefonia-fixa-pabx",
     title: "Telefonia Fixa e PABX",
     desc: "Comunicação corporativa moderna, com PABX virtual e integração a CRM.",
+    category: "telefonia",
     specs: [
       "PABX Virtual",
       "Troncos SIP",
@@ -47,12 +82,14 @@ export const SOLUTIONS: Record<string, Solution> = {
     slug: "cloud",
     title: "Soluções Cloud",
     desc: "Infraestrutura em nuvem escalável, com backup automatizado e recuperação de desastres.",
+    category: "digitais",
     specs: ["Servidores Virtuais", "Backup em Nuvem", "Disaster Recovery", "Armazenamento Corporativo"],
   },
   "seguranca-digital": {
     slug: "seguranca-digital",
     title: "Segurança Digital",
     desc: "Proteção completa com monitoramento contínuo e resposta rápida a incidentes.",
+    category: "digitais",
     specs: [
       "Firewall Gerenciado",
       "Antivírus Corporativo",
@@ -64,6 +101,7 @@ export const SOLUTIONS: Record<string, Solution> = {
     slug: "iot",
     title: "Internet das Coisas (IoT)",
     desc: "Soluções de IoT para rastrear, monitorar e automatizar operações.",
+    category: "digitais",
     specs: [
       "Rastreamento de Frotas",
       "Telemetria",

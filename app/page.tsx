@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink, Card, Content, EyebrowSmall, SectionTitle } from "@/components/ui";
-import { SOLUTIONS, SEGMENTS } from "@/lib/content";
+import { SOLUTIONS, SOLUTION_CATEGORIES, SEGMENTS } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -71,12 +71,29 @@ export default function HomePage() {
         <EyebrowSmall>Soluções</EyebrowSmall>
         <SectionTitle>Tecnologia sob medida para cada etapa do seu negócio</SectionTitle>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {Object.values(SOLUTIONS).map((s) => (
-            <Card key={s.slug} href={`/solucoes/${s.slug}`}>
-              <h3 className="font-display font-semibold text-sm mb-1">{s.title}</h3>
-              <p className="text-xs text-graphite/70">{s.desc.slice(0, 60)}...</p>
-            </Card>
-          ))}
+          {Object.values(SOLUTIONS).map((s) => {
+            const category = SOLUTION_CATEGORIES.find((c) => c.slug === s.category);
+            return (
+              <Card key={s.slug} href={`/solucoes/${s.slug}`}>
+                {category && (
+                  <span className="text-[11px] font-bold uppercase tracking-wide text-lilac-500">
+                    {category.name}
+                  </span>
+                )}
+                <h3 className="font-display font-semibold text-sm mt-1 mb-1">{s.title}</h3>
+                <p className="text-xs text-graphite/70">{s.desc}</p>
+                <ul className="flex flex-col gap-1 mt-3">
+                  {s.specs.slice(0, 3).map((spec) => (
+                    <li key={spec} className="flex items-start gap-1.5 text-xs text-graphite/80">
+                      <span className="w-1 h-1 rounded-full bg-lilac-500 mt-1.5 shrink-0" />
+                      {spec}
+                    </li>
+                  ))}
+                </ul>
+                <span className="block text-xs font-bold text-purple-700 mt-3">Ver detalhes →</span>
+              </Card>
+            );
+          })}
         </div>
       </Content>
 
