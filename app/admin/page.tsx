@@ -121,6 +121,19 @@ export default function AdminLeadsPage() {
           router.replace("/login");
           return;
         }
+        // Painel do Administrador é restrito a role "admin" — qualquer
+        // outro caso (cliente, perfil ausente, erro na consulta) é
+        // mandado para a Área do Cliente, nunca liberado por padrão.
+        const { data: profile } = await supabase
+          .from("profiles")
+          .select("role")
+          .eq("id", session.user.id)
+          .single();
+        if (profile?.role !== "admin") {
+          router.replace("/area-cliente");
+          return;
+        }
+        if (!active) return;
         setUserEmail(session.user.email ?? null);
         setCheckingAuth(false);
         void loadLeads();
@@ -201,8 +214,9 @@ export default function AdminLeadsPage() {
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <div>
           <h1 className="font-display font-semibold text-[clamp(20px,3vw,26px)] text-purple-900">
-            Painel de Leads
+            Painel do Administrador
           </h1>
+          <p className="text-xs font-semibold uppercase tracking-wide text-graphite/50">Leads</p>
           {userEmail && <p className="text-sm text-graphite/60">Conectado como {userEmail}</p>}
         </div>
         <div className="flex items-center gap-2">

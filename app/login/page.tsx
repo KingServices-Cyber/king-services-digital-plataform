@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { EMAIL_REGEX, SENHA_CADASTRO_REGEX } from "@/lib/masks";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
+import { PasswordInput } from "@/components/ui";
 
 type View = "login" | "cadastro" | "esqueci";
 
@@ -29,7 +30,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       const supabase = getSupabaseBrowserClient();
-      const { error: signInError } = await supabase.auth.signInWithPassword({
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
         email: loginEmail.trim(),
         password: loginSenha,
       });
@@ -37,8 +38,15 @@ export default function LoginPage() {
         setError("E-mail ou senha inválidos.");
         return;
       }
-      // Autenticado: segue para o painel interno.
-      router.replace("/admin");
+      // Painel do Administrador é só para role "admin" — qualquer outro
+      // caso (cliente, perfil ausente, erro na consulta) vai para a Área
+      // do Cliente, nunca o contrário.
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", signInData.user.id)
+        .single();
+      router.replace(profile?.role === "admin" ? "/admin" : "/area-cliente");
     } catch (err) {
       console.error("Erro no login:", err);
       setError("Não foi possível entrar agora. Tente novamente em instantes.");
@@ -130,7 +138,7 @@ export default function LoginPage() {
         {successMsg ? (
           <p className="text-[15px] text-purple-700 font-semibold">{successMsg}</p>
         ) : view === "login" ? (
-          <form onSubmit={handleLogin}>
+          <form key="login-form" onSubmit={handleLogin}>
             <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">
               Área do Cliente
             </p>
@@ -143,8 +151,7 @@ export default function LoginPage() {
               className={inputClass}
             />
             <label className={labelClass}>Senha</label>
-            <input
-              type="password"
+            <PasswordInput
               required
               value={loginSenha}
               onChange={(e) => setLoginSenha(e.target.value)}
@@ -177,16 +184,15 @@ export default function LoginPage() {
             </a>
           </form>
         ) : view === "cadastro" ? (
-          <form onSubmit={handleCadastro}>
+          <form key="cadastro-form" onSubmit={handleCadastro}>
             <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">
               Criar conta — Área do Cliente
             </p>
             <label className={labelClass}>E-mail *</label>
             <input name="cad-email" type="email" required className={inputClass} />
             <label className={labelClass}>Senha *</label>
-            <input
+            <PasswordInput
               name="cad-senha"
-              type="password"
               placeholder="Mín. 8 caracteres"
               maxLength={8}
               required
@@ -196,9 +202,8 @@ export default function LoginPage() {
               Deve conter letras, números e um caractere especial (máx. 8 caracteres)
             </p>
             <label className={labelClass}>Confirmar senha *</label>
-            <input
+            <PasswordInput
               name="cad-senha2"
-              type="password"
               placeholder="Repita a senha"
               maxLength={8}
               required
@@ -220,7 +225,7 @@ export default function LoginPage() {
             </a>
           </form>
         ) : (
-          <form onSubmit={handleRecuperar}>
+          <form key="recuperar-form" onSubmit={handleRecuperar}>
             <p className="text-center font-display font-semibold text-[15px] text-purple-900 mb-4.5">
               Recuperar senha
             </p>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Painel de Leads",
+  title: "Painel do Administrador",
   // Área interna: nunca deve ser indexada.
   robots: { index: false, follow: false },
 };
