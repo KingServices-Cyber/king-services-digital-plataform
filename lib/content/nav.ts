@@ -8,14 +8,19 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/solucoes",
     columns: [
       {
-        title: "Por categoria",
-        links: [
-          { label: "Telefonia Móvel Empresarial", href: "/solucoes/telefonia-movel" },
-          { label: "Internet Empresarial", href: "/solucoes/internet-empresarial" },
-          { label: "Telefonia Fixa e PABX", href: "/solucoes/telefonia-fixa-pabx" },
-        ],
+        title: "Conectividade",
+        links: [{ label: "Internet Empresarial", href: "/solucoes/internet-empresarial" }],
       },
       {
+        title: "Telefonia",
+        links: [{ label: "Telefonia Fixa e PABX", href: "/solucoes/telefonia-fixa-pabx" }],
+      },
+      {
+        title: "Mobilidade",
+        links: [{ label: "Telefonia Móvel Empresarial", href: "/solucoes/telefonia-movel" }],
+      },
+      {
+        title: "Digitais",
         links: [
           { label: "Soluções Cloud", href: "/solucoes/cloud" },
           { label: "Segurança Digital", href: "/solucoes/seguranca-digital" },
@@ -109,7 +114,7 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    label: "Sobre",
+    label: "Sobre a Empresa",
     href: "/sobre",
     alignRight: true,
     columns: [
@@ -117,7 +122,9 @@ export const NAV_ITEMS: NavItem[] = [
         title: "A empresa",
         links: [
           { label: "Quem somos", href: "/sobre#quem-somos" },
-          { label: "Missão, Visão e Valores", href: "/sobre#missao-visao-valores" },
+          { label: "Nossa Atuação", href: "/sobre#nossa-atuacao" },
+          { label: "Missão e Visão", href: "/sobre#missao-e-visao" },
+          { label: "Nossos Valores", href: "/sobre#nossos-valores" },
           { label: "Metodologia de trabalho", href: "/sobre#metodologia-sobre" },
         ],
       },
