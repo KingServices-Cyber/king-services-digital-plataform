@@ -56,8 +56,10 @@ export default function SegmentoDetalhePage({ params }: { params: { slug: string
             const sol = SOLUTIONS[slug];
             if (!sol) return null;
             return (
-              <Card key={slug} href={`/solucoes/${slug}`}>
-                <h3 className="text-xs font-semibold m-0">{sol.title}</h3>
+              <Card key={slug} href={`/solucoes/${slug}`} highlight>
+                <h3 className="text-sm font-semibold m-0 transition-colors duration-300 group-hover:text-white">
+                  {sol.title}
+                </h3>
               </Card>
             );
           })}

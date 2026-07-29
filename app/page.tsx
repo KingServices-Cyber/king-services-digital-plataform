@@ -80,23 +80,32 @@ export default function HomePage() {
           {Object.values(SOLUTIONS).map((s) => {
             const category = SOLUTION_CATEGORIES.find((c) => c.slug === s.category);
             return (
-              <Card key={s.slug} href={`/solucoes/${s.slug}`}>
+              <Card key={s.slug} href={`/solucoes/${s.slug}`} highlight>
                 {category && (
-                  <span className="text-[11px] font-bold uppercase tracking-wide text-lilac-500">
+                  <span className="text-[11px] font-bold uppercase tracking-wide text-lilac-500 transition-colors duration-300 group-hover:text-lilac-300">
                     {category.name}
                   </span>
                 )}
-                <h3 className="font-display font-semibold text-sm mt-1 mb-1">{s.title}</h3>
-                <p className="text-xs text-graphite/70">{s.desc}</p>
+                <h3 className="font-display font-semibold text-sm mt-1 mb-1 transition-colors duration-300 group-hover:text-white">
+                  {s.title}
+                </h3>
+                <p className="text-xs text-graphite/70 transition-colors duration-300 group-hover:text-white/85">
+                  {s.desc}
+                </p>
                 <ul className="flex flex-col gap-1 mt-3">
                   {s.specs.slice(0, 3).map((spec) => (
-                    <li key={spec} className="flex items-start gap-1.5 text-xs text-graphite/80">
-                      <span className="w-1 h-1 rounded-full bg-lilac-500 mt-1.5 shrink-0" />
+                    <li
+                      key={spec}
+                      className="flex items-start gap-1.5 text-xs text-graphite/80 transition-colors duration-300 group-hover:text-white/90"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-lilac-500 mt-1.5 shrink-0 transition-colors duration-300 group-hover:bg-lilac-300" />
                       {spec}
                     </li>
                   ))}
                 </ul>
-                <span className="block text-xs font-bold text-purple-700 mt-3">Ver detalhes →</span>
+                <span className="block text-xs font-bold text-purple-700 mt-3 transition-colors duration-300 group-hover:text-white">
+                  Ver detalhes →
+                </span>
               </Card>
             );
           })}
@@ -109,8 +118,10 @@ export default function HomePage() {
         <SectionTitle>Especialização que entende os desafios do seu setor</SectionTitle>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
           {Object.values(SEGMENTS).map((s) => (
-            <Card key={s.slug} href={`/segmentos/${s.slug}`} center>
-              <h3 className="text-xs font-semibold m-0">{s.title}</h3>
+            <Card key={s.slug} href={`/segmentos/${s.slug}`} center highlight>
+              <h3 className="text-sm font-semibold m-0 transition-colors duration-300 group-hover:text-white">
+                {s.title}
+              </h3>
             </Card>
           ))}
         </div>

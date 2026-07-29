@@ -19,8 +19,10 @@ export default function SegmentosIndexPage() {
       <Content>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
           {Object.values(SEGMENTS).map((s) => (
-            <Card key={s.slug} href={`/segmentos/${s.slug}`} center>
-              <h3 className="text-xs font-semibold m-0">{s.title}</h3>
+            <Card key={s.slug} href={`/segmentos/${s.slug}`} center highlight>
+              <h3 className="text-sm font-semibold m-0 transition-colors duration-300 group-hover:text-white">
+                {s.title}
+              </h3>
             </Card>
           ))}
         </div>
