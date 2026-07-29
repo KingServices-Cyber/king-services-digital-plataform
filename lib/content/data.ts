@@ -274,7 +274,22 @@ export const CONTACT_INFO = {
   phone: "(17) 99727-6024",
   whatsapp: "5517997276024",
   email: "atendimento@kingservices.com.br",
-  addressStreet: "Rua Souza Barros, nº75 - Vila Aurora",
-  addressCity: "São José do Rio Preto/SP",
-  addressCep: "CEP: 15.014-380",
+  offices: [
+    {
+      label: "Escritório Matriz",
+      companyName: "KingServices Ltda.",
+      cnpj: "54.384.252/0001-90",
+      addressStreet: "Rua Souza Barros, nº75 - Vila Aurora",
+      addressCity: "São José do Rio Preto / SP",
+      addressCep: "CEP: 15.014-380",
+    },
+    {
+      label: "Escritório Filial",
+      companyName: "KingServices Ltda.",
+      cnpj: "000.000.000/0001-90",
+      addressStreet: "Rua Avenida Brasil, 2836",
+      addressCity: "Brasilândia - Franca / SP",
+      addressCep: "CEP: 14.402-450",
+    },
+  ],
 };

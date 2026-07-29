@@ -77,15 +77,25 @@ export default function ContatoPage() {
 
             <p className="font-bold text-graphite mb-1.5">✉ E-mail:</p>
             <p className="mb-6">{CONTACT_INFO.email}</p>
+          </div>
 
-            <p className="font-bold text-graphite mb-1.5">📍 Escritório:</p>
-            <p>
-              {CONTACT_INFO.addressStreet}
-              <br />
-              {CONTACT_INFO.addressCity}
-              <br />
-              {CONTACT_INFO.addressCep}
-            </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-[15px] leading-[1.6] text-[#3A3937]">
+            {CONTACT_INFO.offices.map((office) => (
+              <div key={office.label}>
+                <p className="font-bold text-graphite mb-1.5">📍 {office.label}:</p>
+                <p>
+                  {office.companyName}
+                  <br />
+                  CNPJ: {office.cnpj}
+                  <br />
+                  {office.addressStreet}
+                  <br />
+                  {office.addressCity}
+                  <br />
+                  {office.addressCep}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 

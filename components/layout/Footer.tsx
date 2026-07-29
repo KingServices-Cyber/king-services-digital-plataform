@@ -80,15 +80,25 @@ export function Footer({ className }: { className?: string } = {}) {
 
             <p className="font-bold text-white mb-1">✉ E-mail:</p>
             <p className="mb-3">{CONTACT_INFO.email}</p>
+          </div>
 
-            <p className="font-bold text-white mb-1">📍 Escritório:</p>
-            <p>
-              {CONTACT_INFO.addressStreet}
-              <br />
-              {CONTACT_INFO.addressCity}
-              <br />
-              {CONTACT_INFO.addressCep}
-            </p>
+          <div className="grid grid-cols-2 gap-4 text-xs leading-relaxed mt-1">
+            {CONTACT_INFO.offices.map((office) => (
+              <div key={office.label}>
+                <p className="font-bold text-white mb-1">📍 {office.label}:</p>
+                <p>
+                  {office.companyName}
+                  <br />
+                  CNPJ: {office.cnpj}
+                  <br />
+                  {office.addressStreet}
+                  <br />
+                  {office.addressCity}
+                  <br />
+                  {office.addressCep}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 
