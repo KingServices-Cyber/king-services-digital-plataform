@@ -56,12 +56,18 @@ export default function HomePage() {
 
       {/* Stats */}
       <Content tinted>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
-          {STATS.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="font-mono text-[22px] font-bold text-purple-700 m-0">{s.value}</p>
-              <p className="text-[10px] text-[#5F5E5A] mt-1">{s.label}</p>
-            </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {STATS.map((s, i) => (
+            <Card
+              key={s.label}
+              clickable={false}
+              center
+              className="py-8 md:py-10"
+              style={{ transitionDelay: `${i * 100}ms` }}
+            >
+              <p className="font-mono text-3xl md:text-4xl font-bold text-purple-700 m-0">{s.value}</p>
+              <p className="text-xs text-graphite/60 mt-2">{s.label}</p>
+            </Card>
           ))}
         </div>
       </Content>

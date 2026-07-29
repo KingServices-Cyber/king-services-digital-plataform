@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/design-system";
 
@@ -17,11 +17,15 @@ export function Card({
   children,
   center = false,
   clickable = true,
+  className,
+  style,
 }: {
   href?: string;
   children: ReactNode;
   center?: boolean;
   clickable?: boolean;
+  className?: string;
+  style?: CSSProperties;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -48,10 +52,11 @@ export function Card({
       ? "cursor-pointer hover:border-lilac-500 hover:shadow-card hover:-translate-y-1 block"
       : "cursor-default",
     center && "text-center",
+    className,
   );
 
   return (
-    <div ref={ref} className={cn("reveal", inView && "in-view")}>
+    <div ref={ref} className={cn("reveal", inView && "in-view")} style={style}>
       {href ? (
         <Link href={href} className={innerClasses}>
           {children}
