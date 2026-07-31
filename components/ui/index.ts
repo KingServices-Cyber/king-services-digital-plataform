@@ -2,6 +2,8 @@
 // reutilizáveis, para imports únicos como `from "@/components/ui"`.
 export * from "./Button";
 export * from "./Card";
+export * from "./CookieConsentBanner";
+export * from "./KingAssistant";
 export * from "./Content";
 export * from "./CtaFinal";
 export * from "./EyebrowSmall";

@@ -57,8 +57,8 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-white/92 backdrop-blur-sm border-b border-fog transition-shadow duration-300",
-        scrolled && "shadow-header",
+        "sticky top-0 z-50 bg-purple-900 backdrop-blur-sm border-b border-white/10 transition-shadow duration-300",
+        scrolled && "shadow-[0_2px_16px_rgba(42,18,64,0.4)]",
       )}
     >
       <a href="#main-content" className="skip-link">
@@ -67,12 +67,12 @@ export function Header() {
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-6 h-[72px] md:h-24 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="King Services — página inicial">
-          <Image src={logo} alt="King Services" className="h-[60px] md:h-[84px] w-auto" priority />
+          <Image src={logo} alt="King Services" className="h-[60px] md:h-[64px] w-auto" priority />
         </Link>
 
         <button
           type="button"
-          className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-fog rounded-[10px]"
+          className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-white/30 rounded-[10px]"
           aria-expanded={mobileOpen}
           aria-controls="main-nav"
           aria-label={mobileOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
@@ -80,19 +80,19 @@ export function Header() {
         >
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-purple-900 transition-transform",
+              "block h-0.5 w-5 mx-auto bg-white transition-transform",
               mobileOpen && "translate-y-[7px] rotate-45",
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-purple-900 transition-opacity",
+              "block h-0.5 w-5 mx-auto bg-white transition-opacity",
               mobileOpen && "opacity-0",
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-purple-900 transition-transform",
+              "block h-0.5 w-5 mx-auto bg-white transition-transform",
               mobileOpen && "-translate-y-[7px] -rotate-45",
             )}
           />
@@ -106,7 +106,7 @@ export function Header() {
             "fixed top-[72px] left-0 right-0 bottom-0 bg-white",
             "transition-transform duration-300 ease-out",
             mobileOpen ? "translate-x-0" : "translate-x-full",
-            "md:static md:flex-row md:items-center md:gap-8 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
+            "md:static md:flex-row md:items-center md:gap-5 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
           )}
         >
           {NAV_ITEMS.map((item) => (
@@ -121,7 +121,7 @@ export function Header() {
             >
               <Link
                 href={item.href}
-                className="flex items-center justify-between md:inline-block py-4 md:py-0 px-1 text-[15px] md:text-sm font-semibold md:font-medium text-graphite hover:text-purple-600 transition-colors"
+                className="flex items-center justify-between md:inline-block py-4 md:py-0 px-1 text-[15px] md:text-[13px] font-semibold md:font-medium text-graphite md:text-white/85 hover:text-purple-600 md:hover:text-lilac-300 transition-colors whitespace-nowrap"
                 aria-haspopup={item.columns ? "true" : undefined}
                 aria-expanded={openItem === item.label}
                 onClick={(e) => {
@@ -196,12 +196,12 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="text-sm font-medium text-purple-600 hover:underline">
+          <Link href="/login" className="text-[13px] font-medium text-lilac-300 hover:text-white transition-colors whitespace-nowrap">
             Área do Cliente
           </Link>
           <Link
             href="/contato"
-            className="inline-block font-bold text-[13px] px-[18px] py-[9px] rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white transition-transform hover:-translate-y-0.5"
+            className="inline-block font-bold text-[13px] px-[18px] py-[9px] rounded-pill bg-white text-purple-900 transition-transform hover:-translate-y-0.5"
           >
             Fale com um especialista
           </Link>

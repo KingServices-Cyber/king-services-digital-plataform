@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/central-de-conteudo", priority: 0.6, changeFrequency: "monthly" },
     { path: "/sobre", priority: 0.6, changeFrequency: "yearly" },
     { path: "/diferenciais", priority: 0.6, changeFrequency: "yearly" },
+    { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
     { path: "/contato", priority: 0.8, changeFrequency: "yearly" },
   ];
 

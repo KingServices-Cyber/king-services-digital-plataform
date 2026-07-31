@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
+import { CookieConsentBanner, KingAssistant } from "@/components/ui";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -60,8 +61,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: "/icon.svg",
+    apple: "/apple-icon",
   },
 };
 
@@ -79,6 +80,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <CookieConsentBanner />
+        <KingAssistant />
       </body>
     </html>
   );

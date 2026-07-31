@@ -23,6 +23,7 @@ const EMPRESA_LINKS = [
 const RECURSOS_LINKS = [
   { label: "Blog", href: "/blog" },
   { label: "Central de Conteúdo", href: "/central-de-conteudo" },
+  { label: "FAQ", href: "/faq" },
   { label: "Fale com um especialista", href: "/contato" },
   { label: "Área do Cliente", href: "/login" },
 ];
@@ -82,29 +83,23 @@ export function Footer({ className }: { className?: string } = {}) {
             <p className="mb-3">{CONTACT_INFO.email}</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-xs leading-relaxed mt-1">
-            {CONTACT_INFO.offices.map((office) => (
-              <div key={office.label}>
-                <p className="font-bold text-white mb-1">📍 {office.label}:</p>
-                <p>
-                  {office.companyName}
-                  <br />
-                  CNPJ: {office.cnpj}
-                  <br />
-                  {office.addressStreet}
-                  <br />
-                  {office.addressCity}
-                  <br />
-                  {office.addressCep}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <FooterColumn title="Soluções" links={SOLUCOES_LINKS} />
         <FooterColumn title="Empresa" links={EMPRESA_LINKS} />
         <FooterColumn title="Recursos" links={RECURSOS_LINKS} />
+      </div>
+
+      <div className="border-t border-white/10 max-w-[1280px] mx-auto px-6 pt-5 pb-6 text-xs leading-relaxed text-center">
+        {CONTACT_INFO.offices.map((office) => {
+          const shortLabel = office.label.replace("Escritório ", "");
+          return (
+            <p key={office.label} className="mb-2 last:mb-0">
+              <span className="font-bold text-white">{shortLabel}: {office.companyName}</span>
+              {" - "}CNPJ: {office.cnpj} - {office.addressStreet} - {office.addressCity} - {office.addressCep}
+            </p>
+          );
+        })}
       </div>
 
       <div className="border-t border-white/10 px-6 py-5 max-w-[1280px] mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px]">

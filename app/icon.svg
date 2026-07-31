@@ -1,0 +1,8 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="96" fill="#2A1240"/>
+  <text x="180" y="400" font-family="system-ui,sans-serif" font-weight="700" font-size="380" fill="#FFFFFF">K</text>
+  <path d="M320 140 a60 60 0 0 1 84.85 0" fill="none" stroke="#A78BFA" stroke-width="18" stroke-linecap="round"/>
+  <path d="M298 110 a108 108 0 0 1 148 0" fill="none" stroke="#C4B5FD" stroke-width="18" stroke-linecap="round"/>
+  <path d="M276 80 a152 152 0 0 1 210 0" fill="none" stroke="#E9DDFF" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="362" cy="165" r="14" fill="#A78BFA"/>
+</svg>

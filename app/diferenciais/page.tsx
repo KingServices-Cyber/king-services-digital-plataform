@@ -11,7 +11,10 @@ const DIFERENCIAIS = [
   "Atendimento consultivo",
   "Portfólio completo",
   "Suporte qualificado",
-  "Agilidade",
+  "Relacionamento de Longo Prazo",
+  "Agilidade na Implantação",
+  "Atendimento Nacional",
+  "Especialistas Certificados",
   "Pós-venda ativo",
 ];
 
@@ -20,7 +23,7 @@ export default function DiferenciaisPage() {
     <>
       <PageHero eyebrow="Diferenciais" title="Por que empresas escolhem a King Services" />
       <Content>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
           {DIFERENCIAIS.map((d) => (
             <Card key={d} clickable={false} center>
               <h3 className="text-xs font-semibold m-0">{d}</h3>

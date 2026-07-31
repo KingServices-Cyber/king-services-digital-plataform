@@ -1,6 +1,30 @@
 import type { Metadata } from "next";
-import { ButtonLink, Card, Content, EyebrowSmall, SectionTitle } from "@/components/ui";
+import { ButtonLink, Card, Content, CtaFinal, EyebrowSmall, SectionTitle } from "@/components/ui";
 import { SOLUTIONS, SOLUTION_CATEGORIES, SEGMENTS } from "@/lib/content";
+
+const TESTIMONIALS = [
+  {
+    quote:
+      "A King Services transformou nossa infraestrutura de telecomunicação. O atendimento consultivo fez toda a diferença na escolha das soluções certas para nosso negócio.",
+    name: "Roberto M.",
+    role: "Diretor de TI",
+    segment: "Indústria",
+  },
+  {
+    quote:
+      "Desde que migramos para a Vivo Empresas com a King Services, nosso suporte técnico ficou muito mais ágil. O pós-venda ativo realmente funciona.",
+    name: "Carla S.",
+    role: "Gerente de Operações",
+    segment: "Comércio",
+  },
+  {
+    quote:
+      "Conectividade estável em todas as nossas filiais era um desafio. A King Services entregou a solução completa com internet dedicada e monitoramento 24/7.",
+    name: "Fernando L.",
+    role: "CEO",
+    segment: "Logística",
+  },
+];
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -42,15 +66,18 @@ export default function HomePage() {
 
       {/* Trust bar */}
       <div className="px-4 md:px-6 py-6 text-center border-b border-[#F0EEF5]">
-        <p className="text-[10px] font-bold uppercase tracking-wide text-[#8B8780] mb-3">
+        <p className="text-[10px] font-bold uppercase tracking-wide text-[#8B8780] mb-3.5">
           Empresas que confiam na King Services
         </p>
-        <div className="flex justify-center gap-6 flex-wrap opacity-50 text-xs font-semibold">
-          <span>Cliente A</span>
-          <span>Cliente B</span>
-          <span>Cliente C</span>
-          <span>Cliente D</span>
-          <span>Cliente E</span>
+        <div className="flex justify-center gap-6 flex-wrap">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div
+              key={i}
+              className="w-[110px] h-[40px] rounded-lg bg-mist border border-dashed border-fog flex items-center justify-center text-[11px] font-semibold text-graphite/30"
+            >
+              Logo cliente
+            </div>
+          ))}
         </div>
       </div>
 
@@ -126,6 +153,35 @@ export default function HomePage() {
           ))}
         </div>
       </Content>
+
+      {/* Depoimentos */}
+      <Content>
+        <EyebrowSmall>Depoimentos</EyebrowSmall>
+        <SectionTitle>O que nossos clientes dizem</SectionTitle>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {TESTIMONIALS.map((t) => (
+            <Card key={t.name} clickable={false}>
+              <p className="text-[13px] text-amber-400 tracking-widest mb-2">★★★★★</p>
+              <p className="text-sm leading-relaxed text-graphite italic mb-4">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="flex items-center gap-2.5 mt-auto">
+                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-600 to-lilac-500 flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+                  {t.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-[13px] font-semibold">{t.name}</p>
+                  <p className="text-[11px] text-graphite/60">
+                    {t.role} — {t.segment}
+                  </p>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Content>
+
+      <CtaFinal />
     </>
   );
 }

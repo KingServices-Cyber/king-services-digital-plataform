@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { PageHero, WhatsAppLink } from "@/components/ui";
 import { CONTACT_INFO } from "@/lib/content";
 import { mascararCPF, mascararCNPJ, mascararTelefone } from "@/lib/masks";
@@ -13,6 +14,7 @@ export default function ContatoPage() {
   const [docTipo, setDocTipo] = useState<"cpf" | "cnpj">("cpf");
   const [docValue, setDocValue] = useState("");
   const [telefone, setTelefone] = useState("");
+  const [lgpdAccepted, setLgpdAccepted] = useState(false);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -100,7 +102,7 @@ export default function ContatoPage() {
         </div>
 
         {/* Formulário */}
-        <div className="border border-fog rounded-card p-6 max-w-[460px] h-fit">
+        <div className="border border-fog rounded-card p-6 h-fit">
           {submitted ? (
             <p className="text-[15px] text-purple-700 font-semibold">
               ✓ Mensagem enviada! Um especialista King Services entrará em contato.
@@ -111,51 +113,64 @@ export default function ContatoPage() {
                 * Preenchimento obrigatório em todos os campos
               </p>
 
-              <label className="block text-[15px] font-medium mb-1.5">Nome *</label>
-              <input
-                type="text"
-                required
-                value={nome}
-                onChange={(e) => setNome(e.target.value)}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
-              />
+              {/* Linha 1: Nome + E-mail */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-[14px] font-medium mb-1.5">Nome *</label>
+                  <input
+                    type="text"
+                    required
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                    className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[14px] font-medium mb-1.5">E-mail *</label>
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm"
+                  />
+                </div>
+              </div>
 
-              <label className="block text-[15px] font-medium mb-1.5">E-mail *</label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
-              />
+              {/* Linha 2: Tipo doc + Doc */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-[14px] font-medium mb-1.5">Tipo de documento *</label>
+                  <select
+                    required
+                    value={docTipo}
+                    onChange={(e) => {
+                      setDocTipo(e.target.value as "cpf" | "cnpj");
+                      setDocValue("");
+                    }}
+                    className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm bg-white"
+                  >
+                    <option value="cpf">CPF</option>
+                    <option value="cnpj">CNPJ</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[14px] font-medium mb-1.5">{docTipo.toUpperCase()} *</label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    required
+                    value={docValue}
+                    onChange={handleDocChange}
+                    placeholder={docTipo === "cpf" ? "000.000.000-00" : "00.000.000/0000-00"}
+                    maxLength={docTipo === "cpf" ? 14 : 18}
+                    className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm"
+                  />
+                </div>
+              </div>
 
-              <label className="block text-[15px] font-medium mb-1.5">Tipo de documento *</label>
-              <select
-                required
-                value={docTipo}
-                onChange={(e) => {
-                  setDocTipo(e.target.value as "cpf" | "cnpj");
-                  setDocValue("");
-                }}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4 bg-white"
-              >
-                <option value="cpf">CPF</option>
-                <option value="cnpj">CNPJ</option>
-              </select>
-
-              <label className="block text-[15px] font-medium mb-1.5">{docTipo.toUpperCase()} *</label>
-              <input
-                type="text"
-                inputMode="numeric"
-                required
-                value={docValue}
-                onChange={handleDocChange}
-                placeholder={docTipo === "cpf" ? "000.000.000-00" : "00.000.000/0000-00"}
-                maxLength={docTipo === "cpf" ? 14 : 18}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
-              />
-
-              <label className="block text-[15px] font-medium mb-1.5">Celular / WhatsApp *</label>
+              {/* Linha 3: Telefone */}
+              <label className="block text-[14px] font-medium mb-1.5">Celular / WhatsApp *</label>
               <input
                 type="tel"
                 inputMode="numeric"
@@ -164,23 +179,42 @@ export default function ContatoPage() {
                 onChange={(e) => setTelefone(mascararTelefone(e.target.value))}
                 placeholder="(00) 00000-0000"
                 maxLength={15}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
+                className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm mb-4"
               />
 
-              <label className="block text-[15px] font-medium mb-1.5">Mensagem *</label>
+              {/* Linha 4: Mensagem */}
+              <label className="block text-[14px] font-medium mb-1.5">Mensagem *</label>
               <textarea
                 required
                 rows={3}
                 value={mensagem}
                 onChange={(e) => setMensagem(e.target.value)}
-                className="w-full border border-fog rounded-lg px-3 py-2.5 text-base mb-4"
+                className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm mb-4"
               />
+
+              {/* Checkbox LGPD */}
+              <label className="flex items-start gap-2.5 mb-4 cursor-pointer">
+                <input
+                  type="checkbox"
+                  required
+                  checked={lgpdAccepted}
+                  onChange={(e) => setLgpdAccepted(e.target.checked)}
+                  className="w-[18px] h-[18px] flex-shrink-0 mt-0.5 accent-purple-600 cursor-pointer"
+                />
+                <span className="text-[12.5px] leading-relaxed text-graphite/70">
+                  Ao enviar este formulário, concordo com o tratamento dos meus dados pessoais conforme a{" "}
+                  <Link href="/contato" className="text-purple-600 underline hover:text-purple-800">
+                    Política de Privacidade (LGPD)
+                  </Link>{" "}
+                  da King Services.
+                </span>
+              </label>
 
               {error && <p className="text-[13px] text-[#C0392B] -mt-2 mb-4">{error}</p>}
 
               <button
                 type="submit"
-                disabled={loading}
+                disabled={loading || !lgpdAccepted}
                 className="w-full text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 {loading ? "Enviando..." : "Enviar mensagem"}
