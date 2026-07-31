@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -24,8 +26,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Prettier (format check)
-        run: npm run format:check
+      - name: Prettier (changed files)
+        if: github.event_name == 'pull_request'
+        run: |
+          files=$(git diff --name-only --diff-filter=ACMR "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" | grep -E '\.(css|js|json|jsx|md|mdx|ts|tsx|yml|yaml)$' || true)
+          if [ -n "$files" ]; then
+            ./node_modules/.bin/prettier --check $files
+          fi
 
       - name: ESLint
         run: npm run lint

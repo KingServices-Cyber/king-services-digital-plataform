@@ -23,17 +23,23 @@ Armazena os contatos enviados pelo formulário público (`/contato`).
 
 ### Políticas de Row Level Security (RLS)
 
-| Papel                            | Ação   | Regra                                                                                                                               |
-| -------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `anon` (visitante)               | INSERT | Permitido apenas com `status='new'`, `source='site-contato'` e limites de tamanho por campo. **Não** pode ler, atualizar ou apagar. |
-| `authenticated` (equipe interna) | SELECT | Pode ler todos os leads.                                                                                                            |
-| `authenticated` (equipe interna) | UPDATE | Pode atualizar o status de qualquer lead.                                                                                           |
+| Papel                              | Ação   | Regra                                                                                                                               |
+| ---------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `anon` (visitante)                 | INSERT | Permitido apenas com `status='new'`, `source='site-contato'` e limites de tamanho por campo. **Não** pode ler, atualizar ou apagar. |
+| `authenticated` com perfil `admin` | SELECT | Pode ler todos os leads.                                                                                                            |
+| `authenticated` com perfil `admin` | UPDATE | Pode atualizar o status de qualquer lead.                                                                                           |
 
-> Observação de segurança: a política de UPDATE para `authenticated` usa
-> `USING (true)` de forma intencional — toda a equipe interna pode gerenciar os
-> leads. Quando houver um modelo de papéis (ex.: `admin` vs. `vendas`), essa
-> política deve ser refinada. O advisor do Supabase sinaliza isso como um
-> aviso informativo esperado.
+As policies de leitura e atualização consultam `public.is_admin()` no banco.
+Isso é indispensável porque ocultar a rota `/admin` no navegador não impede
+acesso direto à API do Supabase. O perfil do primeiro operador deve ser
+alterado para `admin` no Supabase antes de usar o painel.
+
+## Integração com CRM King Services
+
+O CRM comercial é um sistema separado e não deve ser reimplementado no KSDP.
+O contrato, os limites de responsabilidade e a sequência segura para a futura
+integração estão em
+[`docs/05-Integrations/KSDP-005-CRM-King-Services.md`](../docs/05-Integrations/KSDP-005-CRM-King-Services.md).
 
 ## Variáveis de ambiente
 

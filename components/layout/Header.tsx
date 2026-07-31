@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { NAV_ITEMS } from "@/lib/content/nav";
-import logo from "@/public/logo.png";
 import { cn } from "@/design-system";
 
 export function Header() {
@@ -67,7 +66,14 @@ export function Header() {
 
       <div className="max-w-[1280px] mx-auto px-6 md:px-6 h-[72px] md:h-24 flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="King Services — página inicial">
-          <Image src={logo} alt="King Services" className="h-[60px] md:h-[64px] w-auto" priority />
+          <Image
+            src="/logo.png"
+            alt="King Services"
+            width={240}
+            height={80}
+            className="h-[60px] md:h-[64px] w-auto"
+            priority
+          />
         </Link>
 
         <button
@@ -85,10 +91,7 @@ export function Header() {
             )}
           />
           <span
-            className={cn(
-              "block h-0.5 w-5 mx-auto bg-white transition-opacity",
-              mobileOpen && "opacity-0",
-            )}
+            className={cn("block h-0.5 w-5 mx-auto bg-white transition-opacity", mobileOpen && "opacity-0")}
           />
           <span
             className={cn(
@@ -196,7 +199,10 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="text-[13px] font-medium text-lilac-300 hover:text-white transition-colors whitespace-nowrap">
+          <Link
+            href="/login"
+            className="text-[13px] font-medium text-lilac-300 hover:text-white transition-colors whitespace-nowrap"
+          >
             Área do Cliente
           </Link>
           <Link
