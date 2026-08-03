@@ -44,6 +44,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      faqs: {
+        Row: {
+          id: string;
+          question: string;
+          answer: string;
+          category: string | null;
+          sort_order: number;
+          active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          question: string;
+          answer: string;
+          category?: string | null;
+          sort_order?: number;
+          active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          question?: string;
+          answer?: string;
+          category?: string | null;
+          sort_order?: number;
+          active?: boolean;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       documents: {
         Row: {
           category: string;
@@ -104,6 +134,87 @@ export type Database = {
           paid_at?: string | null;
           reference_month?: string;
           status?: string;
+        };
+        Relationships: [];
+      };
+      plans: {
+        Row: {
+          id: string;
+          name: string;
+          subtitle: string | null;
+          speed: string;
+          price_monthly: number;
+          price_annual: number;
+          features: Json;
+          highlighted: boolean;
+          badge: string | null;
+          sort_order: number;
+          active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id: string;
+          name: string;
+          subtitle?: string | null;
+          speed: string;
+          price_monthly: number;
+          price_annual: number;
+          features?: Json;
+          highlighted?: boolean;
+          badge?: string | null;
+          sort_order?: number;
+          active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          subtitle?: string | null;
+          speed?: string;
+          price_monthly?: number;
+          price_annual?: number;
+          features?: Json;
+          highlighted?: boolean;
+          badge?: string | null;
+          sort_order?: number;
+          active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      testimonials: {
+        Row: {
+          id: string;
+          name: string;
+          role: string | null;
+          quote: string;
+          rating: number;
+          approved: boolean;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          role?: string | null;
+          quote: string;
+          rating?: number;
+          approved?: boolean;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          role?: string | null;
+          quote?: string;
+          rating?: number;
+          approved?: boolean;
+          sort_order?: number;
+          created_at?: string;
         };
         Relationships: [];
       };

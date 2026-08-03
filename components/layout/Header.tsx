@@ -13,7 +13,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
 
-  // Elevação do header ao rolar
   useEffect(() => {
     let ticking = false;
     function onScroll() {
@@ -29,7 +28,6 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Fecha o menu mobile ao redimensionar para desktop
   useEffect(() => {
     function onResize() {
       if (window.innerWidth > 768) {
@@ -57,22 +55,44 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-purple-900 backdrop-blur-sm border-b border-white/10 transition-shadow duration-300",
-        scrolled && "shadow-[0_2px_16px_rgba(42,18,64,0.4)]",
+        "sticky top-0 z-50 bg-white border-b border-border transition-shadow duration-300",
+        scrolled && "shadow-header",
       )}
     >
       <a href="#main-content" className="skip-link">
         Pular para o conteúdo
       </a>
 
-      <div className="max-w-[1280px] mx-auto px-6 md:px-6 h-[72px] md:h-24 flex items-center justify-between">
+      {/* Top bar */}
+      <div className="hidden md:block bg-primary-900 text-white">
+        <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-9 text-xs">
+          <p className="text-white/80">Parceira Autorizada Vivo Empresas</p>
+          <div className="flex items-center gap-4">
+            <a href="tel:+5517997276024" className="text-white/80 hover:text-white transition-colors flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              (17) 99727-6024
+            </a>
+            <Link href="/login" className="text-white/80 hover:text-white transition-colors flex items-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Área do Cliente
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main nav */}
+      <div className="max-w-[1280px] mx-auto px-6 h-[64px] md:h-[72px] flex items-center justify-between">
         <Link href="/" className="flex items-center" aria-label="King Services — página inicial">
-          <Image src={logo} alt="King Services" className="h-[60px] md:h-[64px] w-auto" priority />
+          <Image src={logo} alt="King Services" className="h-[48px] md:h-[56px] w-auto" priority />
         </Link>
 
         <button
           type="button"
-          className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-white/30 rounded-[10px]"
+          className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-border rounded-lg"
           aria-expanded={mobileOpen}
           aria-controls="main-nav"
           aria-label={mobileOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
@@ -80,19 +100,19 @@ export function Header() {
         >
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-white transition-transform",
+              "block h-0.5 w-5 mx-auto bg-text transition-transform",
               mobileOpen && "translate-y-[7px] rotate-45",
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-white transition-opacity",
+              "block h-0.5 w-5 mx-auto bg-text transition-opacity",
               mobileOpen && "opacity-0",
             )}
           />
           <span
             className={cn(
-              "block h-0.5 w-5 mx-auto bg-white transition-transform",
+              "block h-0.5 w-5 mx-auto bg-text transition-transform",
               mobileOpen && "-translate-y-[7px] -rotate-45",
             )}
           />
@@ -103,17 +123,17 @@ export function Header() {
           aria-label="Navegação principal"
           className={cn(
             "flex flex-col gap-0 p-4 pb-24 overflow-y-auto z-40",
-            "fixed top-[72px] left-0 right-0 bottom-0 bg-white",
+            "fixed top-[64px] left-0 right-0 bottom-0 bg-white",
             "transition-transform duration-300 ease-out",
             mobileOpen ? "translate-x-0" : "translate-x-full",
-            "md:static md:flex-row md:items-center md:gap-5 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
+            "md:static md:flex-row md:items-center md:gap-1 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
           )}
         >
           {NAV_ITEMS.map((item) => (
             <div
               key={item.label}
               className={cn(
-                "relative w-full md:w-auto border-b md:border-0 border-fog",
+                "relative w-full md:w-auto border-b md:border-0 border-border",
                 item.alignRight && "md:ml-auto",
               )}
               onMouseEnter={() => handleMouseEnter(item.label)}
@@ -121,19 +141,22 @@ export function Header() {
             >
               <Link
                 href={item.href}
-                className="flex items-center justify-between md:inline-block py-4 md:py-0 px-1 text-[15px] md:text-[13px] font-semibold md:font-medium text-graphite md:text-white/85 hover:text-purple-600 md:hover:text-lilac-300 transition-colors whitespace-nowrap"
+                className="flex items-center justify-between md:inline-block py-3.5 md:py-0 px-1 md:px-3 text-[15px] md:text-[14px] font-medium text-text hover:text-primary transition-colors whitespace-nowrap"
                 aria-haspopup={item.columns ? "true" : undefined}
                 aria-expanded={openItem === item.label}
                 onClick={(e) => {
                   if (window.innerWidth <= 768 && item.columns) {
                     e.preventDefault();
                     handleMobileToggle(item.label);
+                  } else {
+                    setMobileOpen(false);
+                    setOpenItem(null);
                   }
                 }}
               >
                 {item.label}
                 {item.columns && (
-                  <span className="md:hidden text-lilac-500 text-lg font-normal">
+                  <span className="md:hidden text-primary text-lg font-normal">
                     {openItem === item.label ? "–" : "+"}
                   </span>
                 )}
@@ -142,7 +165,7 @@ export function Header() {
               {item.columns && (
                 <div
                   className={cn(
-                    "md:absolute md:top-full md:mt-2 md:bg-white md:border md:border-fog md:rounded-2xl md:shadow-mega md:p-6",
+                    "md:absolute md:top-full md:mt-2 md:bg-white md:border md:border-border md:rounded-2xl md:shadow-mega md:p-6",
                     "md:flex md:gap-10 md:min-w-[420px] md:opacity-0 md:invisible md:pointer-events-none md:-translate-y-1",
                     item.alignRight ? "md:right-0" : "md:left-0",
                     "transition-all duration-300",
@@ -154,7 +177,7 @@ export function Header() {
                   {item.columns.map((col, i) => (
                     <div key={i} className="min-w-0 md:min-w-[180px]">
                       {col.title && (
-                        <p className="text-xs font-bold uppercase tracking-wide text-purple-600 mb-2">
+                        <p className="text-xs font-bold uppercase tracking-wide text-primary mb-2">
                           {col.title}
                         </p>
                       )}
@@ -163,7 +186,7 @@ export function Header() {
                           <li key={link.label + link.href}>
                             <Link
                               href={link.href}
-                              className="block px-2 py-1.5 -mx-2 rounded-lg text-sm text-graphite hover:bg-mist hover:text-purple-600 whitespace-nowrap"
+                              className="block px-2 py-1.5 -mx-2 rounded-lg text-sm text-text hover:bg-primary-50 hover:text-primary whitespace-nowrap"
                               onClick={() => {
                                 setMobileOpen(false);
                                 setOpenItem(null);
@@ -181,29 +204,31 @@ export function Header() {
             </div>
           ))}
 
-          {/* Ações — mostradas dentro do painel mobile; no desktop ficam à parte (ver abaixo) */}
-          <div className="md:hidden flex flex-col gap-2 mt-4 pt-4 border-t border-fog">
-            <Link href="/login" className="text-sm font-semibold text-purple-600 py-2">
+          <div className="md:hidden flex flex-col gap-2 mt-4 pt-4 border-t border-border">
+            <a href="tel:+5517997276024" className="text-sm font-semibold text-primary py-2 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              (17) 99727-6024
+            </a>
+            <Link href="/login" className="text-sm font-semibold text-primary py-2">
               Área do Cliente
             </Link>
             <Link
               href="/contato"
-              className="inline-block text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-gradient-to-br from-purple-600 to-lilac-500 text-white"
+              className="inline-block text-center font-bold text-sm px-4 py-2.5 rounded-pill bg-primary text-white"
             >
-              Fale com um especialista
+              Contrate Agora
             </Link>
           </div>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/login" className="text-[13px] font-medium text-lilac-300 hover:text-white transition-colors whitespace-nowrap">
-            Área do Cliente
-          </Link>
           <Link
             href="/contato"
-            className="inline-block font-bold text-[13px] px-[18px] py-[9px] rounded-pill bg-white text-purple-900 transition-transform hover:-translate-y-0.5"
+            className="inline-block font-bold text-[13px] px-5 py-2.5 rounded-pill bg-primary text-white transition-all hover:bg-primary-600 hover:shadow-elevated hover:-translate-y-0.5"
           >
-            Fale com um especialista
+            Contrate Agora
           </Link>
         </div>
       </div>

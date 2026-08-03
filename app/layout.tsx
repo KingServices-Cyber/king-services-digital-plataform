@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
-import { CookieConsentBanner, KingAssistant } from "@/components/ui";
+import { CookieConsentBanner, GeoLocationModal, KingAssistant } from "@/components/ui";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_TITLE,
@@ -41,13 +41,11 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    // A imagem (og:image) é fornecida por app/opengraph-image.tsx.
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    // A imagem do card é herdada de app/opengraph-image.tsx.
   },
   robots: {
     index: true,
@@ -67,7 +65,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2A1240",
+  themeColor: "#7C3AED",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -75,11 +73,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="pt-BR" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="font-body text-graphite bg-white antialiased">
+      <body className="font-body text-text bg-white antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
+        <GeoLocationModal />
         <CookieConsentBanner />
         <KingAssistant />
       </body>
