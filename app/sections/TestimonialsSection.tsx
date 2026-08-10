@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { TESTIMONIALS } from "@/lib/content/plans";
+import type { Testimonial } from "@/lib/content/plans";
 import { IconStar } from "@/components/ui/Icons";
 
-export function TestimonialsSection() {
+export function TestimonialsSection({ testimonials }: { testimonials: Testimonial[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
 
@@ -40,7 +40,7 @@ export function TestimonialsSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {TESTIMONIALS.map((t, i) => (
+          {testimonials.map((t, i) => (
             <div
               key={t.id}
               className={`p-6 rounded-xl border border-border bg-white hover:shadow-card transition-all duration-500 flex flex-col ${

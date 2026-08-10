@@ -1,7 +1,7 @@
-import { FAQ_ITEMS } from "@/lib/content/plans";
+import type { FAQItem } from "@/lib/data";
 import { FAQ } from "@/components/ui/FAQ";
 
-export function FAQSection() {
+export function FAQSection({ items }: { items: FAQItem[] }) {
   return (
     <section className="py-16 md:py-24 px-6 bg-surface-secondary">
       <div className="max-w-[1280px] mx-auto">
@@ -17,7 +17,7 @@ export function FAQSection() {
           </p>
         </div>
 
-        <FAQ items={FAQ_ITEMS} />
+        <FAQ items={items} />
       </div>
     </section>
   );

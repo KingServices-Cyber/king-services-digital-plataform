@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { fetchFAQItems, fetchPlans, fetchTestimonials } from "@/lib/data";
 import { HeroSection } from "./sections/HeroSection";
 import { FeatureBar } from "./sections/FeatureBar";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
@@ -12,16 +13,22 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [plans, testimonials, faqItems] = await Promise.all([
+    fetchPlans(),
+    fetchTestimonials(),
+    fetchFAQItems(),
+  ]);
+
   return (
     <>
       <HeroSection />
       <FeatureBar />
       <StatsSection />
       <WhyChooseSection />
-      <PlansSection />
-      <TestimonialsSection />
-      <FAQSection />
+      <PlansSection plans={plans} />
+      <TestimonialsSection testimonials={testimonials} />
+      <FAQSection items={faqItems} />
       <CTASection />
     </>
   );
