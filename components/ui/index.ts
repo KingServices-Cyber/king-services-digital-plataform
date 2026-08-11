@@ -7,6 +7,7 @@ export * from "./CtaFinal";
 export * from "./EyebrowSmall";
 export * from "./FAQ";
 export * from "./GeoLocationModal";
+export * from "./LocationIndicator";
 export * from "./Icons";
 export * from "./ListCheck";
 export * from "./PageHero";

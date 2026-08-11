@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { NAV_ITEMS } from "@/lib/content/nav";
+import { LocationIndicator } from "@/components/ui";
 import logo from "@/public/logo.png";
 import { cn } from "@/design-system";
 
@@ -67,6 +68,7 @@ export function Header() {
       <div className="hidden md:block bg-primary-900 text-white">
         <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-9 text-xs">
           <p className="text-white/80">Parceira Autorizada Vivo Empresas</p>
+          <LocationIndicator />
           <div className="flex items-center gap-4">
             <a href="tel:+5517997150462" className="text-white/80 hover:text-white transition-colors flex items-center gap-1.5">
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

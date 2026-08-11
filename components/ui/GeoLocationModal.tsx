@@ -134,9 +134,25 @@ export function GeoLocationModal() {
     return () => clearTimeout(t);
   }, [detectLocation]);
 
+  // Reabre o modal quando o usuário clica no indicador de localização no header
+  useEffect(() => {
+    function handleReopen() {
+      try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ }
+      setCity("");
+      setManualInput("");
+      setManualError("");
+      setStep("detecting");
+      setVisible(true);
+      detectLocation();
+    }
+    window.addEventListener("ks-show-geo-modal", handleReopen);
+    return () => window.removeEventListener("ks-show-geo-modal", handleReopen);
+  }, [detectLocation]);
+
   function save(resolvedCity: string) {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ city: resolvedCity, ts: Date.now() }));
+      window.dispatchEvent(new Event("ks-location-updated"));
     } catch { /* ignore */ }
     setVisible(false);
   }
