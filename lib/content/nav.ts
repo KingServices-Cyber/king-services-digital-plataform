@@ -10,6 +10,19 @@ export const NAV_ITEMS: NavItem[] = [
   {
     label: "Planos",
     href: "/#planos",
+    columns: [
+      {
+        title: "Para Você",
+        links: [{ label: "Planos Residenciais (CPF)", href: "/planos/para-voce" }],
+      },
+      {
+        title: "Para Empresas",
+        links: [
+          { label: "PME — Pequenas e Médias Empresas", href: "/planos/para-empresas" },
+          { label: "Grandes Corporações", href: "/planos/para-empresas#corporacoes" },
+        ],
+      },
+    ],
   },
   {
     label: "Soluções",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fetchFAQItems, fetchPlans, fetchTestimonials } from "@/lib/data";
+import { fetchFAQItems, fetchPFPlans, fetchPJPlans, fetchTestimonials } from "@/lib/data";
 import { HeroSection } from "./sections/HeroSection";
 import { FeatureBar } from "./sections/FeatureBar";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
@@ -14,8 +14,9 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [plans, testimonials, faqItems] = await Promise.all([
-    fetchPlans(),
+  const [pfPlans, pjPlans, testimonials, faqItems] = await Promise.all([
+    fetchPFPlans(),
+    fetchPJPlans(),
     fetchTestimonials(),
     fetchFAQItems(),
   ]);
@@ -26,7 +27,7 @@ export default async function HomePage() {
       <FeatureBar />
       <StatsSection />
       <WhyChooseSection />
-      <PlansSection plans={plans} />
+      <PlansSection pfPlans={pfPlans} pjPlans={pjPlans} />
       <TestimonialsSection testimonials={testimonials} />
       <FAQSection items={faqItems} />
       <CTASection />

@@ -13,6 +13,7 @@ export * from "./ListCheck";
 export * from "./PageHero";
 export * from "./PasswordInput";
 export * from "./PlanCard";
+export * from "./PlanPageClient";
 export * from "./PlanToggle";
 export * from "./SectionTitle";
 export * from "./StepsList";

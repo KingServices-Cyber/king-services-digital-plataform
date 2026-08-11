@@ -1,32 +1,60 @@
 import { getSupabaseServerClient } from "@/lib/supabase/server";
-import type { Plan, Testimonial } from "@/lib/content/plans";
-import { PLANS, TESTIMONIALS, FAQ_ITEMS } from "@/lib/content/plans";
+import type { Plan, PlanCategory, Testimonial } from "@/lib/content/plans";
+import { PF_PLANS, PJ_PLANS, PLANS, TESTIMONIALS, FAQ_ITEMS } from "@/lib/content/plans";
 
 export type FAQItem = { question: string; answer: string };
+
+function rowToPlan(row: {
+  id: string; name: string; subtitle: string | null; speed: string;
+  price_monthly: number; price_annual: number; features: unknown;
+  highlighted: boolean; badge: string | null; category?: string | null;
+}): Plan {
+  return {
+    id: row.id,
+    name: row.name,
+    subtitle: row.subtitle ?? "",
+    speed: row.speed,
+    priceMonthly: row.price_monthly,
+    priceAnnual: row.price_annual,
+    features: (row.features as string[]) ?? [],
+    highlighted: row.highlighted,
+    badge: row.badge ?? undefined,
+    category: (row.category === "pj" ? "pj" : "pf") as PlanCategory,
+  };
+}
 
 export async function fetchPlans(): Promise<Plan[]> {
   try {
     const supabase = getSupabaseServerClient();
-    const { data, error } = await supabase
-      .from("plans")
-      .select("*")
-      .order("sort_order");
-
+    const { data, error } = await supabase.from("plans").select("*").order("sort_order");
     if (error || !data?.length) return PLANS;
-
-    return data.map((row) => ({
-      id: row.id,
-      name: row.name,
-      subtitle: row.subtitle ?? "",
-      speed: row.speed,
-      priceMonthly: row.price_monthly,
-      priceAnnual: row.price_annual,
-      features: (row.features as string[]) ?? [],
-      highlighted: row.highlighted,
-      badge: row.badge ?? undefined,
-    }));
+    return data.map(rowToPlan);
   } catch {
     return PLANS;
+  }
+}
+
+export async function fetchPFPlans(): Promise<Plan[]> {
+  try {
+    const supabase = getSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("plans").select("*").eq("category", "pf").order("sort_order");
+    if (error || !data?.length) return PF_PLANS;
+    return data.map(rowToPlan);
+  } catch {
+    return PF_PLANS;
+  }
+}
+
+export async function fetchPJPlans(): Promise<Plan[]> {
+  try {
+    const supabase = getSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("plans").select("*").eq("category", "pj").order("sort_order");
+    if (error || !data?.length) return PJ_PLANS;
+    return data.map(rowToPlan);
+  } catch {
+    return PJ_PLANS;
   }
 }
 

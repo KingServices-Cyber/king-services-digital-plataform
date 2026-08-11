@@ -1,3 +1,5 @@
+export type PlanCategory = "pf" | "pj";
+
 export type Plan = {
   id: string;
   name: string;
@@ -8,11 +10,12 @@ export type Plan = {
   features: string[];
   highlighted: boolean;
   badge?: string;
+  category: PlanCategory;
 };
 
-export const PLANS: Plan[] = [
+export const PF_PLANS: Plan[] = [
   {
-    id: "basico",
+    id: "pf-basico",
     name: "Básico",
     subtitle: "Navegue com estabilidade para o dia a dia.",
     speed: "50 Mbps",
@@ -21,60 +24,138 @@ export const PLANS: Plan[] = [
     features: [
       "Navegação leve, redes sociais, vídeos em HD",
       "Instalação grátis",
-      "Wi-Fi potente",
+      "Wi-Fi potente incluso",
       "Suporte ágil e dedicado",
     ],
     highlighted: false,
+    category: "pf",
   },
   {
-    id: "essencial",
+    id: "pf-essencial",
     name: "Essencial",
     subtitle: "Mais velocidade para trabalho, vídeo e diversão.",
     speed: "150 Mbps",
     priceMonthly: 149.9,
     priceAnnual: 119.9,
     features: [
-      "Streaming em Full HD, chamadas de vídeo, home office",
+      "Streaming Full HD, vídeo chamadas, home office",
       "Instalação grátis",
-      "Wi-Fi potente",
+      "Wi-Fi potente incluso",
       "Suporte ágil e dedicado",
     ],
     highlighted: true,
     badge: "Mais Popular",
+    category: "pf",
   },
   {
-    id: "turbo",
+    id: "pf-turbo",
     name: "Turbo",
-    subtitle: "Navegue com estabilidade para o dia a dia.",
+    subtitle: "Para famílias conectadas e gamers exigentes.",
     speed: "300 Mbps",
     priceMonthly: 199.9,
     priceAnnual: 169.9,
     features: [
-      "Casas conectadas, jogos online, múltiplos dispositivos",
-      "Instalação grátis",
+      "Múltiplos dispositivos simultâneos",
+      "Games online sem lag",
       "Wi-Fi com alcance ampliado",
       "Suporte ágil e dedicado",
     ],
     highlighted: false,
+    category: "pf",
   },
   {
-    id: "ultra",
+    id: "pf-ultra",
     name: "Ultra",
     subtitle: "Velocidade máxima para quem exige o melhor.",
     speed: "500 Mbps",
     priceMonthly: 279.9,
     priceAnnual: 229.9,
     features: [
-      "Ideal para empresas e escritórios",
-      "Upload simétrico",
-      "Wi-Fi mesh incluso",
+      "Streaming 4K em todos os dispositivos",
+      "Upload simétrico de alta velocidade",
+      "Wi-Fi mesh de longo alcance incluso",
       "Suporte prioritário 24/7",
-      "IP fixo disponível",
     ],
     highlighted: false,
-    badge: "Empresarial",
+    badge: "Top de Linha",
+    category: "pf",
   },
 ];
+
+export const PJ_PLANS: Plan[] = [
+  {
+    id: "pj-starter",
+    name: "Starter PME",
+    subtitle: "Ideal para pequenas empresas e escritórios.",
+    speed: "100 Mbps",
+    priceMonthly: 199.9,
+    priceAnnual: 169.9,
+    features: [
+      "Internet fibra dedicada 100 Mbps",
+      "IP fixo incluído",
+      "Suporte técnico prioritário 24/7",
+      "SLA de disponibilidade 99,5%",
+      "Wi-Fi empresarial incluso",
+    ],
+    highlighted: false,
+    category: "pj",
+  },
+  {
+    id: "pj-business",
+    name: "Business",
+    subtitle: "Para médias empresas que precisam de performance.",
+    speed: "300 Mbps",
+    priceMonthly: 349.9,
+    priceAnnual: 299.9,
+    features: [
+      "Internet fibra dedicada 300 Mbps",
+      "IP fixo + bloco IPv4",
+      "Suporte técnico prioritário 24/7",
+      "SLA de disponibilidade 99,8%",
+      "Monitoramento proativo da rede",
+    ],
+    highlighted: true,
+    badge: "Mais Contratado",
+    category: "pj",
+  },
+  {
+    id: "pj-corporate",
+    name: "Corporate",
+    subtitle: "Para empresas que exigem alta disponibilidade.",
+    speed: "500 Mbps",
+    priceMonthly: 549.9,
+    priceAnnual: 469.9,
+    features: [
+      "Internet fibra dedicada 500 Mbps",
+      "IP fixo + bloco IPv4 dedicado",
+      "Gerente de conta exclusivo",
+      "SLA de disponibilidade 99,9%",
+      "Monitoramento 24/7 + relatórios",
+    ],
+    highlighted: false,
+    category: "pj",
+  },
+  {
+    id: "pj-enterprise",
+    name: "Enterprise",
+    subtitle: "Solução completa para grandes corporações.",
+    speed: "1 Gbps",
+    priceMonthly: 899.9,
+    priceAnnual: 749.9,
+    features: [
+      "Internet dedicada simétrica 1 Gbps",
+      "Bloco IPv4 dedicado + IPv6",
+      "NOC e gerente de conta dedicados",
+      "SLA 99,99% com penalidades contratuais",
+      "Failover automático incluso",
+    ],
+    highlighted: false,
+    badge: "Grandes Corporações",
+    category: "pj",
+  },
+];
+
+export const PLANS: Plan[] = [...PF_PLANS, ...PJ_PLANS];
 
 export type Benefit = {
   icon: string;
