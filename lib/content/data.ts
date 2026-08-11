@@ -271,8 +271,8 @@ export const SEGMENTS: Record<string, Segment> = {
 // Os artigos do blog vivem em content/blog/*.mdx (ver lib/content/blog.ts).
 
 export const CONTACT_INFO = {
-  phone: "(17) 99727-6024",
-  whatsapp: "5517997276024",
+  phone: "(17) 99715-0462",
+  whatsapp: "5517997150462",
   email: "atendimento@kingservices.com.br",
   offices: [
     {

@@ -42,7 +42,7 @@ export function localBusinessJsonLd() {
     url: SITE_URL,
     logo: absoluteUrl(DEFAULT_OG_IMAGE),
     image: absoluteUrl(DEFAULT_OG_IMAGE),
-    telephone: "+55 17 99727-6024",
+    telephone: "+55 17 99715-0462",
     email: CONTACT_INFO.email,
     priceRange: "$$",
     areaServed: { "@type": "Country", name: "Brasil" },

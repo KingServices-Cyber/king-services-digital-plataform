@@ -67,7 +67,7 @@ export function Footer({ className }: { className?: string } = {}) {
           <div className="text-xs leading-relaxed">
             <p className="font-bold text-white mb-1">Central de Atendimento:</p>
             <p className="mb-1">
-              <a href="tel:+5517997276024" className="text-white/70 hover:text-white no-underline transition-colors">
+              <a href="tel:+5517997150462" className="text-white/70 hover:text-white no-underline transition-colors">
                 {CONTACT_INFO.phone}
               </a>
             </p>
