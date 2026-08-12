@@ -4,10 +4,10 @@ import { WhatsAppLink } from "@/components/ui";
 import { cn } from "@/design-system";
 
 const PLANOS_LINKS = [
-  { label: "Plano Básico — 50 Mbps", href: "/contato?plano=basico" },
-  { label: "Plano Essencial — 150 Mbps", href: "/contato?plano=essencial" },
-  { label: "Plano Turbo — 300 Mbps", href: "/contato?plano=turbo" },
-  { label: "Plano Ultra — 500 Mbps", href: "/contato?plano=ultra" },
+  { label: "Fibra 400 Mega — R$ 79,99/mês", href: "/contato?plano=400mega" },
+  { label: "Fibra 600 Mega — R$ 94,99/mês", href: "/contato?plano=600mega" },
+  { label: "Fibra 1 Giga — R$ 199,99/mês", href: "/contato?plano=1giga" },
+  { label: "Fibra 2 Giga — R$ 399,99/mês", href: "/contato?plano=2giga" },
   { label: "Ver todos os planos", href: "/#planos" },
 ];
 

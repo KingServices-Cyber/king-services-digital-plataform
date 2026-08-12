@@ -7,7 +7,7 @@ import { PlanPageClient } from "@/components/ui/PlanPageClient";
 export const metadata: Metadata = {
   title: "Planos Para Você — Internet Residencial",
   description:
-    "Planos de internet fibra óptica para pessoa física. Velocidades de 50 Mbps a 500 Mbps com instalação grátis, Wi-Fi potente e suporte 24/7.",
+    "Planos de internet fibra óptica para pessoa física. Velocidades de 400 Mega a 2 Giga com instalação grátis, Wi-Fi potente e suporte 24/7.",
 };
 
 export default async function ParaVocePage() {

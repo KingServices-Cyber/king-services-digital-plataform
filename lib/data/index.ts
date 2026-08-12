@@ -9,6 +9,7 @@ function rowToPlan(row: {
   price_monthly: number; price_annual: number; features: unknown;
   highlighted: boolean; badge: string | null; category?: string | null;
 }): Plan {
+  const consultOnly = Number(row.price_monthly) === 0;
   return {
     id: row.id,
     name: row.name,
@@ -20,6 +21,7 @@ function rowToPlan(row: {
     highlighted: row.highlighted,
     badge: row.badge ?? undefined,
     category: (row.category === "pj" ? "pj" : "pf") as PlanCategory,
+    consultOnly,
   };
 }
 

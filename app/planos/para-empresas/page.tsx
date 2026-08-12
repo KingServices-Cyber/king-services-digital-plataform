@@ -6,7 +6,7 @@ import { PlanPageClient } from "@/components/ui/PlanPageClient";
 export const metadata: Metadata = {
   title: "Planos Para Empresas — Internet Empresarial",
   description:
-    "Soluções de internet dedicada para PME e grandes corporações. IP fixo, SLA garantido, suporte prioritário 24/7 e gerente de conta exclusivo.",
+    "Soluções de internet fibra e link dedicado para empresas. Fibra 400 Mega a 1 Giga e Internet Dedicada com SLA garantido, IP fixo e suporte 24/7.",
 };
 
 export default async function ParaEmpresasPage() {

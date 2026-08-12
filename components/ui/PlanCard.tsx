@@ -14,7 +14,7 @@ export function PlanCard({
   index?: number;
 }) {
   const price = billingCycle === "monthly" ? plan.priceMonthly : plan.priceAnnual;
-  const [intPart, decPart] = price.toFixed(2).split(".");
+  const [intPart, decPart] = plan.consultOnly ? ["", ""] : price.toFixed(2).split(".");
 
   return (
     <div
@@ -74,14 +74,20 @@ export function PlanCard({
       </ul>
 
       <div className="text-center mb-4">
-        <p className="text-3xl font-display font-bold text-text">
-          R${intPart}
-          <span className="text-lg">,{decPart}/mês</span>
-        </p>
-        {billingCycle === "annual" && (
-          <p className="text-xs text-primary mt-1 font-medium">
-            Economia de R${((plan.priceMonthly - plan.priceAnnual) * 12).toFixed(0)}/ano
-          </p>
+        {plan.consultOnly ? (
+          <p className="text-2xl font-display font-bold text-primary">Sob Consulta</p>
+        ) : (
+          <>
+            <p className="text-3xl font-display font-bold text-text">
+              R${intPart}
+              <span className="text-lg">,{decPart}/mês</span>
+            </p>
+            {billingCycle === "annual" && (
+              <p className="text-xs text-primary mt-1 font-medium">
+                Economia de R${((plan.priceMonthly - plan.priceAnnual) * 12).toFixed(0)}/ano
+              </p>
+            )}
+          </>
         )}
       </div>
 
