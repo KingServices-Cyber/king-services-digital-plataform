@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, PageHero } from "@/components/ui";
 import { SOLUTIONS } from "@/lib/content";
 
@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Soluções",
   alternates: { canonical: "/solucoes" },
   description:
-    "Conheça o portfólio completo de soluções da King Services, parceira autorizada Vivo Empresas.",
+    "Conheça o portfólio completo de soluções da KingServices, parceira autorizada Vivo Empresas.",
 };
 
 export default function SolucoesIndexPage() {

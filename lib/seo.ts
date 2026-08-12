@@ -1,4 +1,4 @@
-import { CONTACT_INFO } from "@/lib/content";
+﻿import { CONTACT_INFO } from "@/lib/content";
 
 /**
  * URL canônica do site em produção. Pode ser sobrescrita por ambiente
@@ -9,14 +9,14 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.kingse
   "",
 );
 
-export const SITE_NAME = "King Services";
+export const SITE_NAME = "KingServices";
 
 export const SITE_TAGLINE = "Parceira Autorizada Vivo Empresas";
 
 export const DEFAULT_TITLE = `${SITE_NAME} — ${SITE_TAGLINE}`;
 
 export const DEFAULT_DESCRIPTION =
-  "King Services — Parceira Autorizada Vivo Empresas. Conectividade e tecnologia para " +
+  "KingServices — Parceira Autorizada Vivo Empresas. Conectividade e tecnologia para " +
   "empresas que não podem parar: telefonia móvel, internet empresarial, PABX, cloud e " +
   "segurança digital.";
 

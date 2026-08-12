@@ -1,4 +1,4 @@
-// Edge Function: notify-new-lead
+﻿// Edge Function: notify-new-lead
 //
 // Recebe o lead recém-inserido (via trigger no banco + pg_net) e envia um
 // e-mail de notificação para a equipe usando a API do Resend.
@@ -10,7 +10,7 @@
 // Variáveis de ambiente (configurar em Supabase → Edge Functions → Secrets):
 //   NOTIFY_SECRET   segredo compartilhado (igual ao guardado no Vault)
 //   RESEND_API_KEY  chave da API do Resend
-//   NOTIFY_FROM     remetente verificado, ex.: "King Services <leads@kingservices.com.br>"
+//   NOTIFY_FROM     remetente verificado, ex.: "KingServices <leads@kingservices.com.br>"
 //   NOTIFY_TO       destinatário, ex.: "atendimento@kingservices.com.br"
 
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
@@ -58,7 +58,7 @@ Deno.serve(async (req: Request) => {
   const lead = (body.record ?? body) as Lead;
 
   const resendApiKey = Deno.env.get("RESEND_API_KEY");
-  const from = Deno.env.get("NOTIFY_FROM") ?? "King Services <onboarding@resend.dev>";
+  const from = Deno.env.get("NOTIFY_FROM") ?? "KingServices <onboarding@resend.dev>";
   const to = Deno.env.get("NOTIFY_TO") ?? "atendimento@kingservices.com.br";
 
   // Sem chave configurada: não falha o pipeline — apenas registra e sai.
@@ -73,7 +73,7 @@ Deno.serve(async (req: Request) => {
   const html = `
     <div style="font-family:Arial,sans-serif;max-width:520px;">
       <h2 style="color:#2A1240;">Novo lead recebido</h2>
-      <p style="color:#374151;">Um novo contato foi enviado pelo site King Services.</p>
+      <p style="color:#374151;">Um novo contato foi enviado pelo site KingServices.</p>
       <table style="border-collapse:collapse;font-size:14px;">
         ${row("Nome", lead.name)}
         ${row("E-mail", lead.email)}

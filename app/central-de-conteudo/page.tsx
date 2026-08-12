@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Central de Conteúdo",
   alternates: { canonical: "/central-de-conteudo" },
-  description: "E-books, guias, white papers e webinars da King Services.",
+  description: "E-books, guias, white papers e webinars da KingServices.",
 };
 
 const MATERIALS = [

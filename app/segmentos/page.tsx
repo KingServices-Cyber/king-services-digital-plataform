@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, PageHero } from "@/components/ui";
 import { SEGMENTS } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Segmentos",
   alternates: { canonical: "/segmentos" },
-  description: "Soluções especializadas para os desafios de cada setor atendido pela King Services.",
+  description: "Soluções especializadas para os desafios de cada setor atendido pela KingServices.",
 };
 
 export default function SegmentosIndexPage() {

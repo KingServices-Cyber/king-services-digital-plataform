@@ -1,4 +1,4 @@
-export type PlanCategory = "pf" | "pj";
+﻿export type PlanCategory = "pf" | "pj";
 
 export type Plan = {
   id: string;
@@ -222,7 +222,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
     quote:
-      "A King Services transformou nossa infraestrutura de telecomunicação. O atendimento consultivo fez toda a diferença na escolha das soluções certas para nosso negócio.",
+      "A KingServices transformou nossa infraestrutura de telecomunicação. O atendimento consultivo fez toda a diferença na escolha das soluções certas para nosso negócio.",
     name: "Roberto M.",
     role: "Diretor de TI — Indústria",
     rating: 5,
@@ -230,7 +230,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "2",
     quote:
-      "Desde que migramos para a King Services, nosso suporte técnico ficou muito mais ágil. O pós-venda ativo realmente funciona.",
+      "Desde que migramos para a KingServices, nosso suporte técnico ficou muito mais ágil. O pós-venda ativo realmente funciona.",
     name: "Carla S.",
     role: "Gerente de Operações — Comércio",
     rating: 5,
@@ -238,7 +238,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     id: "3",
     quote:
-      "Conectividade estável em todas as nossas filiais era um desafio. A King Services entregou a solução completa com internet dedicada e monitoramento 24/7.",
+      "Conectividade estável em todas as nossas filiais era um desafio. A KingServices entregou a solução completa com internet dedicada e monitoramento 24/7.",
     name: "Fernando L.",
     role: "CEO — Logística",
     rating: 5,
@@ -255,7 +255,7 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const FAQ_ITEMS = [
   {
-    question: "Qual a cobertura da King Services?",
+    question: "Qual a cobertura da KingServices?",
     answer:
       "Atendemos São José do Rio Preto e região com fibra óptica de alta velocidade. Consulte a disponibilidade para o seu endereço.",
   },

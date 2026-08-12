@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -337,7 +337,7 @@ export default function DiagnosticoPage() {
                         required
                         value={answers.nomeEmpresa}
                         onChange={(e) => set("nomeEmpresa", e.target.value)}
-                        placeholder="Ex: King Services Ltda"
+                        placeholder="Ex: KingServices Ltda"
                         className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary"
                       />
                     </div>
@@ -600,7 +600,7 @@ export default function DiagnosticoPage() {
                     </div>
                     <p className="font-semibold text-primary-700 mb-1">Diagnóstico enviado com sucesso!</p>
                     <p className="text-sm text-text-secondary">
-                      Um especialista King Services entrará em contato em breve para apresentar as melhores soluções para sua empresa.
+                      Um especialista KingServices entrará em contato em breve para apresentar as melhores soluções para sua empresa.
                     </p>
                     <Link
                       href="/contato"
@@ -613,7 +613,7 @@ export default function DiagnosticoPage() {
                   <>
                     <p className="font-semibold text-base text-graphite mb-1">Receba um relatório completo</p>
                     <p className="text-sm text-text-secondary mb-5">
-                      Deixe seu contato e um especialista King Services apresenta um plano personalizado para a sua pontuação.
+                      Deixe seu contato e um especialista KingServices apresenta um plano personalizado para a sua pontuação.
                     </p>
                     <form onSubmit={handleSubmitLead} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -664,7 +664,7 @@ export default function DiagnosticoPage() {
                           <Link href="/contato" className="text-primary underline hover:text-primary-700">
                             Política de Privacidade (LGPD)
                           </Link>{" "}
-                          da King Services.
+                          da KingServices.
                         </span>
                       </label>
 

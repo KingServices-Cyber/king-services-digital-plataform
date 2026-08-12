@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -88,8 +88,8 @@ export function Header() {
 
       {/* Main nav */}
       <div className="max-w-[1280px] mx-auto px-6 h-[64px] md:h-[72px] flex items-center justify-between">
-        <Link href="/" className="flex items-center" aria-label="King Services — página inicial">
-          <Image src={logo} alt="King Services" className="h-[48px] md:h-[56px] w-auto" priority />
+        <Link href="/" className="flex items-center" aria-label="KingServices — página inicial">
+          <Image src={logo} alt="KingServices" className="h-[48px] md:h-[56px] w-auto" priority />
         </Link>
 
         <button

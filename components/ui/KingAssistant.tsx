@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -16,7 +16,7 @@ const WHATSAPP_URL = `https://wa.me/${CONTACT_INFO.whatsapp}`;
 
 const WELCOME: Message = {
   from: "bot",
-  text: "Olá! Sou o King Assistant, assistente virtual da King Services. Como posso ajudar você hoje?",
+  text: "Olá! Sou o King Assistant, assistente virtual da KingServices. Como posso ajudar você hoje?",
   quickReplies: ["Soluções", "Orçamento", "Suporte", "Sobre nós"],
 };
 
@@ -99,9 +99,9 @@ const KNOWLEDGE_BASE: KnowledgeEntry[] = [
     },
   },
   {
-    keywords: ["sobre", "quem", "empresa", "king services", "história", "historia"],
+    keywords: ["sobre", "quem", "empresa", "KingServices", "história", "historia"],
     response: {
-      text: "A King Services é uma parceira autorizada Vivo Empresas, com mais de 15 anos de experiência em telecomunicações corporativas.\n\nNossos diferenciais:\n• Atendimento consultivo personalizado\n• Portfólio completo de soluções\n• Suporte qualificado 24/7\n• Pós-venda ativo\n• Atendimento nacional\n• Especialistas certificados",
+      text: "A KingServices é uma parceira autorizada Vivo Empresas, com mais de 15 anos de experiência em telecomunicações corporativas.\n\nNossos diferenciais:\n• Atendimento consultivo personalizado\n• Portfólio completo de soluções\n• Suporte qualificado 24/7\n• Pós-venda ativo\n• Atendimento nacional\n• Especialistas certificados",
       links: [
         { label: "Sobre a empresa", href: "/sobre" },
         { label: "Diferenciais", href: "/diferenciais" },
@@ -152,7 +152,7 @@ const KNOWLEDGE_BASE: KnowledgeEntry[] = [
   {
     keywords: ["diferencial", "vantagem", "por que", "porque", "motivo"],
     response: {
-      text: "Por que escolher a King Services?\n\n• Atendimento consultivo personalizado\n• Portfólio completo Vivo Empresas\n• Suporte qualificado e agilidade\n• Relacionamento de longo prazo\n• Agilidade na implantação\n• Atendimento nacional\n• Especialistas certificados\n• Pós-venda ativo\n\nDiferente de contratar direto, você tem um parceiro dedicado!",
+      text: "Por que escolher a KingServices?\n\n• Atendimento consultivo personalizado\n• Portfólio completo Vivo Empresas\n• Suporte qualificado e agilidade\n• Relacionamento de longo prazo\n• Agilidade na implantação\n• Atendimento nacional\n• Especialistas certificados\n• Pós-venda ativo\n\nDiferente de contratar direto, você tem um parceiro dedicado!",
       links: [{ label: "Ver diferenciais", href: "/diferenciais" }],
       quickReplies: ["Soluções", "Orçamento", "Segmentos"],
     },

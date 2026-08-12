@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Área do Cliente",
-  description: "Acesse a Área do Cliente King Services.",
+  description: "Acesse a Área do Cliente KingServices.",
   alternates: { canonical: "/login" },
   // Página de autenticação: não deve ser indexada por mecanismos de busca.
   robots: { index: false, follow: false },

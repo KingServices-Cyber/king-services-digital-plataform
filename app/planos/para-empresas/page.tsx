@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { fetchPJPlans } from "@/lib/data";
 import { PlanPageClient } from "@/components/ui/PlanPageClient";
@@ -69,7 +69,7 @@ export default async function ParaEmpresasPage() {
       <section id="corporacoes" className="py-14 px-6 bg-white scroll-mt-24">
         <div className="max-w-[1280px] mx-auto">
           <h2 className="font-display font-bold text-[clamp(20px,2.5vw,30px)] text-text text-center mb-10">
-            Por que contratar a King Services para sua empresa?
+            Por que contratar a KingServices para sua empresa?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[

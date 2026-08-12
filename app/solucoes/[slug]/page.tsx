@@ -16,7 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: solution.desc,
     alternates: { canonical: `/solucoes/${solution.slug}` },
     openGraph: {
-      title: `${solution.title} — King Services`,
+      title: `${solution.title} — KingServices`,
       description: solution.desc,
       url: `/solucoes/${solution.slug}`,
     },

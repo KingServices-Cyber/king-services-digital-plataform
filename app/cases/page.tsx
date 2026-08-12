@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, CtaFinal, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Cases",
   alternates: { canonical: "/cases" },
-  description: "Resultados reais de empresas que transformaram sua conectividade com a King Services.",
+  description: "Resultados reais de empresas que transformaram sua conectividade com a KingServices.",
 };
 
 const PLACEHOLDER_CASES = [

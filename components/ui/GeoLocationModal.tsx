@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useCallback, useEffect, useState } from "react";
 import { cn } from "@/design-system";
@@ -189,7 +189,7 @@ export function GeoLocationModal() {
         aria-hidden="true"
       />
 
-      {/* Card — estilo Claro, paleta King Services */}
+      {/* Card — estilo Claro, paleta KingServices */}
       <div className="relative w-full max-w-[420px] bg-white rounded-2xl shadow-2xl overflow-hidden animate-fade-up">
 
         {/* ── DETECTING ── */}

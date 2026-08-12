@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { CONTACT_INFO } from "@/lib/content/data";
 import { WhatsAppLink } from "@/components/ui";
 import { cn } from "@/design-system";
@@ -20,7 +20,7 @@ const SOLUCOES_LINKS = [
 ];
 
 const EMPRESA_LINKS = [
-  { label: "Sobre a King Services", href: "/sobre" },
+  { label: "Sobre a KingServices", href: "/sobre" },
   { label: "Diferenciais", href: "/diferenciais" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
@@ -105,7 +105,7 @@ export function Footer({ className }: { className?: string } = {}) {
             href="https://facebook.com/kingservices"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Facebook da King Services"
+            aria-label="Facebook da KingServices"
             className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -116,7 +116,7 @@ export function Footer({ className }: { className?: string } = {}) {
             href="https://www.instagram.com/kingservicesoficial"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram da King Services"
+            aria-label="Instagram da KingServices"
             className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -127,7 +127,7 @@ export function Footer({ className }: { className?: string } = {}) {
             href="https://twitter.com/kingservices"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Twitter/X da King Services"
+            aria-label="Twitter/X da KingServices"
             className="flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white/70 hover:text-white transition-all"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -150,7 +150,7 @@ export function Footer({ className }: { className?: string } = {}) {
       </div>
 
       <div className="border-t border-white/10 px-6 py-5 max-w-[1280px] mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px]">
-        <p>&copy; {new Date().getFullYear()} King Services. Todos os direitos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} KingServices. Todos os direitos reservados.</p>
         <div className="flex gap-5 flex-wrap">
           <Link href="/contato" className="text-white/60 hover:text-white no-underline transition-colors">
             Aviso legal

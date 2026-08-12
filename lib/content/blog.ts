@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 
@@ -34,7 +34,7 @@ function readPostFile(slug: string): Post {
     description: String(data.description ?? ""),
     category: String(data.category ?? "Geral"),
     date: String(data.date ?? ""),
-    author: String(data.author ?? "King Services"),
+    author: String(data.author ?? "KingServices"),
     readingTime: estimateReadingTime(content),
     content,
   };

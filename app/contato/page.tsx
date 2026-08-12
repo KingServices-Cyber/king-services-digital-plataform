@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { FormEvent, useState } from "react";
 import Link from "next/link";
@@ -59,7 +59,7 @@ export default function ContatoPage() {
         {/* Informações de contato */}
         <div>
           <span className="block text-[13px] font-bold uppercase text-[#8F58C9] mb-2">
-            Fale com a King Services
+            Fale com a KingServices
           </span>
 
           <div className="mt-[18px] text-[19px] leading-[1.6] text-[#3A3937]">
@@ -117,7 +117,7 @@ export default function ContatoPage() {
         <div className="border border-fog rounded-card p-6 h-fit">
           {submitted ? (
             <p className="text-[15px] text-purple-700 font-semibold">
-              ✓ Mensagem enviada! Um especialista King Services entrará em contato.
+              ✓ Mensagem enviada! Um especialista KingServices entrará em contato.
             </p>
           ) : (
             <form onSubmit={handleSubmit}>
@@ -218,7 +218,7 @@ export default function ContatoPage() {
                   <Link href="/contato" className="text-purple-600 underline hover:text-purple-800">
                     Política de Privacidade (LGPD)
                   </Link>{" "}
-                  da King Services.
+                  da KingServices.
                 </span>
               </label>
 

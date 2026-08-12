@@ -20,7 +20,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
-      title: `${post.title} — King Services`,
+      title: `${post.title} — KingServices`,
       description: post.description,
       url: `/blog/${post.slug}`,
       publishedTime: post.date || undefined,
@@ -55,7 +55,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       description: post.description,
       datePublished: post.date || undefined,
       author: { "@type": "Organization", name: post.author },
-      publisher: { "@type": "Organization", name: "King Services" },
+      publisher: { "@type": "Organization", name: "KingServices" },
       mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
       articleSection: post.category,
       inLanguage: "pt-BR",

@@ -16,7 +16,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     description: segment.desc,
     alternates: { canonical: `/segmentos/${segment.slug}` },
     openGraph: {
-      title: `${segment.title} — King Services`,
+      title: `${segment.title} — KingServices`,
       description: segment.desc,
       url: `/segmentos/${segment.slug}`,
     },

@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, CtaFinal, PageHero } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Diferenciais",
   alternates: { canonical: "/diferenciais" },
-  description: "Por que empresas escolhem a King Services como parceira de tecnologia e conectividade.",
+  description: "Por que empresas escolhem a KingServices como parceira de tecnologia e conectividade.",
 };
 
 const DIFERENCIAIS = [
@@ -21,7 +21,7 @@ const DIFERENCIAIS = [
 export default function DiferenciaisPage() {
   return (
     <>
-      <PageHero eyebrow="Diferenciais" title="Por que empresas escolhem a King Services" />
+      <PageHero eyebrow="Diferenciais" title="Por que empresas escolhem a KingServices" />
       <Content>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
           {DIFERENCIAIS.map((d) => (

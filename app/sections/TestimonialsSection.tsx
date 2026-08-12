@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import type { Testimonial } from "@/lib/content/plans";
@@ -35,7 +35,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
             O que nossos clientes dizem
           </h2>
           <p className="text-text-secondary mt-3">
-            Mais de 500 empresas confiam na King Services para conectar seus negócios.
+            Mais de 500 empresas confiam na KingServices para conectar seus negócios.
           </p>
         </div>
 

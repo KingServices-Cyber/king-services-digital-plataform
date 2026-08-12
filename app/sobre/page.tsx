@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Card, Content, EyebrowSmall, PageHero, StepsList } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default function SobrePage() {
   return (
     <>
       <PageHero
-        eyebrow="Sobre a King Services"
+        eyebrow="Sobre a KingServices"
         title="Conectando empresas à tecnologia certa para crescer"
         description="Consultoria especializada em telecomunicações e tecnologia."
       />
@@ -41,7 +41,7 @@ export default function SobrePage() {
         <div id="quem-somos">
           <EyebrowSmall>Quem somos</EyebrowSmall>
           <p className="text-sm max-w-[640px] leading-relaxed">
-            A King Services é uma empresa especializada na comercialização, consultoria e gestão de
+            A KingServices é uma empresa especializada na comercialização, consultoria e gestão de
             soluções corporativas da Vivo Empresas, oferecendo atendimento personalizado para clientes
             Pessoa Física (PF), Pequenas e Médias Empresas (PME) e Grandes Corporações.
           </p>

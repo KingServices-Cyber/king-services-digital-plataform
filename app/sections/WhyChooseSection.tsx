@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
 import { BENEFITS } from "@/lib/content/plans";
@@ -35,7 +35,7 @@ export function WhyChooseSection() {
             </span>
             <h2 className="font-display font-bold text-[clamp(24px,3.5vw,36px)] text-text mt-3 leading-tight">
               Por que escolher a{" "}
-              <span className="text-gradient">King Services</span>
+              <span className="text-gradient">KingServices</span>
             </h2>
             <p className="text-text-secondary mt-4 max-w-md leading-relaxed">
               Conexão estável, atendimento humano e internet de verdade.{" "}
