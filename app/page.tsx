@@ -8,6 +8,7 @@ import { TestimonialsSection } from "./sections/TestimonialsSection";
 import { FAQSection } from "./sections/FAQSection";
 import { CTASection } from "./sections/CTASection";
 import { StatsSection } from "./sections/StatsSection";
+import { DiagnosticoSection } from "./sections/DiagnosticoSection";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -24,6 +25,7 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection />
+      <DiagnosticoSection />
       <FeatureBar />
       <StatsSection />
       <WhyChooseSection />
