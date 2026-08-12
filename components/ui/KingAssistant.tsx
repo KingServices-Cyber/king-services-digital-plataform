@@ -86,9 +86,7 @@ const KNOWLEDGE_BASE: KnowledgeEntry[] = [
     keywords: ["orçamento", "orcamento", "preço", "preco", "valor", "custo", "quanto custa", "proposta", "cotação", "cotacao"],
     response: {
       text: "Para receber um orçamento personalizado, você pode:\n\n1. Preencher o formulário na página de Contato\n2. Enviar uma mensagem pelo WhatsApp\n3. Ligar para nossa central\n\nUm consultor especializado entrará em contato para entender suas necessidades e montar a melhor proposta.",
-      links: [
-        { label: "Ir para página de Contato", href: "/contato" },
-      ],
+      links: [{ label: "Ir para página de Contato", href: "/contato" }],
       quickReplies: ["WhatsApp", "Telefone", "Soluções"],
     },
   },
@@ -247,10 +245,72 @@ function ChatBubble({ msg }: { msg: Message }) {
   );
 }
 
+function FloatingTooltipButton({
+  label,
+  onClick,
+  href,
+  ariaLabel,
+  className,
+  children,
+}: {
+  label: string;
+  onClick?: () => void;
+  href?: string;
+  ariaLabel: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const [hovered, setHovered] = useState(false);
+
+  const shared = {
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => setHovered(false),
+    "aria-label": ariaLabel,
+    className: cn(
+      "w-14 h-14 rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.25)] transition-transform hover:scale-110 border-none cursor-pointer flex-shrink-0",
+      className,
+    ),
+  };
+
+  const tooltip = (
+    <span
+      className={cn(
+        "absolute right-[calc(100%+12px)] top-1/2 -translate-y-1/2 whitespace-nowrap bg-gray-900 text-white text-[12px] font-semibold px-3 py-1.5 rounded-lg shadow-lg pointer-events-none transition-all duration-200",
+        hovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-2",
+      )}
+    >
+      {label}
+      {/* Seta à direita apontando para o botão */}
+      <span className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900" />
+    </span>
+  );
+
+  if (href) {
+    return (
+      <div className="relative flex items-center">
+        {tooltip}
+        <a href={href} target="_blank" rel="noopener noreferrer" {...shared}>
+          {children}
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative flex items-center">
+      {tooltip}
+      <button type="button" onClick={onClick} {...shared}>
+        {children}
+      </button>
+    </div>
+  );
+}
+
 export function KingAssistant({ className }: { className?: string } = {}) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
+  const [footerVisible, setFooterVisible] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -269,6 +329,18 @@ export function KingAssistant({ className }: { className?: string } = {}) {
       inputRef.current.focus();
     }
   }, [open]);
+
+  // Oculta os botões quando o rodapé entra na viewport
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   function handleSend(text?: string) {
     const value = (text || input).trim();
@@ -296,8 +368,9 @@ export function KingAssistant({ className }: { className?: string } = {}) {
   const lastBotMsg = [...messages].reverse().find((m) => m.from === "bot");
 
   return (
-    <div className={cn("fixed bottom-5 right-5 z-[60]", className)}>
-      {open ? (
+    <div className={cn("fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3 transition-all duration-300", footerVisible ? "opacity-0 pointer-events-none translate-y-4" : "opacity-100 translate-y-0", className)}>
+      {/* Painel de chat */}
+      {open && (
         <div className="w-[360px] max-h-[520px] bg-white rounded-2xl shadow-[0_8px_32px_rgba(42,18,64,0.2)] flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
           {/* Header */}
           <div className="bg-purple-900 px-4 py-3.5 flex items-center gap-3 flex-shrink-0">
@@ -369,18 +442,36 @@ export function KingAssistant({ className }: { className?: string } = {}) {
             </button>
           </div>
         </div>
-      ) : (
-        <button
-          onClick={() => setOpen(true)}
-          className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-900 to-purple-600 flex items-center justify-center border-none cursor-pointer shadow-[0_4px_16px_rgba(42,18,64,0.35)] transition-transform hover:scale-110 group relative"
-          aria-label="Abrir King Assistant"
+      )}
+
+      {/* Botões flutuantes */}
+      <div className="flex flex-col items-end gap-3">
+        {/* WhatsApp */}
+        <FloatingTooltipButton
+          label="Fale com o Consultor"
+          href={WHATSAPP_URL}
+          ariaLabel="Falar com consultor no WhatsApp"
+          className="bg-[#25D366]"
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.553 4.112 1.52 5.843L.057 23.177a.75.75 0 0 0 .92.92l5.334-1.463A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.694-.504-5.236-1.383l-.374-.217-3.874 1.063 1.063-3.874-.217-.374A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+          </svg>
+        </FloatingTooltipButton>
+
+        {/* King Assistant */}
+        <FloatingTooltipButton
+          label="King Assistant"
+          onClick={() => setOpen((v) => !v)}
+          ariaLabel="Abrir King Assistant"
+          className="bg-gradient-to-br from-purple-900 to-purple-600"
+        >
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </svg>
           <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
-        </button>
-      )}
+        </FloatingTooltipButton>
+      </div>
     </div>
   );
 }

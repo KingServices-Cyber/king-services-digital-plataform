@@ -31,7 +31,7 @@ export function Header() {
 
   useEffect(() => {
     function onResize() {
-      if (window.innerWidth > 768) {
+      if (window.innerWidth >= 1024) {
         setMobileOpen(false);
         setOpenItem(null);
       }
@@ -41,12 +41,12 @@ export function Header() {
   }, []);
 
   function handleMouseEnter(label: string) {
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth < 1024) return;
     clearTimeout(closeTimer.current);
     setOpenItem(label);
   }
   function handleMouseLeave() {
-    if (window.innerWidth <= 768) return;
+    if (window.innerWidth < 1024) return;
     closeTimer.current = setTimeout(() => setOpenItem(null), 300);
   }
   function handleMobileToggle(label: string) {
@@ -94,7 +94,7 @@ export function Header() {
 
         <button
           type="button"
-          className="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-border rounded-lg"
+          className="lg:hidden flex flex-col justify-center gap-[5px] w-10 h-10 border border-border rounded-lg"
           aria-expanded={mobileOpen}
           aria-controls="main-nav"
           aria-label={mobileOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
@@ -128,14 +128,14 @@ export function Header() {
             "fixed top-[64px] left-0 right-0 bottom-0 bg-white",
             "transition-transform duration-300 ease-out",
             mobileOpen ? "translate-x-0" : "translate-x-full",
-            "md:static md:flex-row md:items-center md:gap-1 md:translate-x-0 md:bg-transparent md:p-0 md:overflow-visible md:z-auto",
+            "lg:static lg:flex-row lg:items-center lg:gap-1 lg:translate-x-0 lg:bg-transparent lg:p-0 lg:overflow-visible lg:z-auto",
           )}
         >
           {NAV_ITEMS.map((item) => (
             <div
               key={item.label}
               className={cn(
-                "relative w-full md:w-auto border-b md:border-0 border-border",
+                "relative w-full lg:w-auto border-b lg:border-0 border-border",
                 item.alignRight && "md:ml-auto",
               )}
               onMouseEnter={() => handleMouseEnter(item.label)}
@@ -143,11 +143,11 @@ export function Header() {
             >
               <Link
                 href={item.href}
-                className="flex items-center justify-between md:inline-block py-3.5 md:py-0 px-1 md:px-3 text-[15px] md:text-[14px] font-medium text-text hover:text-primary transition-colors whitespace-nowrap"
+                className="flex items-center justify-between lg:inline-block py-3.5 lg:py-0 px-1 lg:px-3 text-[15px] lg:text-[14px] font-medium text-text hover:text-primary transition-colors whitespace-nowrap"
                 aria-haspopup={item.columns ? "true" : undefined}
                 aria-expanded={openItem === item.label}
                 onClick={(e) => {
-                  if (window.innerWidth <= 768 && item.columns) {
+                  if (window.innerWidth < 1024 && item.columns) {
                     e.preventDefault();
                     handleMobileToggle(item.label);
                   } else {
@@ -158,7 +158,7 @@ export function Header() {
               >
                 {item.label}
                 {item.columns && (
-                  <span className="md:hidden text-primary text-lg font-normal">
+                  <span className="lg:hidden text-primary text-lg font-normal">
                     {openItem === item.label ? "–" : "+"}
                   </span>
                 )}
@@ -167,28 +167,28 @@ export function Header() {
               {item.columns && (
                 <div
                   className={cn(
-                    "md:absolute md:top-full md:mt-2 md:bg-white md:border md:border-border md:rounded-2xl md:shadow-mega md:p-6",
-                    "md:flex md:gap-10 md:min-w-[420px] md:opacity-0 md:invisible md:pointer-events-none md:-translate-y-1",
-                    item.alignRight ? "md:right-0" : "md:left-0",
+                    "lg:absolute lg:top-full lg:mt-2 lg:bg-white lg:border lg:border-border lg:rounded-2xl lg:shadow-mega lg:p-4",
+                    "lg:flex lg:gap-3 lg:opacity-0 lg:invisible lg:pointer-events-none lg:-translate-y-1",
+                    item.alignRight ? "lg:right-0" : "lg:left-0",
                     "transition-all duration-300",
                     openItem === item.label
-                      ? "md:opacity-100 md:visible md:pointer-events-auto md:translate-y-0 flex flex-col md:flex-row gap-4 pb-3"
-                      : "hidden md:flex",
+                      ? "lg:opacity-100 lg:visible lg:pointer-events-auto lg:translate-y-0 flex flex-col lg:flex-row gap-3 pb-3"
+                      : "hidden lg:flex",
                   )}
                 >
                   {item.columns.map((col, i) => (
-                    <div key={i} className="min-w-0 md:min-w-[180px]">
+                    <div key={i} className="min-w-0">
                       {col.title && (
-                        <p className="text-xs font-bold uppercase tracking-wide text-primary mb-2">
+                        <p className="text-xs font-bold uppercase tracking-wide text-primary mb-1">
                           {col.title}
                         </p>
                       )}
-                      <ul className="space-y-0.5">
+                      <ul className="space-y-0">
                         {col.links.map((link) => (
                           <li key={link.label + link.href}>
                             <Link
                               href={link.href}
-                              className="block px-2 py-1.5 -mx-2 rounded-lg text-sm text-text hover:bg-primary-50 hover:text-primary whitespace-nowrap"
+                              className="block px-2 py-1 -mx-2 rounded-lg text-sm text-text hover:bg-primary-50 hover:text-primary whitespace-nowrap"
                               onClick={() => {
                                 setMobileOpen(false);
                                 setOpenItem(null);
@@ -206,7 +206,7 @@ export function Header() {
             </div>
           ))}
 
-          <div className="md:hidden flex flex-col gap-2 mt-4 pt-4 border-t border-border">
+          <div className="lg:hidden flex flex-col gap-2 mt-4 pt-4 border-t border-border">
             <a href="tel:+5517997150462" className="text-sm font-semibold text-primary py-2 flex items-center gap-2">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -225,7 +225,7 @@ export function Header() {
           </div>
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/contato"
             className="inline-block font-bold text-[13px] px-5 py-2.5 rounded-pill bg-primary text-white transition-all hover:bg-primary-600 hover:shadow-elevated hover:-translate-y-0.5"

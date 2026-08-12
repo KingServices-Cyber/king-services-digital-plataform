@@ -1,4 +1,5 @@
 export * from "./Button";
+export * from "./HeroCarousel";
 export * from "./Card";
 export * from "./CookieConsentBanner";
 export * from "./KingAssistant";

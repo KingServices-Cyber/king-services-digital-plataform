@@ -85,7 +85,7 @@ export default function ContatoPage() {
             {CONTACT_INFO.offices.map((office) => (
               <div key={office.label}>
                 <p className="font-bold text-graphite mb-1.5">📍 {office.label}:</p>
-                <p>
+                <p className="mb-3">
                   {office.companyName}
                   <br />
                   CNPJ: {office.cnpj}
@@ -96,6 +96,18 @@ export default function ContatoPage() {
                   <br />
                   {office.addressCep}
                 </p>
+                <div className="rounded-xl overflow-hidden border border-fog">
+                  <iframe
+                    src={office.mapsEmbedUrl}
+                    width="100%"
+                    height="200"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title={`Mapa ${office.label}`}
+                  />
+                </div>
               </div>
             ))}
           </div>

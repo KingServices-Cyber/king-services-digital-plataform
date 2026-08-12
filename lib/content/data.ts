@@ -282,14 +282,18 @@ export const CONTACT_INFO = {
       addressStreet: "Rua Souza Barros, nº75 - Vila Aurora",
       addressCity: "São José do Rio Preto / SP",
       addressCep: "CEP: 15.014-380",
+      mapsEmbedUrl:
+        "https://maps.google.com/maps?q=Rua+Souza+Barros+75+Vila+Aurora+São+José+do+Rio+Preto+SP+Brazil&output=embed&hl=pt",
     },
     {
       label: "Escritório Filial",
       companyName: "KingServices Ltda.",
       cnpj: "000.000.000/0001-90",
-      addressStreet: "Rua Avenida Brasil, 2836",
+      addressStreet: "Avenida Brasil, 2836",
       addressCity: "Brasilândia - Franca / SP",
       addressCep: "CEP: 14.402-450",
+      mapsEmbedUrl:
+        "https://maps.google.com/maps?q=Avenida+Brasil+2836+Brasilândia+Franca+SP+Brazil&output=embed&hl=pt",
     },
   ],
 };
