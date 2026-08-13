@@ -62,7 +62,7 @@ function FooterColumn({
 export function Footer({ className }: { className?: string } = {}) {
   return (
     <footer className={cn("bg-primary-900 text-white/75", className)}>
-      <div className="max-w-[1280px] mx-auto px-6 pt-12 pb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] gap-8">
+      <div className="max-w-[1280px] mx-auto px-6 pt-12 pb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_2fr_1fr_1fr] gap-8">
         <div>
           <p className="font-display font-bold text-xl text-white mb-3">
             King<span className="text-primary-200">Services</span>
@@ -98,32 +98,35 @@ export function Footer({ className }: { className?: string } = {}) {
           </div>
         </div>
 
-        {/* Coluna de Planos com sub-grupos PF / PJ */}
+        {/* Coluna Planos com duas sub-colunas internas */}
         <div>
           <p className="text-xs font-bold uppercase tracking-wide text-white mb-3.5">Planos</p>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-1.5">Para Você</p>
-          <ul className="space-y-0 m-0 p-0 list-none mb-4">
-            {PLANOS_PF.map((l) => (
-              <li key={l.label} className="py-1">
-                <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-1.5">Para Empresas</p>
-          <ul className="space-y-0 m-0 p-0 list-none mb-4">
-            {PLANOS_PJ.map((l) => (
-              <li key={l.label} className="py-1">
-                <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link href="/#planos" className="text-[12px] text-primary-300 hover:text-white no-underline transition-colors font-semibold">
-            Ver todos os planos →
-          </Link>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-2">Para Você</p>
+              <ul className="space-y-0 m-0 p-0 list-none">
+                {PLANOS_PF.map((l) => (
+                  <li key={l.label} className="py-1">
+                    <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-2">Para Empresas</p>
+              <ul className="space-y-0 m-0 p-0 list-none">
+                {PLANOS_PJ.map((l) => (
+                  <li key={l.label} className="py-1">
+                    <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
         <FooterColumn title="Soluções" links={SOLUCOES_LINKS} />
