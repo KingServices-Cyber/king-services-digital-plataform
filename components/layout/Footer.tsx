@@ -3,12 +3,18 @@ import { CONTACT_INFO } from "@/lib/content/data";
 import { WhatsAppLink } from "@/components/ui";
 import { cn } from "@/design-system";
 
-const PLANOS_LINKS = [
-  { label: "Fibra 400 Mega — R$ 79,99/mês", href: "/contato?plano=400mega" },
-  { label: "Fibra 600 Mega — R$ 94,99/mês", href: "/contato?plano=600mega" },
-  { label: "Fibra 1 Giga — R$ 199,99/mês", href: "/contato?plano=1giga" },
-  { label: "Fibra 2 Giga — R$ 399,99/mês", href: "/contato?plano=2giga" },
-  { label: "Ver todos os planos", href: "/#planos" },
+const PLANOS_PF = [
+  { label: "Fibra 400 Mega", href: "/planos/para-voce?plano=400mega" },
+  { label: "Fibra 600 Mega", href: "/planos/para-voce?plano=600mega" },
+  { label: "Fibra 1 Giga", href: "/planos/para-voce?plano=1giga" },
+  { label: "Fibra 2 Giga", href: "/planos/para-voce?plano=2giga" },
+];
+
+const PLANOS_PJ = [
+  { label: "Fibra Empresarial", href: "/planos/para-empresas?plano=fibra" },
+  { label: "Internet Dedicada Light", href: "/planos/para-empresas?plano=dedicado-100" },
+  { label: "Internet Dedicada", href: "/planos/para-empresas?plano=dedicado-200" },
+  { label: "Voz e Telefonia (VVN)", href: "/solucoes/telefonia-fixa-pabx" },
 ];
 
 const SOLUCOES_LINKS = [
@@ -92,7 +98,34 @@ export function Footer({ className }: { className?: string } = {}) {
           </div>
         </div>
 
-        <FooterColumn title="Planos" links={PLANOS_LINKS} />
+        {/* Coluna de Planos com sub-grupos PF / PJ */}
+        <div>
+          <p className="text-xs font-bold uppercase tracking-wide text-white mb-3.5">Planos</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-1.5">Para Você</p>
+          <ul className="space-y-0 m-0 p-0 list-none mb-4">
+            {PLANOS_PF.map((l) => (
+              <li key={l.label} className="py-1">
+                <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-primary-300 mb-1.5">Para Empresas</p>
+          <ul className="space-y-0 m-0 p-0 list-none mb-4">
+            {PLANOS_PJ.map((l) => (
+              <li key={l.label} className="py-1">
+                <Link href={l.href} className="text-[13px] text-white/70 hover:text-white no-underline transition-colors">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <Link href="/#planos" className="text-[12px] text-primary-300 hover:text-white no-underline transition-colors font-semibold">
+            Ver todos os planos →
+          </Link>
+        </div>
+
         <FooterColumn title="Soluções" links={SOLUCOES_LINKS} />
         <FooterColumn title="Empresa" links={EMPRESA_LINKS} />
       </div>
