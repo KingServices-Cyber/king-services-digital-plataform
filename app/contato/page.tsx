@@ -63,19 +63,24 @@ export default function ContatoPage() {
           </span>
 
           <div className="mt-[18px] text-[19px] leading-[1.6] text-[#3A3937]">
-            <p className="font-bold text-graphite mb-1.5">Central de Atendimento:</p>
-            <p className="mb-2">📞 {CONTACT_INFO.phone}</p>
-            <p className="mb-6 flex items-center gap-2">
-              <WhatsAppLink iconOnly />
+            <p className="font-bold text-graphite mb-3">Central de Atendimento:</p>
+            <div className="flex flex-wrap items-center gap-6 mb-6">
+              <a
+                href={`tel:${CONTACT_INFO.phone}`}
+                className="flex items-center gap-2 text-[#3A3937] no-underline"
+              >
+                📞 {CONTACT_INFO.phone}
+              </a>
               <a
                 href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
                 target="_blank"
                 rel="noopener"
-                className="text-[#3A3937] no-underline"
+                className="flex items-center gap-2 text-[#3A3937] no-underline"
               >
+                <WhatsAppLink iconOnly />
                 {CONTACT_INFO.phone}
               </a>
-            </p>
+            </div>
 
             <p className="font-bold text-graphite mb-1.5">✉ E-mail:</p>
             <p className="mb-6">{CONTACT_INFO.email}</p>
