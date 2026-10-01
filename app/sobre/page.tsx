@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import Image from "next/image";
 import { Card, Content, EyebrowSmall, PageHero, StepsList } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -17,16 +18,16 @@ const VALORES = [
 ];
 
 const ATUACAO = [
-  "Telefonia Móvel Corporativa",
-  "Telefonia Fixa Empresarial",
-  "Internet Fibra Empresarial",
-  "Links Dedicados",
-  "Vivo Cloud",
-  "Segurança Digital",
-  "Soluções IoT",
-  "Gestão de Mobilidade Corporativa",
-  "PABX em Nuvem",
-  "UCaaS (Comunicação Unificada)",
+  { title: "Telefonia Móvel Corporativa",    img: "/images/atuacao/telefonia-movel.jpg",    alt: "Smartphones e dispositivos corporativos" },
+  { title: "Telefonia Fixa Empresarial",     img: "/images/atuacao/telefonia-fixa.jpg",     alt: "Telefone fixo IP empresarial" },
+  { title: "Internet Fibra Empresarial",     img: "/images/atuacao/internet-fibra.jpg",     alt: "Cabos de fibra óptica empresarial" },
+  { title: "Links Dedicados",                img: "/images/atuacao/links-dedicados.jpg",    alt: "Infraestrutura de rede dedicada" },
+  { title: "Vivo Cloud",                     img: "/images/atuacao/vivo-cloud.jpg",         alt: "Soluções em nuvem Vivo" },
+  { title: "Segurança Digital",              img: "/images/atuacao/seguranca-digital.jpg",  alt: "Segurança cibernética empresarial" },
+  { title: "Soluções IoT",                   img: "/images/atuacao/solucoes-iot.jpg",       alt: "Internet das Coisas corporativa" },
+  { title: "Gestão de Mobilidade Corporativa", img: "/images/atuacao/gestao-mobilidade.jpg", alt: "Gestão de dispositivos móveis corporativos" },
+  { title: "PABX em Nuvem",                 img: "/images/atuacao/pabx-nuvem.jpg",         alt: "Sistema PABX em nuvem" },
+  { title: "UCaaS (Comunicação Unificada)",  img: "/images/atuacao/ucaas.jpg",              alt: "Comunicação unificada e videoconferência" },
 ];
 
 export default function SobrePage() {
@@ -54,11 +55,27 @@ export default function SobrePage() {
       <Content tinted>
         <div id="nossa-atuacao">
           <EyebrowSmall>Nossa Atuação</EyebrowSmall>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {ATUACAO.map((item) => (
-              <Card key={item} clickable={false} center>
-                <h3 className="text-xs font-semibold m-0">{item}</h3>
-              </Card>
+              <div
+                key={item.title}
+                className="rounded-xl overflow-hidden border border-border bg-white shadow-sm hover:shadow-card transition-shadow duration-200"
+              >
+                <div className="relative w-full h-[130px]">
+                  <Image
+                    src={item.img}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                  />
+                </div>
+                <div className="px-3 py-2.5">
+                  <h3 className="text-[11.5px] font-semibold text-text leading-snug text-center m-0">
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
             ))}
           </div>
         </div>
