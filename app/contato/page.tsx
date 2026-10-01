@@ -220,7 +220,7 @@ export default function ContatoPage() {
                 />
                 <span className="text-[12.5px] leading-relaxed text-graphite/70">
                   Ao enviar este formulário, concordo com o tratamento dos meus dados pessoais conforme a{" "}
-                  <Link href="/contato" className="text-purple-600 underline hover:text-purple-800">
+                  <Link href="/politica-de-privacidade" className="text-purple-600 underline hover:text-purple-800" target="_blank">
                     Política de Privacidade (LGPD)
                   </Link>{" "}
                   da KingServices.

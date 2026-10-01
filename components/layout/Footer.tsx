@@ -194,7 +194,7 @@ export function Footer({ className }: { className?: string } = {}) {
           <Link href="/contato" className="text-white/60 hover:text-white no-underline transition-colors">
             Aviso legal
           </Link>
-          <Link href="/contato" className="text-white/60 hover:text-white no-underline transition-colors">
+          <Link href="/politica-de-privacidade" className="text-white/60 hover:text-white no-underline transition-colors">
             Política de Privacidade (LGPD)
           </Link>
         </div>
