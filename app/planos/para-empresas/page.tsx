@@ -21,7 +21,7 @@ export default async function ParaEmpresasPage() {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
             </svg>
-            Para Empresas — CNPJ (PME e Corporações)
+            Para Empresas — CNPJ (MEI, PME e Corporações)
           </div>
           <h1 className="font-display font-bold text-[clamp(28px,4.5vw,52px)] leading-tight mb-4">
             Conectividade que impulsiona seu negócio
@@ -54,7 +54,7 @@ export default async function ParaEmpresasPage() {
               Planos Empresariais
             </span>
             <h2 className="font-display font-bold text-[clamp(22px,3vw,34px)] text-text mt-3">
-              Para PME e Grandes Corporações
+              Para MEI, PME e Grandes Corporações
             </h2>
             <p className="text-text-secondary mt-2 max-w-xl mx-auto">
               Do escritório com 5 colaboradores à sede com milhares, temos o plano certo.

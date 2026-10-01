@@ -70,7 +70,7 @@ export function PlansSection({ pfPlans, pjPlans }: Props) {
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-text-secondary mb-6">
           {audience === "pf"
             ? "Planos residenciais para pessoa física (CPF)"
-            : "Soluções para PME e grandes corporações (CNPJ)"}
+            : "Soluções para MEI, PME e grandes corporações (CNPJ)"}
         </p>
 
         {/* Toggle mensal / anual */}
