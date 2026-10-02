@@ -71,15 +71,9 @@ export default function ContatoPage() {
               >
                 📞 {CONTACT_INFO.phone}
               </a>
-              <a
-                href={`https://wa.me/${CONTACT_INFO.whatsapp}`}
-                target="_blank"
-                rel="noopener"
-                className="flex items-center gap-2 text-[#3A3937] no-underline"
-              >
-                <WhatsAppLink iconOnly />
+              <WhatsAppLink className="flex items-center gap-2 text-[#3A3937]">
                 {CONTACT_INFO.phone}
-              </a>
+              </WhatsAppLink>
             </div>
 
             <p className="font-bold text-graphite mb-1.5">✉ E-mail:</p>
