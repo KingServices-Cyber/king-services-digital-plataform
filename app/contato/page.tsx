@@ -115,7 +115,7 @@ export default function ContatoPage() {
         {/* Formulário */}
         <div className="border border-fog rounded-card p-6 h-fit">
           {submitted ? (
-            <p className="text-[15px] text-purple-700 font-semibold">
+            <p className="text-[15px] text-primary font-semibold">
               ✓ Mensagem enviada! Um especialista KingServices entrará em contato.
             </p>
           ) : (

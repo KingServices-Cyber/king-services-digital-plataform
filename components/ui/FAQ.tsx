@@ -21,7 +21,7 @@ export function FAQ({ items }: { items: FAQItem[] }) {
             "border rounded-xl transition-all duration-200",
             openIndex === i
               ? "border-primary bg-primary-50/50 shadow-soft"
-              : "border-border bg-white hover:border-primary-200",
+              : "border-primary/20 bg-white hover:border-primary/50 hover:shadow-soft",
           )}
         >
           <button

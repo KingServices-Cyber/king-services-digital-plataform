@@ -5,11 +5,11 @@ export function CtaFinal({ className }: { className?: string } = {}) {
   return (
     <div
       className={cn(
-        "bg-gradient-to-br from-purple-600 to-lilac-500 text-white text-center px-6 py-10",
+        "bg-gradient-to-br from-[#660099] to-[#8800CC] text-white text-center px-6 py-10",
         className,
       )}
     >
-      <h3 className="font-display font-semibold text-base mb-2">
+      <h3 className="font-display font-semibold text-xl mb-2">
         Vamos conversar sobre a conectividade da sua empresa?
       </h3>
       <ButtonLink

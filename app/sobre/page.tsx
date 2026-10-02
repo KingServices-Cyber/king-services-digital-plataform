@@ -41,12 +41,12 @@ export default function SobrePage() {
       <Content>
         <div id="quem-somos">
           <EyebrowSmall>Quem somos</EyebrowSmall>
-          <p className="text-sm max-w-[640px] leading-relaxed">
+          <p className="text-base max-w-[640px] leading-relaxed">
             A KingServices é uma empresa especializada na comercialização, consultoria e gestão de
             soluções corporativas da Vivo Empresas, oferecendo atendimento personalizado para clientes
             Pessoa Física (PF), Pequenas e Médias Empresas (PME) e Grandes Corporações.
           </p>
-          <p className="text-sm max-w-[640px] leading-relaxed mt-3">
+          <p className="text-base max-w-[640px] leading-relaxed mt-3">
             Nosso compromisso é entregar soluções que aumentem a produtividade, reduzam custos
             operacionais e impulsionem o crescimento dos negócios de nossos clientes.
           </p>
@@ -95,7 +95,7 @@ export default function SobrePage() {
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-6 bg-gradient-to-b from-white to-slate-50">
+              <div className="p-6 bg-gradient-to-b from-white to-mist">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -125,7 +125,7 @@ export default function SobrePage() {
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-6 bg-gradient-to-b from-white to-slate-50">
+              <div className="p-6 bg-gradient-to-b from-white to-mist">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -152,7 +152,7 @@ export default function SobrePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
             {VALORES.map((v) => (
               <Card key={v.title} clickable={false}>
-                <h3 className="font-display font-semibold text-sm mb-1">{v.title}</h3>
+                <h3 className="font-display font-semibold text-sm mb-1 text-primary">{v.title}</h3>
                 <p className="text-xs text-graphite/70 leading-relaxed">{v.desc}</p>
               </Card>
             ))}

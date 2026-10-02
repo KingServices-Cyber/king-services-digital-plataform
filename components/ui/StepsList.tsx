@@ -18,7 +18,7 @@ export function StepsList({
   return (
     <div className={cn("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5", className)}>
       {STEPS.map((s) => (
-        <div key={s.n} className="border-l-2 border-lilac-300 pl-2.5">
+        <div key={s.n} className="border-l-2 border-primary pl-2.5">
           <span className="font-mono text-purple-600 font-bold text-sm">{s.n}</span>
           <h4 className="font-display font-semibold text-sm my-1">{s.title}</h4>
           {withDesc && <p className="text-xs text-graphite/70">{s.desc}</p>}

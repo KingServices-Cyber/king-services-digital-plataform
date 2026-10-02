@@ -96,8 +96,8 @@ export default function FaqPage() {
                   key={originalIndex}
                   className={`border rounded-card overflow-hidden transition-colors ${
                     isOpen
-                      ? "border-lilac-300 bg-mist"
-                      : "border-fog hover:border-lilac-300"
+                      ? "border-primary bg-mist shadow-soft"
+                      : "border-primary/25 hover:border-primary/60"
                   }`}
                 >
                   <button

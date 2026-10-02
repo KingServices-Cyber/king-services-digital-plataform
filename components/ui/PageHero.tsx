@@ -25,7 +25,7 @@ export function PageHero({
         <span className="text-[11px] font-semibold border border-white/25 rounded-pill px-2.5 py-1 text-lilac-300">
           {eyebrow}
         </span>
-        <h1 className="font-display font-semibold mt-3.5 max-w-[640px] text-[clamp(22px,5vw,30px)]">
+        <h1 className="font-display font-semibold mt-3.5 max-w-[640px] text-[clamp(26px,4vw,40px)]">
           {title}
         </h1>
         {description && <p className="mt-3 max-w-[560px] text-white/85 text-sm">{description}</p>}

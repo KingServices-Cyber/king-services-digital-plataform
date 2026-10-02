@@ -26,7 +26,7 @@ export default function DiferenciaisPage() {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5">
           {DIFERENCIAIS.map((d) => (
             <Card key={d} clickable={false} center>
-              <h3 className="text-xs font-semibold m-0">{d}</h3>
+              <h3 className="text-sm font-semibold text-primary m-0">{d}</h3>
             </Card>
           ))}
         </div>

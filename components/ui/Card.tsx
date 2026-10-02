@@ -52,7 +52,7 @@ export function Card({
   const innerClasses = cn(
     "group relative overflow-hidden border border-fog rounded-card p-4 bg-white transition-all duration-200 h-full",
     clickable
-      ? "cursor-pointer hover:border-lilac-500 hover:shadow-card hover:-translate-y-1 block"
+      ? "cursor-pointer hover:border-primary hover:shadow-card hover:-translate-y-1 block"
       : "cursor-default",
     center && "text-center",
     className,
