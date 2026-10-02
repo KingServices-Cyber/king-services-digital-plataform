@@ -218,7 +218,7 @@ export default function ContatoPage() {
                   onChange={(e) => setLgpdAccepted(e.target.checked)}
                   className="w-[18px] h-[18px] flex-shrink-0 mt-0.5 accent-purple-600 cursor-pointer"
                 />
-                <span className="text-[12.5px] leading-relaxed text-graphite/70">
+                <span className="text-[12.5px] leading-relaxed text-graphite">
                   Ao enviar este formulário, concordo com o tratamento dos meus dados pessoais conforme a{" "}
                   <Link href="/politica-de-privacidade" className="text-purple-600 underline hover:text-purple-800" target="_blank">
                     Política de Privacidade (LGPD)
