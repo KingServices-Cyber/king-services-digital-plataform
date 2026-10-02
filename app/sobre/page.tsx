@@ -59,19 +59,19 @@ export default function SobrePage() {
             {ATUACAO.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl overflow-hidden border border-border bg-white shadow-sm hover:shadow-card transition-shadow duration-200"
+                className="rounded-xl overflow-hidden border border-[#660099]/20 bg-white shadow-sm hover:shadow-lg hover:border-[#660099]/60 transition-all duration-200 group"
               >
-                <div className="relative w-full h-[130px]">
+                <div className="relative w-full h-[150px]">
                   <Image
                     src={item.img}
                     alt={item.alt}
                     fill
-                    className="object-cover"
+                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                   />
                 </div>
-                <div className="px-3 py-2.5">
-                  <h3 className="text-[11.5px] font-semibold text-text leading-snug text-center m-0">
+                <div className="px-3 py-2.5 border-t-2 border-[#660099]/30">
+                  <h3 className="text-[11.5px] font-semibold text-[#660099] leading-snug text-center m-0">
                     {item.title}
                   </h3>
                 </div>
