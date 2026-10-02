@@ -54,19 +54,19 @@ export default function SobrePage() {
       </Content>
       <Content tinted>
         <div id="nossa-atuacao">
-          <EyebrowSmall>Nossa Atuação</EyebrowSmall>
+          <EyebrowSmall className="text-[#660099]">Nossa Atuação</EyebrowSmall>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {ATUACAO.map((item) => (
               <div
                 key={item.title}
                 className="rounded-xl overflow-hidden border border-[#660099]/20 bg-white shadow-sm hover:shadow-lg hover:border-[#660099]/60 transition-all duration-200 group"
               >
-                <div className="relative w-full h-[150px]">
+                <div className="relative w-full h-[200px]">
                   <Image
                     src={item.img}
                     alt={item.alt}
                     fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                   />
                 </div>
@@ -82,11 +82,11 @@ export default function SobrePage() {
       </Content>
       <Content>
         <div id="missao-e-visao">
-          <EyebrowSmall>Missão e Visão</EyebrowSmall>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <EyebrowSmall className="text-[#660099]">Missão e Visão</EyebrowSmall>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Missão */}
-            <div className="rounded-xl overflow-hidden border border-border bg-white shadow-sm">
-              <div className="relative w-full h-[200px]">
+            <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-full h-[300px]">
                 <Image
                   src="/images/missao.jpg"
                   alt="Nossa Missão — equipe unida com ícones de objetivo"
@@ -95,19 +95,19 @@ export default function SobrePage() {
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-5">
-                <span className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white mb-3">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <circle cx="6" cy="6" r="2.5" />
-                    <circle cx="18" cy="6" r="2.5" />
-                    <circle cx="12" cy="18" r="2.5" />
-                    <path d="M8.2 7.3 10 15.5M15.8 7.3 14 15.5M8.5 6h7" />
-                  </svg>
-                </span>
-                <h3 className="font-display font-semibold text-sm mb-1">
-                  Nossa <span className="text-purple-600">Missão</span>
-                </h3>
-                <p className="text-sm text-graphite/80 leading-relaxed">
+              <div className="p-6 bg-gradient-to-b from-white to-slate-50">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <circle cx="12" cy="12" r="3" />
+                      <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+                    </svg>
+                  </span>
+                  <h3 className="font-display font-bold text-2xl text-graphite">
+                    Nossa <span className="text-[#660099]">Missão</span>
+                  </h3>
+                </div>
+                <p className="text-base text-graphite/75 leading-relaxed">
                   Oferecer soluções completas de telecomunicações e tecnologia que conectem pessoas, empresas
                   e oportunidades, gerando valor e resultados para nossos clientes.
                 </p>
@@ -115,8 +115,8 @@ export default function SobrePage() {
             </div>
 
             {/* Visão */}
-            <div className="rounded-xl overflow-hidden border border-border bg-white shadow-sm">
-              <div className="relative w-full h-[200px]">
+            <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
+              <div className="relative w-full h-[300px]">
                 <Image
                   src="/images/visao.jpg"
                   alt="Nossa Visão — líder olhando para o horizonte da cidade"
@@ -125,17 +125,19 @@ export default function SobrePage() {
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
               </div>
-              <div className="p-5">
-                <span className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white mb-3">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
-                    <circle cx="12" cy="12" r="2.8" />
-                  </svg>
-                </span>
-                <h3 className="font-display font-semibold text-sm mb-1">
-                  Nossa <span className="text-purple-600">Visão</span>
-                </h3>
-                <p className="text-sm text-graphite/80 leading-relaxed">
+              <div className="p-6 bg-gradient-to-b from-white to-slate-50">
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </span>
+                  <h3 className="font-display font-bold text-2xl text-graphite">
+                    Nossa <span className="text-[#660099]">Visão</span>
+                  </h3>
+                </div>
+                <p className="text-base text-graphite/75 leading-relaxed">
                   Ser reconhecida como uma das principais consultorias comerciais de telecomunicações do
                   Brasil, destacando-se pela excelência no atendimento, inovação e geração de resultados.
                 </p>
