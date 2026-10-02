@@ -58,7 +58,7 @@ export default function ContatoPage() {
       <div className="max-w-[1280px] mx-auto px-4 md:px-6 py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Informações de contato */}
         <div>
-          <span className="block text-[13px] font-bold uppercase text-[#8F58C9] mb-2">
+          <span className="block text-[13px] font-bold uppercase text-[#660099] mb-2">
             Fale com a KingServices
           </span>
 
@@ -126,7 +126,7 @@ export default function ContatoPage() {
             </p>
           ) : (
             <form onSubmit={handleSubmit}>
-              <p className="text-[13px] text-[#8F58C9] -mt-1 mb-4">
+              <p className="text-[13px] text-[#660099] -mt-1 mb-4">
                 * Preenchimento obrigatório em todos os campos
               </p>
 
