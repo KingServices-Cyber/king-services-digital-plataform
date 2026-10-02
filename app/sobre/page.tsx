@@ -84,54 +84,63 @@ export default function SobrePage() {
         <div id="missao-e-visao">
           <EyebrowSmall>Missão e Visão</EyebrowSmall>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Card clickable={false}>
-              <span className="w-11 h-11 rounded-full bg-mist flex items-center justify-center text-purple-600">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <circle cx="6" cy="6" r="2.5" />
-                  <circle cx="18" cy="6" r="2.5" />
-                  <circle cx="12" cy="18" r="2.5" />
-                  <path d="M8.2 7.3 10 15.5M15.8 7.3 14 15.5M8.5 6h7" />
-                </svg>
-              </span>
-              <h3 className="font-display font-semibold text-sm mt-3 mb-1">Nossa Missão</h3>
-              <p className="text-sm text-graphite/80 leading-relaxed">
-                Oferecer soluções completas de telecomunicações e tecnologia que conectem pessoas, empresas
-                e oportunidades, gerando valor e resultados para nossos clientes.
-              </p>
-            </Card>
-            <Card clickable={false}>
-              <span className="w-11 h-11 rounded-full bg-mist flex items-center justify-center text-purple-600">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
-                  <circle cx="12" cy="12" r="2.8" />
-                </svg>
-              </span>
-              <h3 className="font-display font-semibold text-sm mt-3 mb-1">Nossa Visão</h3>
-              <p className="text-sm text-graphite/80 leading-relaxed">
-                Ser reconhecida como uma das principais consultorias comerciais de telecomunicações do
-                Brasil, destacando-se pela excelência no atendimento, inovação e geração de resultados.
-              </p>
-            </Card>
+            {/* Missão */}
+            <div className="rounded-xl overflow-hidden border border-border bg-white shadow-sm">
+              <div className="relative w-full h-[200px]">
+                <Image
+                  src="/images/missao.jpg"
+                  alt="Nossa Missão — equipe unida com ícones de objetivo"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-5">
+                <span className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white mb-3">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="6" cy="6" r="2.5" />
+                    <circle cx="18" cy="6" r="2.5" />
+                    <circle cx="12" cy="18" r="2.5" />
+                    <path d="M8.2 7.3 10 15.5M15.8 7.3 14 15.5M8.5 6h7" />
+                  </svg>
+                </span>
+                <h3 className="font-display font-semibold text-sm mb-1">
+                  Nossa <span className="text-purple-600">Missão</span>
+                </h3>
+                <p className="text-sm text-graphite/80 leading-relaxed">
+                  Oferecer soluções completas de telecomunicações e tecnologia que conectem pessoas, empresas
+                  e oportunidades, gerando valor e resultados para nossos clientes.
+                </p>
+              </div>
+            </div>
+
+            {/* Visão */}
+            <div className="rounded-xl overflow-hidden border border-border bg-white shadow-sm">
+              <div className="relative w-full h-[200px]">
+                <Image
+                  src="/images/visao.jpg"
+                  alt="Nossa Visão — líder olhando para o horizonte da cidade"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              </div>
+              <div className="p-5">
+                <span className="w-11 h-11 rounded-full bg-purple-600 flex items-center justify-center text-white mb-3">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
+                    <circle cx="12" cy="12" r="2.8" />
+                  </svg>
+                </span>
+                <h3 className="font-display font-semibold text-sm mb-1">
+                  Nossa <span className="text-purple-600">Visão</span>
+                </h3>
+                <p className="text-sm text-graphite/80 leading-relaxed">
+                  Ser reconhecida como uma das principais consultorias comerciais de telecomunicações do
+                  Brasil, destacando-se pela excelência no atendimento, inovação e geração de resultados.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </Content>
