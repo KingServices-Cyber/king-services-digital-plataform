@@ -11,7 +11,7 @@ export function EyebrowSmall({
   className?: string;
 }) {
   return (
-    <span id={id} className={cn("block text-xs font-bold uppercase text-[#8F58C9] mb-2.5", className)}>
+    <span id={id} className={cn("block text-xs font-bold uppercase text-[#660099] mb-2.5", className)}>
       {children}
     </span>
   );

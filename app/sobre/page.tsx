@@ -54,7 +54,7 @@ export default function SobrePage() {
       </Content>
       <Content tinted>
         <div id="nossa-atuacao">
-          <EyebrowSmall className="text-[#660099]">Nossa Atuação</EyebrowSmall>
+          <EyebrowSmall>Nossa Atuação</EyebrowSmall>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
             {ATUACAO.map((item) => (
               <div
@@ -82,11 +82,11 @@ export default function SobrePage() {
       </Content>
       <Content>
         <div id="missao-e-visao">
-          <EyebrowSmall className="text-[#660099]">Missão e Visão</EyebrowSmall>
+          <EyebrowSmall>Missão e Visão</EyebrowSmall>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Missão */}
             <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full h-[300px]">
+              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-[300px]">
                 <Image
                   src="/images/missao.jpg"
                   alt="Nossa Missão — equipe unida com ícones de objetivo"
@@ -116,7 +116,7 @@ export default function SobrePage() {
 
             {/* Visão */}
             <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full h-[300px]">
+              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-[300px]">
                 <Image
                   src="/images/visao.jpg"
                   alt="Nossa Visão — líder olhando para o horizonte da cidade"
