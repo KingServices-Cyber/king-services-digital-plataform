@@ -88,38 +88,25 @@ export function GeoLocationModal() {
 
   const detectLocation = useCallback(() => {
     setStep("detecting");
-    if (!navigator.geolocation) {
-      setStep("error");
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      async (pos) => {
-        try {
-          const { latitude, longitude } = pos.coords;
-          const res = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json&accept-language=pt-BR`,
-            { headers: { "User-Agent": "KingServices/1.0" } },
-          );
-          const data = await res.json();
-          const detected =
-            data.address?.city ||
-            data.address?.town ||
-            data.address?.municipality ||
-            data.address?.county ||
-            "";
-          if (detected) {
-            setCity(detected);
-            setStep("detected");
-          } else {
-            setStep("error");
-          }
-        } catch {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 4000); // 4s max
+
+    fetch("https://ipwho.is/", { signal: ctrl.signal })
+      .then((r) => r.json())
+      .then((d) => {
+        clearTimeout(timer);
+        const detected = d.success ? (d.city as string) ?? "" : "";
+        if (detected) {
+          setCity(detected);
+          setStep("detected");
+        } else {
           setStep("error");
         }
-      },
-      () => setStep("error"),
-      { enableHighAccuracy: false, timeout: 10000 },
-    );
+      })
+      .catch(() => {
+        clearTimeout(timer);
+        setStep("error");
+      });
   }, []);
 
   useEffect(() => {
@@ -130,7 +117,7 @@ export function GeoLocationModal() {
     const t = setTimeout(() => {
       setVisible(true);
       detectLocation();
-    }, 600);
+    }, 150);
     return () => clearTimeout(t);
   }, [detectLocation]);
 
@@ -200,6 +187,13 @@ export function GeoLocationModal() {
               <p className="font-bold text-text">Identificando sua localização…</p>
               <p className="text-sm text-text-secondary mt-1">Isso leva só um instante.</p>
             </div>
+            <button
+              type="button"
+              onClick={handleClose}
+              className="text-xs text-text-secondary hover:text-primary underline underline-offset-2 transition-colors"
+            >
+              Pular e entrar no site
+            </button>
           </div>
         )}
 
