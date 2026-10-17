@@ -76,6 +76,7 @@ export async function fetchTestimonials(): Promise<Testimonial[]> {
       role: row.role ?? "",
       quote: row.quote,
       rating: row.rating,
+      segment: row.segment ?? "Serviços",
     }));
   } catch {
     return TESTIMONIALS;

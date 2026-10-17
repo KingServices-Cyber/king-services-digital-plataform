@@ -56,7 +56,7 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Depoimentos",
-    href: "/#depoimentos",
+    href: "/depoimentos",
   },
   {
     label: "Contato",

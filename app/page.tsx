@@ -30,7 +30,7 @@ export default async function HomePage() {
       <StatsSection />
       <WhyChooseSection />
       <PlansSection pfPlans={pfPlans} pjPlans={pjPlans} />
-      <TestimonialsSection testimonials={testimonials} />
+      <TestimonialsSection testimonials={testimonials.slice(0, 4)} />
       <FAQSection items={faqItems} />
       <CTASection />
     </>

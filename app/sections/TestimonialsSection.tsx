@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import type { Testimonial } from "@/lib/content/plans";
 import { IconStar } from "@/components/ui/Icons";
 
@@ -39,7 +40,7 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
           {testimonials.map((t, i) => (
             <div
               key={t.id}
@@ -69,6 +70,18 @@ export function TestimonialsSection({ testimonials }: { testimonials: Testimonia
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center">
+          <Link
+            href="/depoimentos"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-600 transition-colors"
+          >
+            Ver todos os depoimentos
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
     </section>

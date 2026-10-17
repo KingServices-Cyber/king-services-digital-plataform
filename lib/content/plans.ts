@@ -211,12 +211,24 @@ export const HERO_FEATURES: HeroFeature[] = [
   },
 ];
 
+export type TestimonialSegment =
+  | "Todos"
+  | "Indústria"
+  | "Comércio"
+  | "Logística"
+  | "Advocacia"
+  | "Saúde"
+  | "Tecnologia"
+  | "Educação"
+  | "Serviços";
+
 export type Testimonial = {
   id: string;
   quote: string;
   name: string;
   role: string;
   rating: number;
+  segment: TestimonialSegment;
 };
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -225,32 +237,108 @@ export const TESTIMONIALS: Testimonial[] = [
     quote:
       "A KingServices transformou nossa infraestrutura de telecomunicação. O atendimento consultivo fez toda a diferença na escolha das soluções certas para nosso negócio.",
     name: "Roberto M.",
-    role: "Diretor de TI — Indústria",
+    role: "Diretor de TI",
     rating: 5,
+    segment: "Indústria",
   },
   {
     id: "2",
     quote:
       "Desde que migramos para a KingServices, nosso suporte técnico ficou muito mais ágil. O pós-venda ativo realmente funciona.",
     name: "Carla S.",
-    role: "Gerente de Operações — Comércio",
+    role: "Gerente de Operações",
     rating: 5,
+    segment: "Comércio",
   },
   {
     id: "3",
     quote:
       "Conectividade estável em todas as nossas filiais era um desafio. A KingServices entregou a solução completa com internet dedicada e monitoramento 24/7.",
     name: "Fernando L.",
-    role: "CEO — Logística",
+    role: "CEO",
     rating: 5,
+    segment: "Logística",
   },
   {
     id: "4",
     quote:
       "Excelente custo-benefício e o melhor: sem burocracia. Em poucos dias já estava tudo funcionando perfeitamente.",
     name: "Mariana T.",
-    role: "Proprietária — Escritório de Advocacia",
+    role: "Proprietária",
     rating: 5,
+    segment: "Advocacia",
+  },
+  {
+    id: "5",
+    quote:
+      "Precisávamos de IP fixo e SLA garantido para o nosso sistema hospitalar. A KingServices entendeu a criticidade e entregou exatamente o que precisávamos.",
+    name: "Dr. Paulo R.",
+    role: "Diretor Administrativo",
+    rating: 5,
+    segment: "Saúde",
+  },
+  {
+    id: "6",
+    quote:
+      "Nossa startup cresceu e a internet residencial não dava mais conta. Com o plano empresarial da KingServices, temos estabilidade para trabalhar remotamente sem quedas.",
+    name: "Thiago A.",
+    role: "CTO",
+    rating: 5,
+    segment: "Tecnologia",
+  },
+  {
+    id: "7",
+    quote:
+      "Utilizamos a internet dedicada para as aulas online da nossa escola. A qualidade do sinal melhorou muito e os alunos pararam de ter problemas de conexão.",
+    name: "Ana P.",
+    role: "Coordenadora Pedagógica",
+    rating: 5,
+    segment: "Educação",
+  },
+  {
+    id: "8",
+    quote:
+      "Atendo clientes em vídeo chamada o dia todo. Com o plano da KingServices nunca mais tive queda no meio de uma reunião importante.",
+    name: "Juliana F.",
+    role: "Consultora de RH",
+    rating: 5,
+    segment: "Serviços",
+  },
+  {
+    id: "9",
+    quote:
+      "Tínhamos queda constante de internet nas linhas de produção. A solução dedicada da KingServices eliminou o problema e hoje operamos com zero interrupção.",
+    name: "Marcos V.",
+    role: "Gerente Industrial",
+    rating: 5,
+    segment: "Indústria",
+  },
+  {
+    id: "10",
+    quote:
+      "Loja online com alto volume de pedidos precisa de conexão estável. A KingServices entregou velocidade e suporte que nosso e-commerce exigia.",
+    name: "Patricia L.",
+    role: "Gestora de E-commerce",
+    rating: 5,
+    segment: "Comércio",
+  },
+  {
+    id: "11",
+    quote:
+      "Precisávamos de conectividade para nossa frota rastrear em tempo real. O suporte da KingServices foi fundamental na implantação do sistema.",
+    name: "Eduardo S.",
+    role: "Diretor de Operações",
+    rating: 5,
+    segment: "Logística",
+  },
+  {
+    id: "12",
+    quote:
+      "A migração foi feita em um final de semana sem impacto nenhum nas consultas. Equipe extremamente profissional e comprometida.",
+    name: "Dra. Renata C.",
+    role: "Clínica Médica",
+    rating: 5,
+    segment: "Saúde",
   },
 ];
 
