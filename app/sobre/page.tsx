@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { Card, Content, EyebrowSmall, PageHero, StepsList } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -17,17 +18,87 @@ const VALORES = [
   { title: "Resultado", desc: "Foco na geração de valor para clientes e parceiros." },
 ];
 
-const ATUACAO = [
-  { title: "Telefonia Móvel Corporativa",    img: "/images/atuacao/telefonia-movel.jpg",    alt: "Smartphones e dispositivos corporativos" },
-  { title: "Telefonia Fixa Empresarial",     img: "/images/atuacao/telefonia-fixa.jpg",     alt: "Telefone fixo IP empresarial" },
-  { title: "Internet Fibra Empresarial",     img: "/images/atuacao/internet-fibra.jpg",     alt: "Cabos de fibra óptica empresarial" },
-  { title: "Links Dedicados",                img: "/images/atuacao/links-dedicados.jpg",    alt: "Infraestrutura de rede dedicada" },
-  { title: "Vivo Cloud",                     img: "/images/atuacao/vivo-cloud.jpg",         alt: "Soluções em nuvem Vivo" },
-  { title: "Segurança Digital",              img: "/images/atuacao/seguranca-digital.jpg",  alt: "Segurança cibernética empresarial" },
-  { title: "Soluções IoT",                   img: "/images/atuacao/solucoes-iot.jpg",       alt: "Internet das Coisas corporativa" },
-  { title: "Gestão de Mobilidade Corporativa", img: "/images/atuacao/gestao-mobilidade.jpg", alt: "Gestão de dispositivos móveis corporativos" },
-  { title: "PABX em Nuvem",                 img: "/images/atuacao/pabx-nuvem.jpg",         alt: "Sistema PABX em nuvem" },
-  { title: "UCaaS (Comunicação Unificada)",  img: "/images/atuacao/ucaas.jpg",              alt: "Comunicação unificada e videoconferência" },
+const ATUACAO: { title: string; icon: ReactNode }[] = [
+  {
+    title: "Telefonia Móvel Corporativa",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Telefonia Fixa Empresarial",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Internet Fibra Empresarial",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Links Dedicados",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+      </svg>
+    ),
+  },
+  {
+    title: "Vivo Cloud",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Segurança Digital",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Soluções IoT",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+      </svg>
+    ),
+  },
+  {
+    title: "Gestão de Mobilidade Corporativa",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2zM9 7h6M9 11h4" />
+      </svg>
+    ),
+  },
+  {
+    title: "PABX em Nuvem",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z" />
+      </svg>
+    ),
+  },
+  {
+    title: "UCaaS (Comunicação Unificada)",
+    icon: (
+      <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function SobrePage() {
@@ -59,22 +130,14 @@ export default function SobrePage() {
             {ATUACAO.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl overflow-hidden border border-[#660099]/20 bg-white shadow-sm hover:shadow-lg hover:border-[#660099]/60 transition-all duration-200 group"
+                className="rounded-xl border border-[#660099]/20 bg-white shadow-sm hover:shadow-lg hover:border-[#660099]/60 hover:-translate-y-1 transition-all duration-200 group flex flex-col items-center gap-3 p-5"
               >
-                <div className="relative w-full h-[150px]">
-                  <Image
-                    src={item.img}
-                    alt={item.alt}
-                    fill
-                    className="object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                  />
+                <div className="w-16 h-16 rounded-2xl bg-primary-50 group-hover:bg-primary group-hover:text-white flex items-center justify-center transition-colors duration-200 [&_svg]:transition-colors [&_svg]:duration-200 group-hover:[&_svg]:text-white">
+                  {item.icon}
                 </div>
-                <div className="px-3 py-2.5 border-t-2 border-[#660099]/30">
-                  <h3 className="text-[11.5px] font-semibold text-[#660099] leading-snug text-center m-0">
-                    {item.title}
-                  </h3>
-                </div>
+                <h3 className="text-[11.5px] font-semibold text-[#660099] leading-snug text-center m-0">
+                  {item.title}
+                </h3>
               </div>
             ))}
           </div>
