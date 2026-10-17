@@ -1,5 +1,4 @@
 ﻿import type { Metadata } from "next";
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { Card, Content, EyebrowSmall, PageHero, StepsList } from "@/components/ui";
 
@@ -148,28 +147,17 @@ export default function SobrePage() {
           <EyebrowSmall>Missão e Visão</EyebrowSmall>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {/* Missão */}
-            <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-[300px]">
-                <Image
-                  src="/images/missao.jpg"
-                  alt="Nossa Missão — equipe unida com ícones de objetivo"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
+            <div className="rounded-2xl border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col gap-6">
+              <div className="w-20 h-20 rounded-2xl bg-primary-50 flex items-center justify-center shrink-0">
+                <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+                </svg>
               </div>
-              <div className="p-6 bg-gradient-to-b from-white to-mist">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <circle cx="12" cy="12" r="3" />
-                      <path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
-                    </svg>
-                  </span>
-                  <h3 className="font-display font-bold text-2xl text-graphite">
-                    Nossa <span className="text-[#660099]">Missão</span>
-                  </h3>
-                </div>
+              <div>
+                <h3 className="font-display font-bold text-2xl text-graphite mb-3">
+                  Nossa <span className="text-[#660099]">Missão</span>
+                </h3>
                 <p className="text-base text-graphite/75 leading-relaxed">
                   Oferecer soluções completas de telecomunicações e tecnologia que conectem pessoas, empresas
                   e oportunidades, gerando valor e resultados para nossos clientes.
@@ -178,28 +166,17 @@ export default function SobrePage() {
             </div>
 
             {/* Visão */}
-            <div className="rounded-2xl overflow-hidden border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative w-full h-[220px] sm:h-[260px] lg:h-[300px]">
-                <Image
-                  src="/images/visao.jpg"
-                  alt="Nossa Visão — líder olhando para o horizonte da cidade"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
+            <div className="rounded-2xl border border-[#660099]/15 bg-white shadow-md hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col gap-6">
+              <div className="w-20 h-20 rounded-2xl bg-primary-50 flex items-center justify-center shrink-0">
+                <svg className="w-10 h-10 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
               </div>
-              <div className="p-6 bg-gradient-to-b from-white to-mist">
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="w-16 h-16 rounded-full bg-[#660099] flex items-center justify-center text-white shrink-0 shadow-md">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </span>
-                  <h3 className="font-display font-bold text-2xl text-graphite">
-                    Nossa <span className="text-[#660099]">Visão</span>
-                  </h3>
-                </div>
+              <div>
+                <h3 className="font-display font-bold text-2xl text-graphite mb-3">
+                  Nossa <span className="text-[#660099]">Visão</span>
+                </h3>
                 <p className="text-base text-graphite/75 leading-relaxed">
                   Ser reconhecida como uma das principais consultorias comerciais de telecomunicações do
                   Brasil, destacando-se pela excelência no atendimento, inovação e geração de resultados.
