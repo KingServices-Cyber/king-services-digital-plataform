@@ -26,12 +26,109 @@ const COVERED_CITIES = [
 
 const QUICK_CITIES = ["São José do Rio Preto", "Franca", "Catanduva", "Votuporanga"];
 
+// Mapeamento ASCII → nome correto em português para cidades do Estado de SP
+const SP_CITIES_MAP: Record<string, string> = {
+  // Região de São José do Rio Preto
+  "sao jose do rio preto": "São José do Rio Preto",
+  "jose bonifacio":        "José Bonifácio",
+  "guapiacu":              "Guapiaçu",
+  "ipigua":                "Ipiguá",
+  "monte aprazivel":       "Monte Aprazível",
+  "fernandopolis":         "Fernandópolis",
+  "mirassol":              "Mirassol",
+  "bady bassitt":          "Bady Bassitt",
+  "onda verde":            "Onda Verde",
+  "nova granada":          "Nova Granada",
+  "tanabi":                "Tanabi",
+  "catanduva":             "Catanduva",
+  "votuporanga":           "Votuporanga",
+  "jales":                 "Jales",
+  "franca":                "Franca",
+  "cedral":                "Cedral",
+  "olimpia":               "Olímpia",
+  "bebedouro":             "Bebedouro",
+  "barretos":              "Barretos",
+  "sertaozinho":           "Sertãozinho",
+  "jaboticabal":           "Jaboticabal",
+  "ribeirao preto":        "Ribeirão Preto",
+  // Grande SP
+  "sao paulo":                 "São Paulo",
+  "guarulhos":                 "Guarulhos",
+  "campinas":                  "Campinas",
+  "sao bernardo do campo":     "São Bernardo do Campo",
+  "sao jose dos campos":       "São José dos Campos",
+  "santo andre":               "Santo André",
+  "osasco":                    "Osasco",
+  "sorocaba":                  "Sorocaba",
+  "mogi das cruzes":           "Mogi das Cruzes",
+  "maua":                      "Mauá",
+  "sao caetano do sul":        "São Caetano do Sul",
+  "diadema":                   "Diadema",
+  "carapicuiba":               "Carapicuíba",
+  "itaquaquecetuba":           "Itaquaquecetuba",
+  "suzano":                    "Suzano",
+  "taboao da serra":           "Taboão da Serra",
+  "barueri":                   "Barueri",
+  "jundiai":                   "Jundiaí",
+  "piracicaba":                "Piracicaba",
+  "bauru":                     "Bauru",
+  "marilia":                   "Marília",
+  "presidente prudente":       "Presidente Prudente",
+  "aracatuba":                 "Araçatuba",
+  "araraquara":                "Araraquara",
+  "sao carlos":                "São Carlos",
+  "botucatu":                  "Botucatu",
+  "tatui":                     "Tatuí",
+  "itapetininga":              "Itapetininga",
+  "limeira":                   "Limeira",
+  "americana":                 "Americana",
+  "santa barbara d oeste":     "Santa Bárbara d'Oeste",
+  "santa barbara doeste":      "Santa Bárbara d'Oeste",
+  "indaiatuba":                "Indaiatuba",
+  "itu":                       "Itu",
+  "salto":                     "Salto",
+  "atibaia":                   "Atibaia",
+  "braganca paulista":         "Bragança Paulista",
+  "sao roque":                 "São Roque",
+  "votorantim":                "Votorantim",
+  "itapeva":                   "Itapeva",
+  "avare":                     "Avaré",
+  "assis":                     "Assis",
+  "ourinhos":                  "Ourinhos",
+  "lencois paulista":          "Lençóis Paulista",
+  "agudos":                    "Agudos",
+  "jacarei":                   "Jacareí",
+  "taubate":                   "Taubaté",
+  "cruzeiro":                  "Cruzeiro",
+  "guaratingueta":             "Guaratinguetá",
+  "lorena":                    "Lorena",
+  "cacapava":                  "Caçapava",
+  "pindamonhangaba":           "Pindamonhangaba",
+  "santos":                    "Santos",
+  "sao vicente":               "São Vicente",
+  "praia grande":              "Praia Grande",
+  "cubatao":                   "Cubatão",
+  "sao jose do rio pardo":     "São José do Rio Pardo",
+  "mogi guacu":                "Mogi Guaçu",
+  "amparo":                    "Amparo",
+  "sao joao da boa vista":     "São João da Boa Vista",
+  "regente feijo":             "Regente Feijó",
+};
+
 function normalizeCity(city: string) {
   return city
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
     .toLowerCase()
     .trim();
+}
+
+/** Corrige o nome retornado pela API (sem acentos) para a grafia correta em PT-BR. */
+function fixCityName(raw: string): string {
+  const key = normalizeCity(raw);
+  const covered = COVERED_CITIES.find((c) => normalizeCity(c) === key);
+  if (covered) return covered;
+  return SP_CITIES_MAP[key] ?? raw;
 }
 
 function isCovered(city: string) {
@@ -97,7 +194,7 @@ export function GeoLocationModal() {
         clearTimeout(timer);
         const detected = d.success ? (d.city as string) ?? "" : "";
         if (detected) {
-          setCity(detected);
+          setCity(fixCityName(detected));
           setStep("detected");
         } else {
           setStep("error");
