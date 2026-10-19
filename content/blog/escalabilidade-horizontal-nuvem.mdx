@@ -1,0 +1,37 @@
+---
+title: "Escalabilidade horizontal na nuvem: pague pelo que usa, quando usa"
+description: "Escalar verticalmente tem limites físicos e custo alto. Escalabilidade horizontal na nuvem permite crescer e reduzir sob demanda, sem superdimensionar infraestrutura."
+category: "Cloud"
+date: "2026-10-28"
+author: "King Services"
+---
+
+Uma das promessas centrais da nuvem é a elasticidade: crescer nos momentos de pico e reduzir nos períodos calmos, pagando proporcionalmente ao uso. Entender como isso funciona na prática ajuda a dimensionar corretamente — e evitar surpresas na fatura.
+
+## Escala vertical vs. escala horizontal
+
+**Escala vertical (scale up):** você aumenta os recursos de um servidor existente — mais CPU, mais RAM. Tem limite físico, exige reinicialização e cria um ponto único de falha.
+
+**Escala horizontal (scale out):** você adiciona mais instâncias do mesmo servidor. Sem limite prático, sem ponto único de falha e pode ser feito automaticamente (autoscaling).
+
+Na nuvem, a escala horizontal é a abordagem nativa — e permite que sistemas críticos lidem com picos de demanda sem superprovisionar infraestrutura para o restante do ano.
+
+## Autoscaling: escalando sem intervenção manual
+
+Provedores de nuvem permitem configurar regras de autoscaling: "se o uso de CPU passar de 70% por mais de 5 minutos, adicione mais uma instância" e "se o uso cair abaixo de 30% por 10 minutos, remova uma instância".
+
+O resultado: o sistema cresce nos picos (promoções, datas sazonais, campanhas) e retrai nos períodos normais, automaticamente.
+
+## Quando a escalabilidade horizontal faz diferença
+
+- **E-commerce:** picos de vendas em datas especiais podem ser 10x o tráfego normal
+- **Sistemas de gestão:** relatórios mensais que sobrecarregam o servidor por algumas horas
+- **Portais de atendimento:** picos de acesso em horários específicos
+
+## Custo vs. capacidade ociosa
+
+Em infraestrutura local, você provisiona para o pico — e paga pela capacidade ociosa nos outros 340 dias do ano. Na nuvem com autoscaling, você paga pelo uso real, e a capacidade extra existe quando precisa.
+
+## Como a King Services ajuda
+
+Arquitetamos aplicações para tirar proveito da escalabilidade da nuvem, configuramos autoscaling adequado ao padrão de uso e monitoramos os custos para garantir que a elasticidade não vire surpresa na fatura.

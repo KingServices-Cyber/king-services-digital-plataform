@@ -1,0 +1,37 @@
+---
+title: "Redundância de link: como montar um plano B para a internet da empresa"
+description: "Um único link, por melhor que seja o SLA, vai cair em algum momento. Entenda como montar uma estrutura de redundância adequada ao risco da sua operação."
+category: "Internet Empresarial"
+date: "2026-10-28"
+author: "King Services"
+---
+
+Toda operadora tem SLA — mas nenhuma garante 100% de disponibilidade. Fibra cortada por obra, falha de equipamento, queda de energia no ponto de presença da operadora: situações que fogem do controle e acontecem. Para operações que não podem parar, redundância não é luxo.
+
+## O que significa ter redundância de link
+
+Redundância significa ter um segundo caminho de conectividade, de preferência por operadora diferente e tecnologia diferente, que entra em operação automaticamente quando o principal falha.
+
+O ponto crítico: **operadora diferente**. Dois links do mesmo provedor podem passar pela mesma infraestrutura física — e cair juntos no mesmo incidente.
+
+## Tipos de redundância
+
+**Ativo-passivo (failover):** o link principal carrega 100% do tráfego. O link de backup fica em standby e assume automaticamente quando o principal falha. Custo menor, mas pode haver alguns segundos de interrupção durante a transição.
+
+**Ativo-ativo (load balancing):** ambos os links carregam tráfego simultaneamente. Em caso de falha de um, o outro absorve tudo. Sem interrupção perceptível. Custo maior.
+
+## Combinações comuns
+
+| Link principal | Link de backup | Nível de proteção |
+|---|---|---|
+| Fibra dedicada | 4G/5G | Boa para pequenas empresas |
+| Link dedicado | Link dedicado (outra operadora) | Corporativo |
+| Fibra + MPLS | SD-WAN com 4G | Enterprise |
+
+## O papel do SD-WAN na redundância
+
+O SD-WAN automatiza o failover e o balanceamento entre links, monitora a qualidade de cada um em tempo real e redireciona o tráfego sem intervenção manual. Para empresas com múltiplos links, ele é a camada de inteligência que faz a redundância funcionar de verdade.
+
+## Como a King Services ajuda
+
+Projetamos a arquitetura de redundância certa para o seu nível de criticidade — desde um 4G de backup até uma topologia dual-link com SD-WAN — e monitoramos a transição para garantir que o failover funcione quando precisar.

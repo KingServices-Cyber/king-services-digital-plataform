@@ -49,10 +49,12 @@ export function getPostSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-/** Retorna todos os posts (metadados + conteúdo), ordenados do mais recente. */
+/** Retorna todos os posts publicados (data <= hoje), ordenados do mais recente. */
 export function getAllPosts(): Post[] {
+  const today = new Date().toISOString().split("T")[0];
   return getPostSlugs()
     .map((slug) => readPostFile(slug))
+    .filter((p) => !p.date || p.date <= today)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
