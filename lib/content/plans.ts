@@ -343,29 +343,111 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const FAQ_ITEMS = [
+  // Planos & Contratação
   {
+    category: "Planos & Contratação",
     question: "Qual a cobertura da KingServices?",
     answer:
-      "Atendemos São José do Rio Preto e região com fibra óptica de alta velocidade. Consulte a disponibilidade para o seu endereço.",
+      "Atendemos São José do Rio Preto e região com fibra óptica de alta velocidade. Consulte a disponibilidade para o seu endereço diretamente pelo WhatsApp ou pelo formulário de contato — verificamos em minutos.",
   },
   {
+    category: "Planos & Contratação",
     question: "Como funciona a instalação?",
     answer:
-      "A instalação é gratuita e feita em até 48h após a contratação. Nossa equipe técnica cuida de tudo, incluindo a configuração do Wi-Fi.",
+      "A instalação é gratuita e realizada em até 48h úteis após a assinatura do contrato. Nossa equipe técnica cuida de tudo: passagem de cabo, configuração do roteador e teste de qualidade do sinal antes de sair.",
   },
   {
+    category: "Planos & Contratação",
     question: "Posso trocar de plano depois?",
     answer:
-      "Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento, sem multa ou burocracia.",
+      "Sim. Upgrade ou downgrade podem ser feitos a qualquer momento, sem multa e sem necessidade de novo contrato. Basta entrar em contato com nossa equipe.",
   },
   {
-    question: "Existe fidelidade?",
+    category: "Planos & Contratação",
+    question: "Existe fidelidade nos planos?",
     answer:
-      "No plano mensal não há fidelidade. O plano anual tem desconto especial com permanência mínima de 12 meses.",
+      "No plano mensal não há fidelidade mínima. O plano anual oferece desconto diferenciado com permanência de 12 meses. Em ambos os casos, os termos estão detalhados no contrato antes da assinatura.",
   },
+  // Suporte Técnico
   {
+    category: "Suporte Técnico",
     question: "Como funciona o suporte técnico?",
     answer:
-      "Nosso suporte funciona 24/7 via WhatsApp, telefone e chat. Você fala com pessoas reais, sem robôs.",
+      "Nosso suporte funciona 24 horas por dia, 7 dias por semana, via WhatsApp, telefone e chat. Você fala com técnicos reais — não com atendimento automatizado. Para empresas, oferecemos gerente de conta dedicado.",
+  },
+  {
+    category: "Suporte Técnico",
+    question: "Qual o prazo para reparo em caso de queda do serviço?",
+    answer:
+      "Para planos residenciais, o prazo de reparo é de até 24 horas úteis. Para planos empresariais com SLA contratado, o prazo é de 4 horas. O tempo começa a contar a partir da abertura do chamado.",
+  },
+  {
+    category: "Suporte Técnico",
+    question: "A KingServices oferece monitoramento proativo do link?",
+    answer:
+      "Sim, para clientes empresariais. Monitoramos disponibilidade, latência e perda de pacotes em tempo real — e abrimos chamado preventivo antes que a instabilidade impacte a operação.",
+  },
+  // Vivo Empresas
+  {
+    category: "Vivo Empresas",
+    question: "O que é um link dedicado e como difere da internet residencial?",
+    answer:
+      "Um link dedicado entrega banda simétrica e garantida exclusivamente para a sua empresa — sem compartilhamento com outros usuários. Inclui SLA de disponibilidade, IP fixo e latência previsível, essenciais para VoIP, sistemas em nuvem e videoconferências críticas.",
+  },
+  {
+    category: "Vivo Empresas",
+    question: "A KingServices atende pequenas empresas ou só grandes corporações?",
+    answer:
+      "Atendemos empresas de todos os portes: MEI, PME e grandes corporações. As soluções são dimensionadas para a realidade de cada operação — desde um plano empresarial básico até topologias complexas com múltiplas filiais e SD-WAN.",
+  },
+  {
+    category: "Vivo Empresas",
+    question: "É possível contratar telefonia móvel corporativa junto com o link?",
+    answer:
+      "Sim. Como parceira autorizada Vivo Empresas, oferecemos pacotes de telefonia móvel corporativa integrados ao contrato de conectividade. Isso simplifica a gestão e pode gerar economia na fatura consolidada.",
+  },
+  {
+    category: "Vivo Empresas",
+    question: "Como funciona o gerente de conta para empresas?",
+    answer:
+      "Cada cliente empresarial tem um gerente de conta dedicado: um ponto de contato único para solicitações, upgrades, renovações e resolução de problemas. O atendimento é proativo — não espere ter um problema para entrar em contato.",
+  },
+  // Cloud & Segurança Digital
+  {
+    category: "Cloud & Segurança",
+    question: "A KingServices oferece backup em nuvem?",
+    answer:
+      "Sim. Implantamos soluções de backup em nuvem com retenção configurável, criptografia em repouso e em trânsito, e teste periódico de restauração. O backup inclui servidores, arquivos compartilhados e e-mails corporativos.",
+  },
+  {
+    category: "Cloud & Segurança",
+    question: "O que está incluído no serviço de firewall gerenciado?",
+    answer:
+      "Instalação e configuração do firewall de próxima geração, atualização contínua de regras e assinaturas de ameaças, monitoramento 24/7, alertas em tempo real, relatórios mensais e suporte em caso de incidentes de segurança.",
+  },
+  {
+    category: "Cloud & Segurança",
+    question: "Preciso ter equipe de TI própria para contratar soluções Cloud?",
+    answer:
+      "Não. Nosso modelo de serviço gerenciado cuida de toda a operação — implantação, configuração, monitoramento e atualizações. Você foca no negócio enquanto a infraestrutura funciona.",
+  },
+  // King IA
+  {
+    category: "King IA",
+    question: "O que é o King IA?",
+    answer:
+      "King IA é o portfólio de soluções de inteligência artificial e automação da KingServices. São 20 soluções em 6 frentes — atrair, converter, atender, operar, analisar e evoluir — que ajudam empresas a ganhar eficiência sem precisar contratar uma equipe de TI ou IA dedicada.",
+  },
+  {
+    category: "King IA",
+    question: "As soluções de IA funcionam integradas com sistemas que já uso?",
+    answer:
+      "Sim. As soluções King IA são desenvolvidas com foco em integração: CRM, ERP, WhatsApp Business, e-mail, planilhas e sistemas específicos do seu setor. Na avaliação inicial, mapeamos os sistemas existentes e definimos as integrações necessárias.",
+  },
+  {
+    category: "King IA",
+    question: "Como começar com King IA?",
+    answer:
+      "O primeiro passo é um diagnóstico gratuito: entendemos os processos que você quer automatizar e recomendamos as soluções com maior retorno no menor prazo. Entre em contato e agendamos uma conversa.",
   },
 ];

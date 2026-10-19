@@ -2,7 +2,7 @@ import { getSupabaseServerClient } from "@/lib/supabase/server";
 import type { Plan, PlanCategory, Testimonial } from "@/lib/content/plans";
 import { PF_PLANS, PJ_PLANS, PLANS, TESTIMONIALS, FAQ_ITEMS } from "@/lib/content/plans";
 
-export type FAQItem = { question: string; answer: string };
+export type FAQItem = { question: string; answer: string; category?: string };
 
 function rowToPlan(row: {
   id: string; name: string; subtitle: string | null; speed: string;
@@ -93,10 +93,16 @@ export async function fetchFAQItems(): Promise<FAQItem[]> {
 
     if (error || !data?.length) return FAQ_ITEMS;
 
-    return data.map((row) => ({
+    const mapped = data.map((row) => ({
       question: row.question,
       answer: row.answer,
+      category: row.category ?? undefined,
     }));
+
+    // Se o Supabase não tiver categorias, usa o fallback local (mais completo)
+    if (mapped.every((item) => !item.category)) return FAQ_ITEMS;
+
+    return mapped;
   } catch {
     return FAQ_ITEMS;
   }
