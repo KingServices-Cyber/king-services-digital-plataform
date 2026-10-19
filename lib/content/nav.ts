@@ -59,6 +59,10 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/depoimentos",
   },
   {
+    label: "King IA",
+    href: "/king-ia",
+  },
+  {
     label: "Contato",
     href: "/contato",
   },
