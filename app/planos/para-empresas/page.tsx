@@ -116,6 +116,29 @@ export default async function ParaEmpresasPage() {
         </div>
       </section>
 
+      {/* Aviso CDC */}
+      <section className="py-6 px-6 bg-primary-50 border-y border-primary/15">
+        <div className="max-w-[1280px] mx-auto flex flex-col sm:flex-row items-start gap-3 text-sm text-primary/90">
+          <svg className="w-5 h-5 shrink-0 mt-0.5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+          <p>
+            <strong>Direito do Consumidor (CDC — Lei nº 8.078/1990, art. 49):</strong>{" "}
+            Contratos firmados à distância ou fora do estabelecimento comercial garantem o{" "}
+            <strong>direito de arrependimento em até 7 dias corridos</strong> da contratação, sem
+            qualquer custo. Para exercer esse direito, entre em contato pelo{" "}
+            <a href="https://wa.me/5517997150462" className="underline font-semibold" target="_blank" rel="noopener noreferrer">
+              WhatsApp (17) 99715-0462
+            </a>{" "}
+            ou pelo e-mail{" "}
+            <a href="mailto:atendimento@kingservices.com.br" className="underline font-semibold">
+              atendimento@kingservices.com.br
+            </a>.{" "}
+            <Link href="/aviso-legal" className="underline font-semibold">Saiba mais sobre seus direitos →</Link>
+          </p>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-14 px-6 bg-hero-gradient text-white text-center">
         <div className="max-w-xl mx-auto">

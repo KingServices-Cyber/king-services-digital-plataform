@@ -191,7 +191,7 @@ export function Footer({ className }: { className?: string } = {}) {
       <div className="border-t border-white/10 px-6 py-5 max-w-[1280px] mx-auto flex flex-wrap items-center justify-between gap-3 text-[11px]">
         <p>&copy; {new Date().getFullYear()} KingServices. Todos os direitos reservados.</p>
         <div className="flex gap-5 flex-wrap">
-          <Link href="/contato" className="text-white/60 hover:text-white no-underline transition-colors">
+          <Link href="/aviso-legal" className="text-white/60 hover:text-white no-underline transition-colors">
             Aviso legal
           </Link>
           <Link href="/politica-de-privacidade" className="text-white/60 hover:text-white no-underline transition-colors">
