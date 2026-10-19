@@ -40,6 +40,7 @@ export default function ContatoPage() {
         message: mensagem.trim(),
         source: "site-contato",
         status: "new",
+        lgpd_consent: lgpdAccepted,
       });
 
       if (insertError) throw insertError;
