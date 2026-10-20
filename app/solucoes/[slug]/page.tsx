@@ -137,7 +137,7 @@ export default function SolucaoDetalhePage({ params }: { params: { slug: string 
       {(solution.benefits || solution.plans || solution.targetAudience) && (
         <div className="max-w-[1280px] mx-auto px-4 md:px-6 py-14 text-center">
           <h2 className="font-display font-bold text-2xl md:text-3xl text-text-primary mb-4">
-            Pronto para modernizar a telefonia da sua empresa?
+            Pronto para levar {solution.title} para sua empresa?
           </h2>
           <p className="text-text-secondary mb-8 max-w-xl mx-auto">
             Fale com um especialista da King Services e receba uma proposta personalizada para o seu negócio.
