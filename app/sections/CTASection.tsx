@@ -34,7 +34,23 @@ export function CTASection() {
           </a>
         </div>
 
-        <p className="mt-6 text-sm text-white/60">
+        <div className="mt-6 flex flex-wrap justify-center items-center gap-x-5 gap-y-2">
+          <Link
+            href="/diagnostico"
+            className="text-sm text-white/70 hover:text-white underline underline-offset-2 transition-colors"
+          >
+            Fazer diagnóstico gratuito →
+          </Link>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-white/25" />
+          <Link
+            href="/faq"
+            className="text-sm text-white/70 hover:text-white underline underline-offset-2 transition-colors"
+          >
+            Perguntas frequentes →
+          </Link>
+        </div>
+
+        <p className="mt-4 text-xs text-white/50">
           Atendimento de segunda a sexta, das 8h às 18h. WhatsApp 24/7.
         </p>
       </div>

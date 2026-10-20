@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { fetchFAQItems, fetchPFPlans, fetchPJPlans, fetchTestimonials } from "@/lib/data";
+import { fetchPFPlans, fetchPJPlans, fetchTestimonials } from "@/lib/data";
 import { HeroSection } from "./sections/HeroSection";
 import { FeatureBar } from "./sections/FeatureBar";
 import { WhyChooseSection } from "./sections/WhyChooseSection";
 import { PlansSection } from "./sections/PlansSection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
-import { FAQSection } from "./sections/FAQSection";
 import { CTASection } from "./sections/CTASection";
 import { StatsSection } from "./sections/StatsSection";
-import { DiagnosticoSection } from "./sections/DiagnosticoSection";
 import { KingIASection } from "./sections/KingIASection";
 
 export const metadata: Metadata = {
@@ -16,24 +14,21 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [pfPlans, pjPlans, testimonials, faqItems] = await Promise.all([
+  const [pfPlans, pjPlans, testimonials] = await Promise.all([
     fetchPFPlans(),
     fetchPJPlans(),
     fetchTestimonials(),
-    fetchFAQItems(),
   ]);
 
   return (
     <>
       <HeroSection />
-      <DiagnosticoSection />
       <FeatureBar />
       <StatsSection />
       <WhyChooseSection />
       <KingIASection />
       <PlansSection pfPlans={pfPlans} pjPlans={pjPlans} />
       <TestimonialsSection testimonials={testimonials.slice(0, 4)} />
-      <FAQSection items={faqItems} />
       <CTASection />
     </>
   );
