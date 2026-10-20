@@ -29,19 +29,28 @@ export const SOLUTION_CATEGORIES: SolutionCategory[] = [
   },
 ];
 
+export type SolutionPlan = {
+  name: string;
+  desc: string;
+  features: string[];
+};
+
 export type Solution = {
   slug: string;
   title: string;
   desc: string;
   category: string;
   specs: string[];
+  benefits?: string[];
+  plans?: SolutionPlan[];
+  targetAudience?: string[];
 };
 
 export const SOLUTIONS: Record<string, Solution> = {
   "telefonia-movel": {
     slug: "telefonia-movel",
     title: "Telefonia Móvel Empresarial",
-    desc: "Planos corporativos com gestão centralizada de linhas, portabilidade e controle de custos.",
+    desc: "Planos corporativos Vivo com gestão centralizada de linhas, portabilidade ágil e controle total de custos para empresas de todos os portes.",
     category: "mobilidade",
     specs: [
       "Planos Corporativos",
@@ -50,6 +59,64 @@ export const SOLUTIONS: Record<string, Solution> = {
       "Pacotes de Dados",
       "Roaming Internacional",
       "Controle de Custos",
+    ],
+    benefits: [
+      "Cobertura 5G da Vivo em todo o Brasil",
+      "Fatura única consolidada para todas as linhas",
+      "Portal empresarial para gestão centralizada",
+      "Portabilidade ativada em até 24 horas",
+      "Roaming nacional e internacional inclusos em planos selecionados",
+      "Atendimento B2B prioritário com SLA corporativo",
+      "Limite de consumo configurável por linha",
+    ],
+    plans: [
+      {
+        name: "Controle Empresarial",
+        desc: "Franquia de dados definida com ligações ilimitadas. Ideal para previsibilidade de gastos.",
+        features: [
+          "Franquia de dados fixa",
+          "Ligações ilimitadas para fixos e móveis",
+          "Sem surpresas na fatura",
+          "A partir de 5 linhas",
+        ],
+      },
+      {
+        name: "Pós-pago Empresarial",
+        desc: "Flexibilidade total com franquia generosa e acesso prioritário à rede 5G.",
+        features: [
+          "Franquia de dados ampliada",
+          "Acesso prioritário a 5G",
+          "Compartilhamento entre linhas",
+          "Roaming nacional incluso",
+        ],
+      },
+      {
+        name: "Plano Compartilhado",
+        desc: "Pool de dados dividido entre múltiplas linhas. Quanto mais linhas, maior a economia.",
+        features: [
+          "Pool de dados entre linhas",
+          "Economia de escala",
+          "Gestão flexível do consumo",
+          "Ideal para equipes grandes",
+        ],
+      },
+      {
+        name: "Plano Executivo",
+        desc: "Para diretores e gestores com necessidade de dados em roaming internacional e benefícios premium.",
+        features: [
+          "Roaming internacional incluso",
+          "Dados ilimitados no Brasil",
+          "Benefícios premium",
+          "Suporte VIP 24h",
+        ],
+      },
+    ],
+    targetAudience: [
+      "Equipes de vendas externas e representantes comerciais",
+      "Empresas com 5 ou mais linhas ativas",
+      "Negócios com funcionários em campo ou múltiplas filiais",
+      "Gestores que precisam de visibilidade e controle de gastos",
+      "Empresas que buscam consolidar telefonia em um único fornecedor",
     ],
   },
   "internet-empresarial": {
