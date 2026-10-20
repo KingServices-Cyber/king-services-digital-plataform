@@ -184,7 +184,7 @@ export default function KingIAPage() {
                 ))}
               </ul>
               <Link
-                href="/contato"
+                href={`/contato?assunto=king-ia&plano=king-ia-${plan.slug}`}
                 className={`mt-2 text-center text-xs font-bold py-2.5 rounded-pill transition-colors ${
                   plan.highlight
                     ? "bg-white text-primary hover:bg-white/90"

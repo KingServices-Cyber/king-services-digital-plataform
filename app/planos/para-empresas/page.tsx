@@ -150,7 +150,7 @@ export default async function ParaEmpresasPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
-              href="/contato"
+              href="/contato?assunto=plano-pj"
               className="inline-block bg-white text-primary font-bold px-7 py-3.5 rounded-xl hover:bg-primary-50 transition-colors"
             >
               Solicitar proposta comercial

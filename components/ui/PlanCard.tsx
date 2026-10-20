@@ -92,7 +92,7 @@ export function PlanCard({
       </div>
 
       <Link
-        href="/contato"
+        href={`/contato?assunto=plano-${plan.category}&plano=${plan.id}`}
         className={cn(
           "block text-center font-bold text-sm py-3 rounded-pill transition-all duration-200 hover:-translate-y-0.5",
           plan.highlighted

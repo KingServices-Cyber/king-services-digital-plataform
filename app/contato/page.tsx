@@ -1,20 +1,73 @@
 ﻿"use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { PageHero, WhatsAppLink } from "@/components/ui";
 import { CONTACT_INFO } from "@/lib/content";
 import { mascararCPF, mascararCNPJ, mascararTelefone } from "@/lib/masks";
 import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
+const ASSUNTO_OPTIONS = [
+  { value: "", label: "Selecione um assunto *" },
+  { value: "Contratar Plano Residencial (Para Você)", label: "Contratar Plano Residencial (Para Você)" },
+  { value: "Contratar Plano Empresarial (Para Empresas)", label: "Contratar Plano Empresarial (Para Empresas)" },
+  { value: "King IA — Inteligência Artificial", label: "King IA — Inteligência Artificial" },
+  { value: "Suporte Técnico", label: "Suporte Técnico" },
+  { value: "Outro assunto", label: "Outro assunto" },
+];
+
+const ASSUNTO_PARAM_MAP: Record<string, string> = {
+  "plano-pf": "Contratar Plano Residencial (Para Você)",
+  "plano-pj": "Contratar Plano Empresarial (Para Empresas)",
+  "king-ia": "King IA — Inteligência Artificial",
+};
+
+const PLANO_NAMES: Record<string, string> = {
+  "pf-400mega": "Fibra 400 Mega",
+  "pf-600mega": "Fibra 600 Mega",
+  "pf-1giga": "Fibra 1 Giga",
+  "pf-2giga": "Fibra 2 Giga",
+  "pj-fibra-400mega": "Fibra Empresarial 400 Mega",
+  "pj-fibra-1giga": "Fibra Empresarial 1 Giga",
+  "pj-dedicado-100mega": "Internet Dedicada 100 Mega",
+  "pj-dedicado-200mega": "Internet Dedicada 200 Mega",
+  "king-ia-start": "King Start",
+  "king-ia-pro": "King Pro",
+  "king-ia-business": "King Business",
+  "king-ia-enterprise": "King Enterprise",
+};
+
 export default function ContatoPage() {
+  return (
+    <Suspense>
+      <ContatoForm />
+    </Suspense>
+  );
+}
+
+function ContatoForm() {
+  const searchParams = useSearchParams();
+
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [mensagem, setMensagem] = useState("");
+  const [assunto, setAssunto] = useState("");
   const [docTipo, setDocTipo] = useState<"cpf" | "cnpj">("cpf");
   const [docValue, setDocValue] = useState("");
   const [telefone, setTelefone] = useState("");
   const [lgpdAccepted, setLgpdAccepted] = useState(false);
+
+  useEffect(() => {
+    const assuntoParam = searchParams.get("assunto");
+    const planoParam = searchParams.get("plano");
+    if (assuntoParam && ASSUNTO_PARAM_MAP[assuntoParam]) {
+      setAssunto(ASSUNTO_PARAM_MAP[assuntoParam]);
+    }
+    if (planoParam && PLANO_NAMES[planoParam]) {
+      setMensagem(`Plano de interesse: ${PLANO_NAMES[planoParam]}\n\n`);
+    }
+  }, [searchParams]);
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -37,6 +90,7 @@ export default function ContatoPage() {
         phone: telefone,
         doc_type: docTipo,
         doc: docValue,
+        subject: assunto || null,
         message: mensagem.trim(),
         source: "site-contato",
         status: "new",
@@ -124,6 +178,23 @@ export default function ContatoPage() {
               <p className="text-[13px] text-[#660099] -mt-1 mb-4">
                 * Preenchimento obrigatório em todos os campos
               </p>
+
+              {/* Assunto */}
+              <div className="mb-4">
+                <label className="block text-[14px] font-medium mb-1.5">Assunto *</label>
+                <select
+                  required
+                  value={assunto}
+                  onChange={(e) => setAssunto(e.target.value)}
+                  className="w-full border border-fog rounded-lg px-3 py-2.5 text-sm bg-white"
+                >
+                  {ASSUNTO_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={opt.value} disabled={opt.value === ""}>
+                      {opt.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
               {/* Linha 1: Nome + E-mail */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
