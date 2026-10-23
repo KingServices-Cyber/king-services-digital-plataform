@@ -9,7 +9,7 @@ import { PlanToggle } from "@/components/ui/PlanToggle";
 type Props = { pfPlans: Plan[]; pjPlans: Plan[] };
 
 export function PlansSection({ pfPlans, pjPlans }: Props) {
-  const [audience, setAudience] = useState<"pf" | "pj">("pf");
+  const [audience, setAudience] = useState<"pf" | "pj">("pj");
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("monthly");
 
   const plans = (audience === "pf" ? pfPlans : pjPlans) ?? [];

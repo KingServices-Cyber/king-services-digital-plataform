@@ -176,7 +176,7 @@ function ContatoForm() {
           ) : (
             <form onSubmit={handleSubmit}>
               <p className="text-[13px] text-[#660099] -mt-1 mb-4">
-                * Preenchimento obrigatório em todos os campos
+                * Campos obrigatórios
               </p>
 
               {/* Assunto */}
@@ -220,12 +220,11 @@ function ContatoForm() {
                 </div>
               </div>
 
-              {/* Linha 2: Tipo doc + Doc */}
+              {/* Linha 2: Tipo doc + Doc (opcional) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-[14px] font-medium mb-1.5">Tipo de documento *</label>
+                  <label className="block text-[14px] font-medium mb-1.5">Tipo de documento <span className="text-text-secondary font-normal">(opcional)</span></label>
                   <select
-                    required
                     value={docTipo}
                     onChange={(e) => {
                       setDocTipo(e.target.value as "cpf" | "cnpj");
@@ -238,11 +237,10 @@ function ContatoForm() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-[14px] font-medium mb-1.5">{docTipo.toUpperCase()} *</label>
+                  <label className="block text-[14px] font-medium mb-1.5">{docTipo.toUpperCase()} <span className="text-text-secondary font-normal">(opcional)</span></label>
                   <input
                     type="text"
                     inputMode="numeric"
-                    required
                     value={docValue}
                     onChange={handleDocChange}
                     placeholder={docTipo === "cpf" ? "000.000.000-00" : "00.000.000/0000-00"}
